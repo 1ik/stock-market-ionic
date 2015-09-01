@@ -1,4 +1,4 @@
 angular.module('app.controllers').controller(
-	'SplashController', ['$scope',function($scope){
+	'DashController', ['$scope',function($scope){
 		//code
 }]);
