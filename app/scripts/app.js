@@ -1,24 +1,22 @@
 
-angular.module('app', ['ionic', 'app.controllers', 'app.directives'])
-.run(['$ionicPlatform',function($ionicPlatform) {
-  
-  $ionicPlatform.ready(function() {
+angular.module('app', ['ionic', 'app.controllers', 'app.directives', 'app.services', 'ngMockE2E'])
+.run(['$ionicPlatform', '$httpBackend',function($ionicPlatform, $httpBackend) {
 
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
+  $ionicPlatform.ready(function() {
     if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
     }
-  
     if (window.StatusBar) {
-      // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
-    }
-
+    }  
   })
-  
 }])
+
+.constant("constants", {
+    "rootURL": "http://ksclbd.com/api/"
+})
+
 
 .config(['$stateProvider', '$urlRouterProvider', '$ionicConfigProvider', function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
   
@@ -67,3 +65,8 @@ angular.module('app', ['ionic', 'app.controllers', 'app.directives'])
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/splash');
 }]);
+
+//initializations..
+angular.module('app.controllers', [])
+angular.module('app.directives', [])
+angular.module('app.services', [])
