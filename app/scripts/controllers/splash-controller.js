@@ -5,11 +5,12 @@ angular.module('app.controllers',['ionic-utils'])
 	
 
 	$scope.submitForm = function(email, password, signingUp){
+		host = 'http://demo5829846.mockable.io/users/';
 		$scope.user = {email: email , password: password};
 		$scope.message = '';
 		console.log(email)
 
-		$http.post('http://demo5829846.mockable.io/users/', $scope.user)
+		$http.post(host+'/users', $scope.user)
 			.success(function (data, status, headers, config) {
 				$window.sessionStorage.token = data.token;
 				console.log('status '+status)
