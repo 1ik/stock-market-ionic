@@ -1,5 +1,5 @@
-angular.module('app.controllers')
-.controller('SplashController', ['$scope','$http', 'authService', '$ionicModal', function($scope, $http, authService, $ionicModal){
+angular.module('app.controllers',['ui.router'])
+.controller('SplashController', ['$scope','$http', 'authService', '$ionicModal', '$state',function($scope, $http, authService, $ionicModal,$state){
 
 
 	$scope.submitForm = function(email, password, signingUp){
@@ -7,7 +7,7 @@ angular.module('app.controllers')
 		authService.authenticateUser(email,password).then(function(data){
 			
 			//login success
-			console.log(data);
+			$state.go("app.dashboard")
 		}).catch(function(data){
 			
 			$ionicModal.fromTemplateUrl('templates/modals/login-failed.html', {
