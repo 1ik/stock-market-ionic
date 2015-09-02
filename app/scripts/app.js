@@ -27,13 +27,22 @@ angular.module('app', ['ionic', 'app.controllers', 'app.directives'])
   
   var width = window.innerWidth;
   var masterTemplate = '';
+  var splashScreen = '';
   if(width <= 450) {
     masterTemplate = 'partials/containers/mobile-container.html'; 
+    splashScreen = 'pages/mobile-splash.html'; 
   } else {
     masterTemplate = 'partials/containers/tab-container.html';
+    splashScreen = 'pages/tab-splash.html'; 
   }
   
   $stateProvider      
+    .state('splash', {
+      url: '/splash',
+      abstract: false,
+      templateUrl: splashScreen,
+      controller: 'SplashController'
+    })
     .state('app', {
       url: '/app',
       abstract: true,
@@ -56,5 +65,5 @@ angular.module('app', ['ionic', 'app.controllers', 'app.directives'])
         }
       })
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('app/dashboard');
+  $urlRouterProvider.otherwise('/splash');
 }]);
