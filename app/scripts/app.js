@@ -27,10 +27,8 @@ angular.module('app', ['ionic', 'app.controllers', 'app.directives', 'app.servic
   var masterTemplate = '';
   var splashScreen = '';
   if(width <= 450) {
-    masterTemplate = 'partials/containers/mobile-container.html'; 
     splashScreen = 'pages/mobile-splash.html'; 
   } else {
-    masterTemplate = 'partials/containers/tab-container.html';
     splashScreen = 'pages/tab-splash.html'; 
   }
   
@@ -44,7 +42,7 @@ angular.module('app', ['ionic', 'app.controllers', 'app.directives', 'app.servic
     .state('app', {
       url: '/app',
       abstract: true,
-      templateUrl: masterTemplate,
+      templateUrl: 'templates/master.html',
     })
       .state('app.dashboard', {
         url: '/dashboard',
