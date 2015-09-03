@@ -1,24 +1,22 @@
 
-angular.module('app', ['ionic', 'app.controllers', 'app.directives'])
-.run(['$ionicPlatform',function($ionicPlatform) {
-  
-  $ionicPlatform.ready(function() {
+angular.module('app', ['ionic', 'app.controllers', 'app.directives', 'app.services', 'ngMockE2E'])
+.run(['$ionicPlatform', '$httpBackend',function($ionicPlatform, $httpBackend) {
 
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
+  $ionicPlatform.ready(function() {
     if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
     }
-  
     if (window.StatusBar) {
-      // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
-    }
-
+    }  
   })
-  
 }])
+
+.constant("constants", {
+    "rootURL": "http://ksclbd.com/api/"
+})
+
 
 .config(['$stateProvider', '$urlRouterProvider', '$ionicConfigProvider', function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
   
@@ -27,17 +25,24 @@ angular.module('app', ['ionic', 'app.controllers', 'app.directives'])
   
   var width = window.innerWidth;
   var masterTemplate = '';
+  var splashScreen = '';
   if(width <= 450) {
-    masterTemplate = 'partials/containers/mobile-container.html'; 
+    splashScreen = 'pages/mobile-splash.html'; 
   } else {
-    masterTemplate = 'partials/containers/tab-container.html';
+    splashScreen = 'pages/tab-splash.html'; 
   }
   
   $stateProvider      
+    .state('splash', {
+      url: '/splash',
+      abstract: false,
+      templateUrl: splashScreen,
+      controller: 'SplashController'
+    })
     .state('app', {
       url: '/app',
       abstract: true,
-      templateUrl: masterTemplate,
+      templateUrl: 'partials/master.html',
     })
       .state('app.dashboard', {
         url: '/dashboard',
@@ -56,5 +61,10 @@ angular.module('app', ['ionic', 'app.controllers', 'app.directives'])
         }
       })
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('app/dashboard');
+  $urlRouterProvider.otherwise('/splash');
 }]);
+
+//initializations..
+angular.module('app.controllers', [])
+angular.module('app.directives', [])
+angular.module('app.services', [])

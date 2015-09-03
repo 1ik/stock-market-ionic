@@ -1,0 +1,35 @@
+<div class="row row-center">
+<div class="col col-25">
+    <div class="padding logo">
+      <br>
+      <img src="/img/logo_small.png" width="100%">
+    </div>
+</div>
+  <div class="col col-75">
+  	<div class="card" style="text-align:center">
+	    <div class="login-form">
+	      <div class="card">
+	        <div class="list">
+	          <label class="item item-input">
+	            <input type="text" ng-model="form.email" placeholder="Email">
+	          </label>
+	          <label class="item item-input">
+	            <input type="password" ng-model="form.password" placeholder="Password">
+	          </label>
+	        </div>
+	      </div>
+
+	      <div class="padding-left padding-right">
+        	<button class="button button-block action-button" ng-class="{'button-positive': !form.signingUp, 'button-balanced': form.signingUp}" ng-click="submitForm(form.email, form.password, form.signingUp)">
+        	  {{ form.signingUp ? 'Sign up' : 'Sign in' }}
+        	</button>
+	      </div>
+	    </div>
+
+
+	    <div class="padding signup-opt" ng-click="form.signingUp = !form.signingUp">
+	      {{ form.signingUp ? 'Have an account? Sign in!' : 'Need an account? Sign up!' }}
+	    </div>
+  	</div>
+  </div>
+</div>
