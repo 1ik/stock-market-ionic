@@ -42,7 +42,7 @@ angular.module('app', ['ionic', 'app.controllers', 'app.directives', 'app.servic
     .state('app', {
       url: '/app',
       abstract: true,
-      templateUrl: 'templates/master.html',
+      templateUrl: 'partials/master.html',
     })
       .state('app.dashboard', {
         url: '/dashboard',
