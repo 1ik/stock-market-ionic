@@ -9,7 +9,15 @@
   	<div class="card" style="text-align:center">
 	    <div class="login-form">
 	      <div class="card">
+	      <h1 ng-show="form.signingUp">Please Enter Your Credintialas</h1>
 	        <div class="list">
+
+		      <label ng-show="form.signingUp" class="item item-input">
+	            <input type="text" ng-model="form.name" placeholder="Name">
+	          </label>
+	          <label ng-show="form.signingUp" class="item item-input">
+	            <input type="number" ng-model="form.age" placeholder="Age">
+	          </label>
 	          <label class="item item-input">
 	            <input type="text" ng-model="form.email" placeholder="Email">
 	          </label>
