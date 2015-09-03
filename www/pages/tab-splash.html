@@ -1,15 +1,16 @@
-<div class="row row-center">
-<div class="col col-25">
+<div class="row row-center" style="background: linear-gradient(to bottom, #387ef5 0%,#62e2b7 100%);">
+<div class="col col-25 col-offset-25">
     <div class="padding logo">
       <br>
       <img src="/img/logo_small.png" width="100%">
     </div>
 </div>
-  <div class="col col-75">
-  	<div class="card" style="text-align:center">
+  <div class="col col-33">
+  	<div class="card" style="text-align:center; background-color: rgba(255,255,255,0.5);">
 	    <div class="login-form">
 	      <div class="card">
-	      <h1 ng-show="form.signingUp">Please Enter Your Credintialas</h1>
+	      <h2 ng-hide="form.signingUp" style="text-align:center" class="positive">Log in to your account</h2>
+	      <h2 ng-show="form.signingUp" style="text-align:center" class="positive">Please Enter Your Credintialas</h2>
 	        <div class="list">
 
 		      <label ng-show="form.signingUp" class="item item-input">
@@ -28,7 +29,7 @@
 	      </div>
 
 	      <div class="padding-left padding-right">
-        	<button class="button button-block action-button" ng-class="{'button-positive': !form.signingUp, 'button-balanced': form.signingUp}" ng-click="submitForm(form.email, form.password, form.signingUp)">
+        	<button class="button button-block action-button ion" ng-class="{'button-positive ion-log-in': !form.signingUp, 'button-balanced ion-navigate': form.signingUp}" ng-click="submitForm(form.email, form.password, form.signingUp)">
         	  {{ form.signingUp ? 'Sign up' : 'Sign in' }}
         	</button>
 	      </div>
