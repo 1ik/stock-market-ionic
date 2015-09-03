@@ -7,6 +7,12 @@
     <div class="login-form">
       <div class="card">
         <div class="list">
+          <label ng-show="form.signingUp" class="item item-input">
+            <input type="text" ng-model="form.name" placeholder="Name">
+          </label>
+          <label ng-show="form.signingUp" class="item item-input">
+            <input type="number" ng-model="form.age" placeholder="Age">
+          </label>
           <label class="item item-input">
             <input type="text" ng-model="form.email" placeholder="Email">
           </label>
