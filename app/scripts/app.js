@@ -1,5 +1,5 @@
 
-angular.module('app', ['ionic', 'app.controllers', 'app.directives', 'app.services', 'ngMockE2E'])
+angular.module('app', ['ionic', 'app.controllers', 'app.directives', 'app.services'])
 .run(['$ionicPlatform', '$httpBackend',function($ionicPlatform, $httpBackend) {
 
   $ionicPlatform.ready(function() {

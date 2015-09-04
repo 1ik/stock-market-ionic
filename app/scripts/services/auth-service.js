@@ -5,19 +5,29 @@ angular.module('app.services')
 	return {
 		
 		authenticateUser: function(email, password) {
-			var dfd = $q.defer();
-			var dfdCall = $http.post(constants.rootURL + 'auth/login', {
-				'email': email,
-				'password': password
-			});
+			var reqUrl = constants.rootURL + 'auth/login';
+			var params = {
+				'email' : 'email',
+				'password': 'password'
+			};
+			
+			var req = 
+			{
+			    method: 'POST',
+			    url: "http://ksclbd.com/api/index.php/auth/login",
+			    data: 'email=foo@bar.com&password=correct',
+			    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+			}
 
-			dfdCall.success(function(data, status, headers, config){
-				dfd.resolve(data);
-			}).error(function(data, status, headers, config){
-				dfd.reject(data);
+			$http(req).
+			success(function(data, status, headers, config) 
+			{
+			    alert(data);
+			}).
+			error(function(data, status, headers, config) 
+			{
+			    alert(data);
 			});
-
-			return dfd.promise;
 		}
 	};
 }])
