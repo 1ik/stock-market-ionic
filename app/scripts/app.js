@@ -14,7 +14,7 @@ angular.module('app', ['ionic', 'app.controllers', 'app.directives', 'app.servic
 }])
 
 .constant("constants", {
-    "rootURL": "http://ksclbd.com/api/"
+    "rootURL": "http://ksclbd.com/api/index.php/"
 })
 
 
