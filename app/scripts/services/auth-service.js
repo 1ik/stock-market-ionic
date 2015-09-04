@@ -1,23 +1,22 @@
 angular.module('app.services')
 
-.service('authService', ['$http', "$q", "constants", function($http, $q, constants){
+.service('authService', ['httpUtils', '$http', "$q", "constants", function(httpUtils, $http, $q, constants){
 	
 	return {
 		
 		authenticateUser: function(email, password) {
-			var dfd = $q.defer();
-			var dfdCall = $http.post(constants.rootURL + 'auth/login', {
-				'email': email,
-				'password': password
-			});
+			var reqUrl = constants.rootURL + 'auth/login';
+			var params = 'email='+email+'&password='+password;
+			
+			return httpUtils.post(reqUrl,params).promise;
+		},
+		
+		registerUser: function(data) {
+			var reqUrl = constants.rootURL + 'auth/register';
+			var params = 'user_email='+data.email+'&user_password='+data.password+'&name='+data.name+'&phone='+data.phone;
 
-			dfdCall.success(function(data, status, headers, config){
-				dfd.resolve(data);
-			}).error(function(data, status, headers, config){
-				dfd.reject(data);
-			});
+			return httpUtils.post(reqUrl, params).promise;
 
-			return dfd.promise;
 		}
 	};
 }])

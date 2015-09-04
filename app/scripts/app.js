@@ -1,5 +1,5 @@
 
-angular.module('app', ['ionic', 'app.controllers', 'app.directives', 'app.services', 'ngMockE2E'])
+angular.module('app', ['ionic', 'app.controllers', 'app.directives', 'app.services'])
 .run(['$ionicPlatform', '$httpBackend',function($ionicPlatform, $httpBackend) {
 
   $ionicPlatform.ready(function() {
@@ -14,7 +14,7 @@ angular.module('app', ['ionic', 'app.controllers', 'app.directives', 'app.servic
 }])
 
 .constant("constants", {
-    "rootURL": "http://ksclbd.com/api/"
+    "rootURL": "http://ksclbd.com/api/index.php/"
 })
 
 
@@ -27,10 +27,8 @@ angular.module('app', ['ionic', 'app.controllers', 'app.directives', 'app.servic
   var masterTemplate = '';
   var splashScreen = '';
   if(width <= 450) {
-    masterTemplate = 'partials/containers/mobile-container.html'; 
     splashScreen = 'pages/mobile-splash.html'; 
   } else {
-    masterTemplate = 'partials/containers/tab-container.html';
     splashScreen = 'pages/tab-splash.html'; 
   }
   
@@ -44,7 +42,7 @@ angular.module('app', ['ionic', 'app.controllers', 'app.directives', 'app.servic
     .state('app', {
       url: '/app',
       abstract: true,
-      templateUrl: masterTemplate,
+      templateUrl: 'partials/master.html',
     })
       .state('app.dashboard', {
         url: '/dashboard',
