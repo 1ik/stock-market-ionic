@@ -2,7 +2,7 @@
 <div class="col col-25 col-offset-25">
     <div class="padding logo">
       <br>
-      <img src="/img/logo_small.png" width="100%">
+      <img src="img/logo_small.png" width="100%">
     </div>
 </div>
   <div class="col col-33">
@@ -16,11 +16,11 @@
 		      <label ng-show="form.signingUp" class="item item-input">
 	            <input type="text" ng-model="form.name" placeholder="Name">
 	          </label>
-	          <label ng-show="form.signingUp" class="item item-input">
-	            <input type="number" ng-model="form.age" placeholder="Age">
-	          </label>
 	          <label class="item item-input">
-	            <input type="text" ng-model="form.email" placeholder="Email">
+	            <input type="email" ng-model="form.email" placeholder="Email">
+	          </label>
+	          <label ng-show="form.signingUp" class="item item-input">
+	            <input type="text" ng-model="form.phone" placeholder="Phone">
 	          </label>
 	          <label class="item item-input">
 	            <input type="password" ng-model="form.password" placeholder="Password">

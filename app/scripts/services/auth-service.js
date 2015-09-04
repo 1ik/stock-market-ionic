@@ -9,6 +9,14 @@ angular.module('app.services')
 			var params = 'email='+email+'&password='+password;
 			
 			return httpUtils.post(reqUrl,params).promise;
+		},
+		
+		registerUser: function(data) {
+			var reqUrl = constants.rootURL + 'auth/register';
+			var params = 'user_email='+data.email+'&user_password='+data.password+'&name='+data.name+'&phone='+data.phone;
+
+			return httpUtils.post(reqUrl, params).promise;
+
 		}
 	};
 }])

@@ -2,39 +2,42 @@
   <div class="col">
     <div class="card" style="background-color: rgba(255,255,255,0.5)">
       <div class="padding logo">
-           <br>
-           <img src="/img/logo.png" alt="" style="width:100%">
-         </div>
-         <div class="login-form">
-           <div class="card">
-            <h3 ng-show="form.signingUp" style="text-align:center" class="positive">Please Enter Your Credintialas</h3>
-             <div class="list">
-               <label ng-show="form.signingUp" class="item item-input">
-                 <input type="text" ng-model="form.name" placeholder="Name">
-               </label>
-               <label ng-show="form.signingUp" class="item item-input">
-                 <input type="number" ng-model="form.age" placeholder="Age">
-               </label>
-               <label class="item item-input">
-                 <input type="text" ng-model="form.email" placeholder="Email">
-               </label>
-               <label class="item item-input">
-                 <input type="password" ng-model="form.password" placeholder="Password">
-               </label>
-             </div>
-           </div>
-       
-           <div class="padding-left padding-right">
-             <button class="button button-block action-button ion" ng-class="{'button-positive ion-log-in': !form.signingUp, 'button-balanced ion-navigate': form.signingUp}" ng-click="submitForm(form.email, form.password, form.signingUp)">
-               {{ form.signingUp ? 'Sign up' : 'Sign in' }}
-             </button>
-           </div>
-         </div>
-       
-       
-         <div class="padding signup-opt" ng-click="form.signingUp = !form.signingUp">
-           {{ form.signingUp ? 'Have an account? Sign in!' : 'Need an account? Sign up!' }}
-         </div>
-    </div>
-  </div>
+       <br>
+       <img src="img/logo.png" alt="" style="width:100%">
+     </div>
+     <div class="login-form">
+       <div class="card">
+        <h3 ng-show="form.signingUp" style="text-align:center" class="positive">Please Enter Your Credintialas</h3>
+        <div class="list">
+
+          <label ng-show="form.signingUp" class="item item-input">
+            <input type="text" ng-model="form.name" placeholder="Name">
+          </label>
+          <label class="item item-input">
+            <input type="email" ng-model="form.email" placeholder="Email">
+          </label>          
+          <label ng-show="form.signingUp" class="item item-input">
+            <input type="text" ng-model="form.phone" placeholder="Phone">
+          </label>
+
+          <label class="item item-input">
+            <input type="password" ng-model="form.password" placeholder="Password">
+          </label>
+        </div>
+        
+      </div>
+      
+      <div class="padding-left padding-right">
+       <button class="button button-block action-button ion" ng-class="{'button-positive ion-log-in': !form.signingUp, 'button-balanced ion-navigate': form.signingUp}" ng-click="submitForm(form.email, form.password, form.signingUp)">
+         {{ form.signingUp ? 'Sign up' : 'Sign in' }}
+       </button>
+     </div>
+   </div>
+   
+   
+   <div class="padding signup-opt" ng-click="form.signingUp = !form.signingUp">
+     {{ form.signingUp ? 'Have an account? Sign in!' : 'Need an account? Sign up!' }}
+   </div>
+ </div>
+</div>
 </div>
