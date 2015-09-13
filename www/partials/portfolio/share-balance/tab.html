@@ -1,0 +1,49 @@
+<ion-view>
+	<ion-nav-bar class="bar bar-header bar-dark">
+		<ion-nav-back-button></ion-nav-back-button>
+		
+		<ion-nav-buttons side="left">
+			<button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+		</ion-nav-buttons>
+		
+		<ion-nav-buttons side="right">
+			<div class="bar bar-header item-input-inset">
+				<label class="item-input-wrapper">
+					<i class="icon ion-ios-search placeholder-icon"></i>
+					<input type="search" placeholder="Search">
+				</label>
+			</div>
+		</ion-nav-buttons>
+
+	</ion-nav-bar>
+
+	<ion-content class="padding" style="font-size:11px">
+		<div class="item-divider row" ng-show="error">
+			<p>Failed to Get Share balance information from server.</p>
+		</div>
+
+		<div class="item-divider row" ng-hide="error">
+			<div class="col">Company</div>
+			<div class="col">Quantity</div>
+			<div class="col">Matured Qn</div>
+			<div class="col">Buy Avg</div>
+			<div class="col">Breakeven Avg</div>
+			<div class="col">Buy Val</div>
+			<div class="col">YCP</div>
+			<div class="col">Market Val</div>
+			<div class="col">Gain/Loss</div>
+		</div>
+
+		<div class="row" ng-repeat="shareBalance in shareBalances" ng-hide="error">
+			<div class="col">{{shareBalance.company}}</div>
+			<div class="col">{{shareBalance.balance}}</div>
+			<div class="col">{{shareBalance.matured_balance}}</div>
+			<div class="col">{{shareBalance.buy_average_value}}</div>
+			<div class="col">{{shareBalance.breakeven_average}}</div>
+			<div class="col">{{shareBalance.balance * shareBalance.buy_average_value}}</div>
+			<div class="col">{{shareBalance.ycp}}</div>
+			<div class="col">{{marketVal(shareBalance.ycp, shareBalance.balance)}}</div>
+			<div class="col">{{shareBalance.loss_gain}}</div>
+		</div>		
+	</ion-content>
+</ion-view>

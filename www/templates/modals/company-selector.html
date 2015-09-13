@@ -1,0 +1,16 @@
+<ion-modal-view ng-controller="companySelectorController">
+	<ion-header-bar>
+		<h1 class="title">{{title}}</h1>
+	</ion-header-bar>
+	<ion-content>
+		<label class="item item-input">
+		  <i class="icon ion-search placeholder-icon"></i>
+		  <input type="text" placeholder="Search Companies" ng-model="search.companyName">
+		</label>
+		<ion-list ng-repeat="company in companies">
+		  <ion-item ng-click='selectCompany(company)'>
+		    	{{company.company_full_name}}
+		  </ion-item>
+		</ion-list>
+	</ion-content>
+</ion-modal-view>
