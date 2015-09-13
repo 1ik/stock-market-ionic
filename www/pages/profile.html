@@ -1,5 +1,139 @@
-<ion-view view-title="Profile">
-  <ion-content>
-    <h1>Profile</h1>
-  </ion-content>
+<ion-view view-title="Profile" cache-view="false">
+	<ion-content>
+
+		<!--personal details for kscl users-->
+		<div class="row responsive-sm" ng-show="user.kscl">
+			<div class="card col">
+				<div class="item item-divider">
+					Personal Details
+				</div>
+				<div class="list list-inset">
+					<div class="item">
+						<b>Name :</b> <p>{{customer_details.name}}</p>
+					</div>
+					<div class="item">
+						<b>Date of Birth :</b> <p>{{customer_details.date_of_birth}}</p>
+					</div>
+					<div class="item">
+						<b>Father/Husband name :</b> <p>{{customer_details.father_husband_name}}</p>
+					</div>
+					<div class="item">
+						<b>Mother's name :</b> <p>{{customer_details.mother_name}}</p>
+					</div>
+					<div class="item">
+						<b>Sex :</b> <p>{{customer_details.sex}}</p>
+					</div>																			
+					<div class="item">
+						<b>Profession :</b> <p>{{customer_details.occupation}}</p>
+					</div>
+					<div class="item">
+						<b>Mobile :</b> <p>{{customer_details.mobile}}</p>
+					</div>
+					<div class="item">
+						<b>Telephone :</b> <p>{{customer_details.telephone}}</p>
+					</div>														
+				</div>
+			</div>
+		</div>
+		<!--personal details for kscl users-->
+		
+		<!--personal details for non kscl users-->
+ 		<div class="row responsive-sm" ng-show="!user.kscl">
+			<div class="card col">
+				<div class="item item-divider">
+					Personal Details
+				</div>
+				<div class="list list-inset">
+					<div class="item">
+						<b>Name :</b> {{user.name}}
+					</div>
+					<div class="item">
+						<b>Phone Number :</b> {{user.phone}}
+					</div>
+					<div class="item">
+						<b>Email :</b> {{user.user_email}}
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--personal details for non kscl users-->
+
+		<div class="row responsive-sm" ng-show="user.kscl">			
+			<div class="card col">
+				<div class="item item-divider">
+					BO Details
+				</div>
+				<div class="list list-inset">
+					<div class="item">
+						<b style:"width:45%">BO ID	:</b> {{customer_details.bo_id}}
+					</div>
+					<div class="item">
+						<b>Type	:</b> {{customer_details.ac_type}}
+					</div>
+					<div class="item">
+						<b>Customer ID	:</b> {{customer_details.customer_id}}
+					</div>
+					<div class="item">
+						<b>BO Status	:</b> {{customer_details.bo_status}}
+					</div>
+				</div>
+			</div>
+			
+			<div class="card col" ng-show="user.kscl">
+				<div class="item item-divider" ng-show="user.kscl">
+					Bank Details
+				</div>
+				<div class="list list-inset">
+
+					<div class="item">
+						<b>Name of Bank :</b> {{customer_details.bank_name}}
+					</div>
+					<div class="item">
+						<b>Branch Name :</b> {{customer_details.bank_branch_name}}
+					</div>
+					<div class="item">
+						<b>Account No :</b> {{customer_details.bank_account_no}}
+					</div>
+					<div class="item">
+						<b>Routing No :</b> {{customer_details.bank_account_routing_no}}
+					</div>
+				</div>
+			</div>
+		</div>
+		
+
+		<div class="row responsive-sm" >
+			<div class="card col" ng-show="user.kscl">
+				<div class="item item-divider">
+					Account Details
+				</div>
+				<div class="list list-inset">
+
+					<div class="item">
+						<b>Current Balance :</b> {{money_details.balance}}
+					</div>
+					<div class="item">
+						<b>Matured Balance :</b>  {{money_details.matured_balance}}
+					</div>
+					<div class="item">
+						<b>Total Deposit :</b>  {{money_details.deposit}}
+					</div>
+					<div class="item">
+						<b>Total Withdraw :</b>  {{money_details.withdraw}}
+					</div>
+					<div class="item">
+						<b>Market Value :</b>  {{money_details.market_value}}
+					</div>
+					<div class="item">
+						<b>Unrealised Gain / Loss :</b><br/>  {{totalLossGain}}
+					</div>
+					<div class="item">
+						<b>Updated On :</b>  {{money_details.last_update}}
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</ion-content>
+
 </ion-view>

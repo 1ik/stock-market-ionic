@@ -8,7 +8,7 @@ var rename = require('gulp-rename');
 var sh = require('shelljs');
 var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
-
+var notify = require("gulp-notify");
 
 var paths = {
   sass: ['./scss/**/*.scss'],
@@ -35,8 +35,10 @@ gulp.task('sass', function(done) {
 gulp.task('scripts', function() {
   return gulp.src('app/scripts/**/*.js')
     .pipe(uglify())
+    .on("error", notify.onError({ message: 'Invalid JS. Parsing failed.'}))
     .pipe(concat('scripts.min.js'))
-    .pipe(gulp.dest('www/'));
+    .pipe(gulp.dest('www/'))
+    .pipe(notify("Completed!"));
 });
 
 gulp.task('watch', function() {

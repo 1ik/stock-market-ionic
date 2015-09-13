@@ -1,0 +1,58 @@
+<ion-view view-title="PORTFOLIO STATUSES">
+  <ion-content class="padding">
+    <div class="row responsive-sm">
+      <div class="card col">
+        <div class="item item-divider">
+          Money Balance
+        </div>
+        <div class="list list-inset" ng-show="!status.money_balance">
+          <div class="item">
+              <b>Register to KSCL and become a premium user for this <br/>option.</b>
+          </div>
+        </div>
+      
+        <div class="list list-inset" ng-show="status.money_balance">
+          <div class="item">
+            <b>Current Balance :</b> {{status.money_balance.current_balance}}
+          </div>
+          <div class="item">
+            <b>Mature Balance :</b> {{status.money_balance.matured_balance}}
+          </div>
+          <div class="item">
+            <b>Total Deposit :</b> {{status.money_balance.total_deposit}}
+          </div>
+          <div class="item">
+            <b>Total Withdraw:</b> {{status.money_balance.total_withdraw}}
+          </div>
+        </div>
+      </div>
+      <div class="card col">
+        <div class="item item-divider">
+          Overall Status
+        </div>
+        <div class="list list-inset" ng-show="!status.over_all">
+          <div class="item">
+              <b>Register to KSCL and become a premium user for this <br/>option.</b>
+          </div>
+        </div>
+
+        <div class="list list-inset" ng-show="status.over_all">
+          <div class="item">
+            <b>Total Value :</b> {{status.over_all.total_value}}
+          </div>
+          <div class="item">
+            <b>Total Market Value :</b> {{status.over_all.total_market_value}}
+          </div>
+          <div class="item">
+            <b>Total Gain / Loss :</b> {{status.over_all.total_gain_or_loss}}
+          </div>
+          <div class="item">
+            <b>Current  Gain / Loss :</b> {{status.over_all.current_total_loss_gain}}
+          </div>
+        </div>
+      </div>
+    </div>  
+    <a href="#/app/portfolio/share-balances" class="button button-outline button-block button-balanced icon-right ion-chevron-right">SHARE BALANCE</a>
+    <a href="#/app/portfolio/add" class="button button-outline button-block button-balanced icon-right ion-chevron-right">ADD A NEW PORTFOLIO</a>
+  </ion-content>
+</ion-view>

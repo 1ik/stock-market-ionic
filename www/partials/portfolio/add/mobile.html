@@ -1,0 +1,61 @@
+<ion-view>
+	<ion-nav-bar class="bar bar-header bar-dark padding">
+		<ion-nav-back-button></ion-nav-back-button>
+		<ion-nav-buttons side="left">
+			<button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+			</button>
+		</ion-nav-buttons>
+
+	</ion-nav-bar>
+
+	<ion-content class="padding">
+	<div class="card padding">
+		<h3>Add New Portfolio</h3>
+
+		 
+	        <div class="list">
+			  <label class="item item-input item-select">
+			    <span class="input-label">Company</span>
+			    <select ng-model='form.company'>
+			    	<option value="" selected>Please Select</option>
+			    	<option ng-repeat="company in companies">{{company}}</option>
+			    </select>
+			  </label>
+			  <label class="item item-input item-stacked-label">
+			    <span class="input-label">Quantity</span>
+			    <input type="text" ng-model="form.quantity" placeholder="Enter a Quantity">
+			  </label>
+			  <label class="item item-input item-stacked-label">
+			    <span class="input-label">Matured Quantity</span>
+			    <input type="text" ng-model="form.matured_quantity" placeholder="Enter a Matured Quantity">
+			  </label>
+			  <label class="item item-input item-stacked-label">
+			    <span class="input-label">Buy Average</span>
+			    <input type="text" ng-model="form.buy_average" placeholder="Enter a Buy Average">
+			  </label>
+			  <label class="item item-input item-stacked-label">
+			    <span class="input-label">Breakeven Average</span>
+			    <input type="text" ng-model="form.breakeven_average" placeholder="Enter a Breakeven Average">
+			  </label>
+			  <label class="item item-input item-stacked-label">
+			    <span class="input-label">Buy Value</span>
+			    <input type="text" ng-model="form.buy_value" placeholder="Enter a Buy Value">
+			  </label>
+			  <label class="item item-input item-stacked-label">
+			    <span class="input-label">YCP</span>
+			    <input type="text" ng-model="form.ycp" placeholder="Enter the YCP">
+			  </label>
+			    <label class="item item-input item-stacked-label">
+			    <span class="input-label">Market Value</span>
+			    <input type="text" ng-model="form.market_value" placeholder="Enter a Market Value">
+			  </label>
+			</div>
+
+			<button class="button button-block button-positive" ng-click="addToPortfolio()">
+			  Add
+			</button>
+      </div>
+     
+
+	</ion-content>
+</ion-view>

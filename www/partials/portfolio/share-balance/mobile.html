@@ -1,0 +1,58 @@
+<ion-view>
+	<ion-nav-bar class="bar bar-header bar-dark padding">
+		<ion-nav-back-button></ion-nav-back-button>
+		<ion-nav-buttons side="left">
+			<button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+			</button>
+		</ion-nav-buttons>
+
+		<ion-nav-buttons side="primary">
+			<div class="bar bar-header item-input-inset">
+			  <label class="item-input-wrapper">
+			    <i class="icon ion-ios-search placeholder-icon"></i>
+			    <input type="search" placeholder="company name">
+			  </label>
+			</div>
+		</ion-nav-buttons>
+
+	</ion-nav-bar>
+
+	<ion-content class="padding">
+		<p>Show Minimal shareblacne info in cards</p>
+
+		 <div class="card" ng-repeat="shareBalance in shareBalances">
+	        <div class="item item-divider">
+	          #{{$index+1}} {{shareBalance.company}}
+	        </div>
+	        <div class="list list-inset">
+
+	          <div class="item">
+	            <b>Quantity :</b> {{shareBalance.balance}}
+	          </div>
+	          <div class="item">
+	            <b>Matured Quantity :</b> {{shareBalance.matured_balance}}
+	          </div>
+	          <div class="item">
+	            <b>Buy Average :</b> {{shareBalance.buy_average_value}}
+	          </div>
+	          <div class="item">
+	            <b>Breakeven Average :</b> {{shareBalance.breakeven_average}}
+	          </div>
+	          <div class="item">
+	            <b>Buy Value :</b> {{shareBalance.balance * shareBalance.buy_average_value}}
+	          </div>
+	          <div class="item">
+	            <b>YCP :</b> {{shareBalance.ycp}}
+	          </div>
+	          <div class="item">
+	            <b>Market Value :</b> {{marketVal(shareBalance.ycp, shareBalance.balance)}}
+	          </div>
+	          <div class="item">
+	            <b>Gain / Loss :</b> {{shareBalance.gain_loss}}
+	          </div>
+	        </div>
+      </div>
+     
+
+	</ion-content>
+</ion-view>
