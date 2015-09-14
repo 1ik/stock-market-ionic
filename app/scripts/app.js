@@ -79,12 +79,21 @@ angular.module('app', ['ionic','app.controllers', 'app.directives', 'app.service
 						}
 					}
 				})
-			.state('app.portfolio.add', {
-				url: '/add',
+				.state('app.portfolio.add', {
+					url: '/add',
+					views: {
+						'portfolioItem': {
+							templateUrl: 'partials/portfolio/add.html',
+							controller: 'portfolioAddController'
+						}
+					}
+				})
+			.state('app.alerts', {
+				url: '/alerts',
 				views: {
-					'portfolioItem': {
-						templateUrl: 'partials/portfolio/add.html',
-						controller: 'portfolioAddController'
+					'menuContent': {
+						templateUrl: 'pages/alerts.html',
+						controller: "AlertsController"
 					}
 				}
 			})
