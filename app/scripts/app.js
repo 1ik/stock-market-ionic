@@ -1,5 +1,5 @@
 angular.module('app', ['ionic','app.controllers', 'app.directives', 'app.services','ngCordova'])
-.run(['$ionicPlatform', '$httpBackend','$cordovaPush','pushService',function($ionicPlatform, $httpBackend, $cordovaPush, pushService) {
+.run(['$ionicPlatform', '$httpBackend','$cordovaPush','pushService','$cordovaDevice','$state',function($ionicPlatform, $httpBackend, $cordovaPush, pushService, $cordovaDevice, $state) {
 		
 
 	$ionicPlatform.ready(function() {
@@ -11,99 +11,102 @@ angular.module('app', ['ionic','app.controllers', 'app.directives', 'app.service
 		if (window.StatusBar) {
 			StatusBar.styleDefault();
 		}
-		console.log('device initialised new')
-		///android push----------------------------------------
-		// var androidConfig = {
-		//     "senderID": "324920710438",
-		//   };
-	 //    $cordovaPush.register(androidConfig).then(function(result) {
-	 //      console.log('Success')
-	 //    }, function(err) {
-	 //      console.log('Error')
-	 //    })
+		alert('device initialised : new build')
+		///android push----------------------------------------324920710438
+		if($cordovaDevice.getDevice() === "Android")
+		{
+			var androidConfig = {
+			    "senderID": "324920710438",
+			  };
+			$cordovaPush.register(androidConfig).then(function(result) {
+		      // Success
+		   	 }, function(err) {
+		      // Error
+		    })
 
-	 //    $rootScope.$on('$cordovaPush:notificationReceived', function(event, notification) {
-	 //      switch(notification.event) {
-	 //        case 'registered':
-	 //          if (notification.regid.length > 0 ) {
-	 //            alert('registration ID = ' + notification.regid);
-	 //            pushService.registerDevice({appleDeviceId:notification.regid})
-	 //            	.then(function(data){
-	 //            		console.log('successfully registered to kscl server')
-	 //            	})
-	 //            	.error(function(err){
-	 //            		console.log('Error while registering to the kscl server')
-	 //            	})
-	 //          }
-	 //          break;
+		    $rootScope.$on('$cordovaPush:notificationReceived', function(event, notification) {
+		      switch(notification.event) {
+		        case 'registered':
+		          if (notification.regid.length > 0 ) {
+		            alert('registration ID = ' + notification.regid);
+		          }
+		          break;
 
-	 //        case 'message':
-	 //          // this is the actual push notification. its format depends on the data model from the push server
-	 //          alert('message = ' + notification.message + ' msgCount = ' + notification.msgcnt);
-	 //          break;
+		        case 'message':
+		          // this is the actual push notification. its format depends on the data model from the push server
+		          alert('message = ' + notification.message + ' msgCount = ' + notification.msgcnt);
+		          break;
 
-	 //        case 'error':
-	 //          alert('GCM error = ' + notification.msg);
-	 //          break;
+		        case 'error':
+		          alert('GCM error = ' + notification.msg);
+		          break;
 
-	 //        default:
-	 //          alert('An unknown GCM event has occurred');
-	 //          break;
-	 //      }
-	 //    });
+		        default:
+		          alert('An unknown GCM event has occurred');
+		          break;
+		      }
+		    });
 
 
-	 //    // WARNING: dangerous to unregister (results in loss of tokenID)
-	 //    $cordovaPush.unregister(options).then(function(result) {
-	 //      console.log('Success')
-	 //    }, function(err) {
-	 //      console.log('Error')
-	 //    })
-
+		    // WARNING: dangerous to unregister (results in loss of tokenID)
+		    $cordovaPush.unregister(options).then(function(result) {
+		      // Success!
+		    }, function(err) {
+		      // Error
+		    })			
+		}
 	    //end of android push----------------------------------------
 
-    // ios push ------------------------------------------
-    var iosConfig = {
-	    "badge": true,
-	    "sound": true,
-	    "alert": true,
-	  };
+	    // ios push ------------------------------------------
+	    else if($cordovaDevice.getDevice() === "iOS")
+		{
+		    var iosConfig = {
+			    "badge": true,
+			    "sound": true,
+			    "alert": true,
+			  };
 
-    $cordovaPush.register(iosConfig).then(function(deviceToken) {
-      // Success -- send deviceToken to server, and store for future use
-      console.log("deviceToken: " + deviceToken)
-      // $http.post("http://server.co/", {user: "Bob", tokenID: deviceToken})
-    }, function(err) {
-      alert("Registration error: " + err)
-    });
+		    $cordovaPush.register(iosConfig).then(function(deviceToken) {
+		      // Success -- send deviceToken to server, and store for future use
+		      console.log("deviceToken: " + deviceToken)
+		      // $http.post("http://server.co/", {user: "Bob", tokenID: deviceToken})
+		    }, function(err) {
+		      alert("Registration error: " + err)
+		    });
 
 
-    $rootScope.$on('$cordovaPush:notificationReceived', function(event, notification) {
-      if (notification.alert) {
-        navigator.notification.alert(notification.alert);
-      }
+		    $rootScope.$on('$cordovaPush:notificationReceived', function(event, notification) {
+		      if (notification.alert) {
+		        navigator.notification.alert(notification.alert);
+		        console.log('a new notification received :'+notification);
+		        console.log('with state :'+notification.$state);
+		        if(notification.$state){
+		        	$state.go(notification.$state)
+		        }
+		      }
 
-      if (notification.sound) {
-        var snd = new Media(event.sound);
-        snd.play();
-      }
+		      if (notification.sound) {
+		        var snd = new Media(event.sound);
+		        snd.play();
+		      }
 
-      if (notification.badge) {
-        $cordovaPush.setBadgeNumber(notification.badge).then(function(result) {
-          // Success!
-        }, function(err) {
-          // An error occurred. Show a message to the user
-        });
-      }
-    });
+		      if (notification.badge) {
+		        $cordovaPush.setBadgeNumber(notification.badge).then(function(result) {
+		          // Success!
+		        }, function(err) {
+		          // An error occurred. Show a message to the user
+		        });
+		      }
+		    });
 
-    // WARNING! dangerous to unregister (results in loss of tokenID)
-    $cordovaPush.unregister(options).then(function(result) {
-      // Success!
-    }, function(err) {
-      // Error
-    });
-    // end of ios push ------------
+		    // WARNING! dangerous to unregister (results in loss of tokenID)
+		    $cordovaPush.unregister(options).then(function(result) {
+		      // Success!
+		    }, function(err) {
+		      // Error
+		    });
+		}
+	    // end of ios push ------------
 	})
 }])
 
