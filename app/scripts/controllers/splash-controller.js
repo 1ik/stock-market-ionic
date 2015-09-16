@@ -1,6 +1,6 @@
 angular.module('app.controllers')
 .controller('SplashController', ['$scope','$http', 'authService', '$ionicModal', '$ionicPopup', '$state','$localstorage',function($scope, $http, authService, $ionicModal, $ionicPopup, $state, $localstorage){
-	
+	alert('something')
 	$scope.submitForm = function(email, password, signingUp) {
 
 		if(signingUp) {
