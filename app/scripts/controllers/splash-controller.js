@@ -1,5 +1,7 @@
 angular.module('app.controllers')
-.controller('SplashController', ['$scope','$http', 'authService', '$ionicModal', '$ionicPopup', '$state','$localstorage',function($scope, $http, authService, $ionicModal, $ionicPopup, $state, $localstorage){
+.controller('SplashController', ['$scope','$http', 'authService', '$ionicModal', '$ionicPopup', '$state','$localstorage','pushService'
+	,function($scope, $http, authService, $ionicModal, $ionicPopup, $state, $localstorage, pushService){
+	
 	$scope.submitForm = function(email, password, signingUp) {
 
 		if(signingUp) {
@@ -33,6 +35,10 @@ angular.module('app.controllers')
 		authService.authenticateUser(email,password).then(function(data){
 
 			$localstorage.setObject('userData', { token: data.token, user: data.user });
+			
+			var device = $localstorage.getObject('device');
+            pushService.registerDevice({deviceId: device.id, deviceType: device.type}) //leaving out ios option atm
+
 			//login success
 			$state.go("app.dashboard")
 		}).catch(function(data){

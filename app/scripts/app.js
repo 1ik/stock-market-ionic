@@ -1,9 +1,7 @@
 angular.module('app', ['ionic','app.controllers', 'app.directives', 'app.services','ngCordova'])
-.run(['$ionicPlatform', '$httpBackend','$cordovaPush','pushService','$cordovaDevice','$rootScope','$state',
-	function($ionicPlatform, $httpBackend, $cordovaPush, pushService, $cordovaDevice, $rootScope, $state) {
+.run(['$ionicPlatform', '$httpBackend','$cordovaPush','pushService','$cordovaDevice','$rootScope','$state', '$localstorage',
+	function($ionicPlatform, $httpBackend, $cordovaPush, pushService, $cordovaDevice, $rootScope, $state, $localstorage) {
 	$ionicPlatform.ready(function() {
-		alert('testing android')
-		pushService.registerDevice({'deviceId':'APA91bGdGXLcLw6M6MM4xQ1rsPe7XgeCeV1-qTLREoZTa62eWCs9If6q3-obpEkXKc46xdU59lPbIJWwT7q4f2DhxETUhoJ8S9HDYP8IJuY1Bkz0se4I5GM',"decviceType":"gcm"})
 		if (window.cordova && window.cordova.plugins.Keyboard) {
 			cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
 			cordova.plugins.Keyboard.disableScroll(true);
@@ -32,14 +30,8 @@ angular.module('app', ['ionic','app.controllers', 'app.directives', 'app.service
 		        case 'registered':
 		          if (notification.regid.length > 0 ) {
 		            // alert('registration ID = ' + notification.regid);
-
-		            pushService.registerDevice({'deviceId':notification.regid,"decviceType":"gcm"})
-		            .then(function(data){
-		            	alert('sent the device id to the kscl server : '+data)
-		            })
-		            .error(function(err){
-		            	alert(err)
-		            })//here you get the device regid
+		            $localstorage.setObject('device', { id: notification.regid, type: 'gcm'});
+		            // pushService.registerDevice({'deviceId':notification.regid,"decviceType":"gcm"})
 		          }
 		          break;
 
@@ -98,6 +90,7 @@ angular.module('app', ['ionic','app.controllers', 'app.directives', 'app.service
 		        if(notification.$state){
 		        	$state.go(notification.$state)
 		        }
+		        $state.go('app.alerts')
 		      }
 
 		      if (notification.sound) {
