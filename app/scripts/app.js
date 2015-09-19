@@ -1,8 +1,9 @@
 angular.module('app', ['ionic','app.controllers', 'app.directives', 'app.services','ngCordova'])
-.run(['$ionicPlatform', '$httpBackend','$cordovaPush','pushService','$cordovaDevice','$state',function($ionicPlatform, $httpBackend, $cordovaPush, pushService, $cordovaDevice, $state) {
-		
-
+.run(['$ionicPlatform', '$httpBackend','$cordovaPush','pushService','$cordovaDevice','$rootScope','$state',
+	function($ionicPlatform, $httpBackend, $cordovaPush, pushService, $cordovaDevice, $rootScope, $state) {
 	$ionicPlatform.ready(function() {
+		alert('testing android')
+		pushService.registerDevice({'deviceId':'APA91bGdGXLcLw6M6MM4xQ1rsPe7XgeCeV1-qTLREoZTa62eWCs9If6q3-obpEkXKc46xdU59lPbIJWwT7q4f2DhxETUhoJ8S9HDYP8IJuY1Bkz0se4I5GM',"decviceType":"gcm"})
 		if (window.cordova && window.cordova.plugins.Keyboard) {
 			cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
 			cordova.plugins.Keyboard.disableScroll(true);
@@ -11,15 +12,17 @@ angular.module('app', ['ionic','app.controllers', 'app.directives', 'app.service
 		if (window.StatusBar) {
 			StatusBar.styleDefault();
 		}
-		alert('device initialised : new build')
+		//alert('device initialised : voila ')
+
 		///android push----------------------------------------324920710438
-		if($cordovaDevice.getDevice() === "Android")
+		if($cordovaDevice.getPlatform() == "Android")
 		{
+			alert('android device detected')
 			var androidConfig = {
 			    "senderID": "324920710438",
 			  };
 			$cordovaPush.register(androidConfig).then(function(result) {
-		      // Success
+		      console.log('Registration Successful : '+result)
 		   	 }, function(err) {
 		      // Error
 		    })
@@ -28,13 +31,23 @@ angular.module('app', ['ionic','app.controllers', 'app.directives', 'app.service
 		      switch(notification.event) {
 		        case 'registered':
 		          if (notification.regid.length > 0 ) {
-		            alert('registration ID = ' + notification.regid);
+		            // alert('registration ID = ' + notification.regid);
+
+		            pushService.registerDevice({'deviceId':notification.regid,"decviceType":"gcm"})
+		            .then(function(data){
+		            	alert('sent the device id to the kscl server : '+data)
+		            })
+		            .error(function(err){
+		            	alert(err)
+		            })//here you get the device regid
 		          }
 		          break;
 
 		        case 'message':
 		          // this is the actual push notification. its format depends on the data model from the push server
-		          alert('message = ' + notification.message + ' msgCount = ' + notification.msgcnt);
+		          // alert('message = ' + notification.message + ' msgCount = ' + notification.msgcnt);
+		          // alert(JSON.stringify(notification))
+		          $state.go('app.alerts')
 		          break;
 
 		        case 'error':
@@ -58,8 +71,9 @@ angular.module('app', ['ionic','app.controllers', 'app.directives', 'app.service
 	    //end of android push----------------------------------------
 
 	    // ios push ------------------------------------------
-	    else if($cordovaDevice.getDevice() === "iOS")
+	    else if($cordovaDevice.getPlatform() == "iOS")
 		{
+			console.log('ios device detected')
 		    var iosConfig = {
 			    "badge": true,
 			    "sound": true,
@@ -76,6 +90,7 @@ angular.module('app', ['ionic','app.controllers', 'app.directives', 'app.service
 
 
 		    $rootScope.$on('$cordovaPush:notificationReceived', function(event, notification) {
+		    	console.log('received new push notification on the kscl app');
 		      if (notification.alert) {
 		        navigator.notification.alert(notification.alert);
 		        console.log('a new notification received :'+notification);
