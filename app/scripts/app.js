@@ -15,7 +15,7 @@ angular.module('app', ['ionic','app.controllers', 'app.directives', 'app.service
 		///android push----------------------------------------324920710438
 		if($cordovaDevice.getPlatform() == "Android")
 		{
-			alert('android device detected')
+			// alert('android device detected')
 			var androidConfig = {
 			    "senderID": "324920710438",
 			  };
@@ -38,7 +38,14 @@ angular.module('app', ['ionic','app.controllers', 'app.directives', 'app.service
 		        case 'message':
 		          // this is the actual push notification. its format depends on the data model from the push server
 		          // alert('message = ' + notification.message + ' msgCount = ' + notification.msgcnt);
-		          // alert(JSON.stringify(notification))
+		          alert(notification.message)
+		          if(JSON.stringify($localstorage.getObject('alerts')) == "{}"){
+		          	$localstorage.setObject('alerts', []);
+		          }
+		          alerts = $localstorage.getObject('alerts');
+				  alerts.push({title: notification.title, body: notification.message});
+				  $localstorage.setObject('alerts',alerts);
+
 		          $state.go('app.alerts')
 		          break;
 

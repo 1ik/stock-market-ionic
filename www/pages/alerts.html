@@ -1,11 +1,11 @@
 <ion-view view-title="Alerts">
     <ion-content>
-        <div class="card">
+        <div class="card" ng-repeat="alert in alerts">
             <div class="item item-divider">
-                Alert
+                {{alert.title}}
             </div>
             <div class="item item-text-wrap">
-                <p>Alert page</p>
+                <p>{{alert.body}}</p>
             </div>
         </div>
     </ion-content>

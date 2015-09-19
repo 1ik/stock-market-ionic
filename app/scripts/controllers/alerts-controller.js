@@ -1,4 +1,4 @@
 angular.module('app.controllers')
-.controller('AlertsController', ['$scope', function($scope){
-	
+.controller('AlertsController', ['$scope','$localstorage', function($scope,$localstorage){
+	$scope.alerts = $localstorage.getObject('alerts');
 }]);
