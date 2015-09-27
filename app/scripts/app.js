@@ -103,6 +103,15 @@ angular.module('app', [
 					}
 				}
 			})
+			.state('app.news', {
+				url: '/news',
+				views: {
+					'menuContent': {
+						templateUrl: 'pages/news.html',
+						controller: "NewsController"
+					}
+				}
+			})
 			.state('app.settings', {
 				url: '/settings',
 				views: {
