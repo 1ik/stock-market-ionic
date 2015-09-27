@@ -1,1 +1,9 @@
 /* Empty. Add your own CSS if you like */
+.col-table {
+	padding: 5px;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    background: #f7f7f7;
+    text-align: center;
+}

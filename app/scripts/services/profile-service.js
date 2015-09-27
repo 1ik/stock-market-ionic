@@ -6,7 +6,7 @@ angular.module('app.services')
 
 		getKSCLUserProfile : function() {
 			var reqUrl = constants.rootURL + 'api_users/profile';
-			return httpUtils.get(reqUrl, {},{'Token':$localstorage.getObject('userData').token}).promise;
+			return httpUtils.get(reqUrl, {}, {'Token':$localstorage.getObject('userData').token}).promise;
 		}
 
 	};

@@ -1,6 +1,11 @@
-angular.module('app', ['ionic','app.controllers', 'app.directives', 'app.services'])
-.run(['$ionicPlatform', '$httpBackend',function($ionicPlatform, $httpBackend) {
-
+angular.module('app', [
+	'ionic',
+	'app.controllers', 
+	'app.directives', 
+	'app.services',
+	'ngCordova'
+]).run(['$ionicPlatform', 'pushService', function($ionicPlatform, pushService) {
+	
 	$ionicPlatform.ready(function() {
 		if (window.cordova && window.cordova.plugins.Keyboard) {
 			cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -9,7 +14,8 @@ angular.module('app', ['ionic','app.controllers', 'app.directives', 'app.service
 
 		if (window.StatusBar) {
 			StatusBar.styleDefault();
-		}  
+		}
+		
 	})
 }])
 
@@ -79,15 +85,76 @@ angular.module('app', ['ionic','app.controllers', 'app.directives', 'app.service
 						}
 					}
 				})
-			.state('app.portfolio.add', {
-				url: '/add',
+				.state('app.portfolio.add', {
+					url: '/add',
+					views: {
+						'portfolioItem': {
+							templateUrl: 'partials/portfolio/add.html',
+							controller: 'portfolioAddController'
+						}
+					}
+				})
+			.state('app.alerts', {
+				url: '/alerts',
 				views: {
-					'portfolioItem': {
-						templateUrl: 'partials/portfolio/add.html',
-						controller: 'portfolioAddController'
+					'menuContent': {
+						templateUrl: 'pages/alerts.html',
+						controller: "AlertsController"
 					}
 				}
 			})
+			.state('app.settings', {
+				url: '/settings',
+				views: {
+					'menuContent': {
+						templateUrl: 'pages/settings.html',
+						controller: 'SettingsController'
+					}
+				}
+			})
+				.state('app.settings.index', {
+					url: '/index',
+					views: {
+						'settingsItem': {
+							templateUrl: 'partials/settings/index.html'
+						}
+					}
+				})
+				.state('app.settings.alerts', {
+					url: '/alerts',
+					views: {
+						'settingsItem': {
+							templateUrl: 'partials/settings/alerts.html',
+							controller: 'AlertSettingsController'
+						}
+					}
+				})
+				.state('app.settings.add-alerts', {
+					url: '/alerts-add',
+					views: {
+						'settingsItem': {
+							templateUrl: 'partials/settings/add-alerts.html',
+							controller: 'AlertSettingsController'
+						}
+					}
+				})
+				.state('app.settings.edit-alerts', {
+					url: '/alerts-edit/:settings_id',
+					views: {
+						'settingsItem': {
+							templateUrl: 'partials/settings/add-alerts.html',
+							controller: 'AlertSettingsController'
+						}
+					}
+				})				
+				.state('app.settings.broker', {
+					url: '/broker',
+					views: {
+						'settingsItem': {
+							templateUrl: 'partials/settings/broker.html'
+						}
+					}
+				})
 
 		// if none of the above states are matched, use this as the fallback
 		$urlRouterProvider.otherwise('/splash');

@@ -15,4 +15,4 @@ angular.module('app.services')
       return JSON.parse($window.localStorage[key] || '{}');
     }
   }
-}]);
+}])
