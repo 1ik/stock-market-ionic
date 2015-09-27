@@ -5,7 +5,23 @@
         Alert Settings
       </div>
       <div class="item item-text-wrap">
-        alert settings
+      	<div class="row">
+		  <div class="col col-table"> <b>Company</b> </div>
+		  <div class="col col-table"> <b>Price</b> </div>
+		  <div class="col col-table"> <b>Up/Down</b> </div>
+		  <div class="col col-table"> <b>Status</b> </div>
+		  <div class="col col-table"> <b>Action</b> </div>
+		</div>
+		<div class="row" ng-repeat="setting in settings">
+		  <div class="col col-table"> {{setting.company_id}} </div>
+		  <div class="col col-table"> {{setting.price}} </div>
+		  <div class="col col-table"> {{setting.level}} </div>
+		  <div class="col col-table"> {{setting.active? "On" : "Off"}} </div>
+		  <div class="col col-table">
+		  	<i class="ion-ios-trash-outline" ng-click="delete(setting)"></i>
+		  	<i class="ion-edit" ng-click="edit(setting)"></i>
+		  	</div>
+		</div>
       </div>
     </div>
 </ion-view>

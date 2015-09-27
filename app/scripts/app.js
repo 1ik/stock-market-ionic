@@ -124,7 +124,8 @@ angular.module('app', [
 					url: '/alerts',
 					views: {
 						'settingsItem': {
-							templateUrl: 'partials/settings/alerts.html'
+							templateUrl: 'partials/settings/alerts.html',
+							controller: 'AlertSettingsController'
 						}
 					}
 				})
