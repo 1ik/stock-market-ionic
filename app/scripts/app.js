@@ -103,6 +103,39 @@ angular.module('app', [
 					}
 				}
 			})
+			.state('app.settings', {
+				url: '/settings',
+				views: {
+					'menuContent': {
+						templateUrl: 'pages/settings.html',
+						controller: 'SettingsController'
+					}
+				}
+			})
+				.state('app.settings.index', {
+					url: '/index',
+					views: {
+						'settingsItem': {
+							templateUrl: 'partials/settings/index.html'
+						}
+					}
+				})
+				.state('app.settings.alerts', {
+					url: '/alerts',
+					views: {
+						'settingsItem': {
+							templateUrl: 'partials/settings/alerts.html'
+						}
+					}
+				})
+				.state('app.settings.broker', {
+					url: '/broker',
+					views: {
+						'settingsItem': {
+							templateUrl: 'partials/settings/broker.html'
+						}
+					}
+				})				
 
 		// if none of the above states are matched, use this as the fallback
 		$urlRouterProvider.otherwise('/splash');
