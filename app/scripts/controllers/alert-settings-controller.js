@@ -15,10 +15,11 @@ angular.module('app.controllers')
 			$scope.title = "Edit Alert";
 			$scope.editing = true;
 			alertSettings.then(function(settings){
+
 				$scope.newSetting = _.find(settings,function(setting){
 					return setting.id == $stateParams.settings_id;
 				});
-				
+
 				$scope.newSetting.active = $scope.newSetting.active == "1" ? true : false;
 				
 				$scope.company = {
@@ -47,10 +48,9 @@ angular.module('app.controllers')
 						$state.go("app.settings.index");
 					});
 				});
-								
+
 				return;
 			}
-
 			settingsService.createNewSettings($scope.newSetting).then(function(resp){
 				$ionicPopup.alert({
 					title: 'New Settings created',

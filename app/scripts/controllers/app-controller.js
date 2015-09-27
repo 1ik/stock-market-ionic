@@ -5,6 +5,7 @@ angular.module('app.controllers')
 
 		$rootScope.$on('$cordovaPush:notificationReceived', function(event, notification) {
 			switch(notification.event) {
+				
 				case 'registered':
 					var pushRegistration = '';
 
@@ -41,10 +42,13 @@ angular.module('app.controllers')
 				
 				case 'message':
 					pushService.saveNotification(notification.payload);
+					/*
 					$ionicPopup.alert({
 						title: notification.payload.title,
 						template: notification.payload.message
 					});
+					*/
+					alert(notification.payload.title + " : " + notification.payload.message);
 					break;
 
 				default:
