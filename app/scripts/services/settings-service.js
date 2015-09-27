@@ -17,6 +17,12 @@ angular.module('app.services')
 				var params = $.param(settings);
 				return httpUtils.post(reqUrl, params, {'Token':$localstorage.getObject('userData').token}).promise;
 			},
+
+			updateAlertSetting: function(settings) {
+				var reqUrl = constants.rootURL + 'api_users/update_settings';
+				var params = $.param(settings);
+				return httpUtils.post(reqUrl, params, {'Token':$localstorage.getObject('userData').token}).promise;
+			},
 			
 			removeSettings: function(settings) {
 				var reqUrl = constants.rootURL + 'api_users/destroySettings/' + settings.id;

@@ -31,7 +31,7 @@
 					<div class="col col-table"> {{setting.company_id}} </div>
 					<div class="col col-table"> {{setting.price}} </div>
 					<div class="col col-table"> {{setting.level}} </div>
-					<div class="col col-table"> {{setting.active? "On" : "Off"}} </div>
+					<div class="col col-table"> {{setting.active == "1" ? "On" : "Off"}} </div>
 					<div class="col col-table">
 						<i class="ion-ios-trash-outline" ng-click="delete(setting)"></i>
 						<i class="ion-edit" ng-click="edit(setting)"></i>

@@ -1,10 +1,31 @@
 angular.module('app.controllers')
 .controller('AlertSettingsController', ['$scope', 'settingsService', '$ionicPopup', '$state', '$ionicModal',
-	function($scope, settingsService, $ionicPopup, $state, $ionicModal){
+	'$stateParams',
+	function($scope, settingsService, $ionicPopup, $state, $ionicModal, $stateParams){
 		
-		settingsService.getAlertSettings().then(function(settings){
+		var alertSettings = settingsService.getAlertSettings();
+
+		alertSettings.then(function(settings){
 			$scope.settings = settings;
 		});
+
+		$scope.title = "Add new Alert";
+
+		if($stateParams.settings_id) {
+			$scope.title = "Edit Alert";
+			$scope.editing = true;
+			alertSettings.then(function(settings){
+				$scope.newSetting = _.find(settings,function(setting){
+					return setting.id == $stateParams.settings_id;
+				});
+				
+				$scope.newSetting.active = $scope.newSetting.active == "1" ? true : false;
+				
+				$scope.company = {
+					company_short_code: $scope.newSetting.company_id
+				};
+			});
+		}
 
 		$scope.newSetting = {
 			level : 'up',
@@ -16,6 +37,20 @@ angular.module('app.controllers')
 		}
 
 		$scope.submitAdd = function() {
+
+			if($scope.editing) {
+				settingsService.updateAlertSetting($scope.newSetting).then(function(resp){
+					$ionicPopup.alert({
+						title: 'Settings updated',
+						template: 'Your Settings have been updated successfully.',
+					}).then(function(res){
+						$state.go("app.settings.index");
+					});
+				});
+								
+				return;
+			}
+
 			settingsService.createNewSettings($scope.newSetting).then(function(resp){
 				$ionicPopup.alert({
 					title: 'New Settings created',
@@ -49,9 +84,11 @@ angular.module('app.controllers')
 			});
 		}
 
-		$scope.edit = function() {
-			
+		$scope.edit = function(settings) {
+			//console.log(settings.id);
+			$state.go('app.settings.edit-alerts',{settings_id:settings.id});
 		}
+
 		$scope.openSelectModal = function() {
 			$ionicModal.fromTemplateUrl('templates/modals/company-selector.html', {
 				scope: $scope,

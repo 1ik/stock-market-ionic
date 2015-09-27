@@ -138,6 +138,15 @@ angular.module('app', [
 						}
 					}
 				})
+				.state('app.settings.edit-alerts', {
+					url: '/alerts-edit/:settings_id',
+					views: {
+						'settingsItem': {
+							templateUrl: 'partials/settings/add-alerts.html',
+							controller: 'AlertSettingsController'
+						}
+					}
+				})				
 				.state('app.settings.broker', {
 					url: '/broker',
 					views: {
