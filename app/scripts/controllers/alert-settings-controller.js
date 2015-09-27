@@ -4,12 +4,26 @@ angular.module('app.controllers')
 		
 		settingsService.getAlertSettings().then(function(settings){
 			$scope.settings = settings;
-			console.log(settings);
 		});
-		$scope.data = {wifi : ''};
+
+		$scope.newSetting = {
+			level : 'up',
+			active: true
+		}
 
 		$scope.addSettings = function() {
 			$state.go("app.settings.add-alerts");
+		}
+
+		$scope.submitAdd = function() {
+			settingsService.createNewSettings($scope.newSetting).then(function(resp){
+				$ionicPopup.alert({
+					title: 'New Settings created',
+					template: 'Your settings have been saved successfully.',
+				}).then(function(res){
+					$state.go("app.settings.index");
+				});
+			});
 		}
 
 		$scope.delete = function(setting) {
@@ -51,6 +65,7 @@ angular.module('app.controllers')
 		$scope.selectCompany = function(company) {
 			console.log(company);
 			$scope.company = company;
+			$scope.newSetting.company_id = company.company_short_code;
 			$scope.modal.hide();
 		}
 		
@@ -58,7 +73,7 @@ angular.module('app.controllers')
 			if(_.isEmpty($scope.company)) {
 				return "No company (Touch To select)";
 			}
-			return $scope.company.company_full_name + " (Touch to change)";
+			return $scope.company.company_short_code + " (Touch to change)";
 		}		
 
 }]);

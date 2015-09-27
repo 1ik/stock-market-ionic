@@ -1,4 +1,4 @@
-<ion-view view-title="Alert Settings">
+<ion-view view-title="Alert Settings" cache-view="false">
 	<ion-nav-bar class="bar bar-header bar-dark padding">
 		<ion-nav-back-button></ion-nav-back-button>
 		<ion-nav-buttons side="left">
@@ -7,14 +7,17 @@
 		</ion-nav-buttons>
 
 		<ion-nav-buttons side="right">
-			<button ng-click="addSettings()"class="button button-icon button-clear ion-plus-circled" menu-toggle="right">
-			</button>
+			<div class="buttons buttons-right header-item">
+				<span class="right-buttons">
+      				<a class="button button-positive" ng-click="addSettings()">Add</a>
+    			</span>
+    		</div>
 		</ion-nav-buttons>
 	</ion-nav-bar>
 	<ion-content>
 		<div class="card">
 			<div class="item item-divider">
-			Alert Settings
+				Alert Settings
 			</div>
 			<div class="item item-text-wrap">
 				<div class="row">
