@@ -1,6 +1,11 @@
-angular.module('app', ['ionic','app.controllers', 'app.directives', 'app.services','ngCordova'])
-.run(['$ionicPlatform', '$httpBackend','$cordovaPush','pushService','$cordovaDevice','$rootScope','$state', '$localstorage',
-	function($ionicPlatform, $httpBackend, $cordovaPush, pushService, $cordovaDevice, $rootScope, $state, $localstorage) {
+angular.module('app', [
+	'ionic',
+	'app.controllers', 
+	'app.directives', 
+	'app.services',
+	'ngCordova'
+]).run(['$ionicPlatform', 'pushService', function($ionicPlatform, pushService) {
+	
 	$ionicPlatform.ready(function() {
 		if (window.cordova && window.cordova.plugins.Keyboard) {
 			cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -10,118 +15,7 @@ angular.module('app', ['ionic','app.controllers', 'app.directives', 'app.service
 		if (window.StatusBar) {
 			StatusBar.styleDefault();
 		}
-		//alert('device initialised : voila ')
-
-		///android push----------------------------------------324920710438
-		if($cordovaDevice.getPlatform() == "Android")
-		{
-			// alert('android device detected')
-			var androidConfig = {
-			    "senderID": "324920710438",
-			  };
-			$cordovaPush.register(androidConfig).then(function(result) {
-		      console.log('Registration Successful : '+result)
-		   	 }, function(err) {
-		      // Error
-		    })
-
-		    $rootScope.$on('$cordovaPush:notificationReceived', function(event, notification) {
-		      switch(notification.event) {
-		        case 'registered':
-		          if (notification.regid.length > 0 ) {
-		            // alert('registration ID = ' + notification.regid);
-		            $localstorage.setObject('device', { id: notification.regid, type: 'gcm'});
-		            // pushService.registerDevice({'deviceId':notification.regid,"decviceType":"gcm"})
-		          }
-		          break;
-
-		        case 'message':
-		          // this is the actual push notification. its format depends on the data model from the push server
-		          // alert('message = ' + notification.message + ' msgCount = ' + notification.msgcnt);
-		          alert(notification.message)
-		          if(JSON.stringify($localstorage.getObject('alerts')) == "{}"){
-		          	$localstorage.setObject('alerts', []);
-		          }
-		          alerts = $localstorage.getObject('alerts');
-				  alerts.push({title: notification.title, body: notification.message});
-				  $localstorage.setObject('alerts',alerts);
-
-		          $state.go('app.alerts')
-		          break;
-
-		        case 'error':
-		          alert('GCM error = ' + notification.msg);
-		          break;
-
-		        default:
-		          alert('An unknown GCM event has occurred');
-		          break;
-		      }
-		    });
-
-
-		    // WARNING: dangerous to unregister (results in loss of tokenID)
-		    $cordovaPush.unregister(options).then(function(result) {
-		      // Success!
-		    }, function(err) {
-		      // Error
-		    })			
-		}
-	    //end of android push----------------------------------------
-
-	    // ios push ------------------------------------------
-	    else if($cordovaDevice.getPlatform() == "iOS")
-		{
-			console.log('ios device detected')
-		    var iosConfig = {
-			    "badge": true,
-			    "sound": true,
-			    "alert": true,
-			  };
-
-		    $cordovaPush.register(iosConfig).then(function(deviceToken) {
-		      // Success -- send deviceToken to server, and store for future use
-		      console.log("deviceToken: " + deviceToken)
-		      // $http.post("http://server.co/", {user: "Bob", tokenID: deviceToken})
-		    }, function(err) {
-		      alert("Registration error: " + err)
-		    });
-
-
-		    $rootScope.$on('$cordovaPush:notificationReceived', function(event, notification) {
-		    	console.log('received new push notification on the kscl app');
-		      if (notification.alert) {
-		        navigator.notification.alert(notification.alert);
-		        console.log('a new notification received :'+notification);
-		        console.log('with state :'+notification.$state);
-		        if(notification.$state){
-		        	$state.go(notification.$state)
-		        }
-		        $state.go('app.alerts')
-		      }
-
-		      if (notification.sound) {
-		        var snd = new Media(event.sound);
-		        snd.play();
-		      }
-
-		      if (notification.badge) {
-		        $cordovaPush.setBadgeNumber(notification.badge).then(function(result) {
-		          // Success!
-		        }, function(err) {
-		          // An error occurred. Show a message to the user
-		        });
-		      }
-		    });
-
-		    // WARNING! dangerous to unregister (results in loss of tokenID)
-		    $cordovaPush.unregister(options).then(function(result) {
-		      // Success!
-		    }, function(err) {
-		      // Error
-		    });
-		}
-	    // end of ios push ------------
+		
 	})
 }])
 
