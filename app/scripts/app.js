@@ -129,6 +129,15 @@ angular.module('app', [
 						}
 					}
 				})
+				.state('app.settings.add-alerts', {
+					url: '/alerts-add',
+					views: {
+						'settingsItem': {
+							templateUrl: 'partials/settings/add-alerts.html',
+							controller: 'AlertSettingsController'
+						}
+					}
+				})
 				.state('app.settings.broker', {
 					url: '/broker',
 					views: {
@@ -136,7 +145,7 @@ angular.module('app', [
 							templateUrl: 'partials/settings/broker.html'
 						}
 					}
-				})				
+				})
 
 		// if none of the above states are matched, use this as the fallback
 		$urlRouterProvider.otherwise('/splash');

@@ -1,27 +1,40 @@
 <ion-view view-title="Alert Settings">
-  <ion-content>
-    <div class="card">
-      <div class="item item-divider">
-        Alert Settings
-      </div>
-      <div class="item item-text-wrap">
-      	<div class="row">
-		  <div class="col col-table"> <b>Company</b> </div>
-		  <div class="col col-table"> <b>Price</b> </div>
-		  <div class="col col-table"> <b>Up/Down</b> </div>
-		  <div class="col col-table"> <b>Status</b> </div>
-		  <div class="col col-table"> <b>Action</b> </div>
+	<ion-nav-bar class="bar bar-header bar-dark padding">
+		<ion-nav-back-button></ion-nav-back-button>
+		<ion-nav-buttons side="left">
+			<button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+			</button>
+		</ion-nav-buttons>
+
+		<ion-nav-buttons side="right">
+			<button ng-click="addSettings()"class="button button-icon button-clear ion-plus-circled" menu-toggle="right">
+			</button>
+		</ion-nav-buttons>
+	</ion-nav-bar>
+	<ion-content>
+		<div class="card">
+			<div class="item item-divider">
+			Alert Settings
+			</div>
+			<div class="item item-text-wrap">
+				<div class="row">
+					<div class="col col-table"> <b>Company</b> </div>
+					<div class="col col-table"> <b>Price</b> </div>
+					<div class="col col-table"> <b>Up/Down</b> </div>
+					<div class="col col-table"> <b>Status</b> </div>
+					<div class="col col-table"> <b>Action</b> </div>
+				</div>
+				<div class="row" ng-repeat="setting in settings">
+					<div class="col col-table"> {{setting.company_id}} </div>
+					<div class="col col-table"> {{setting.price}} </div>
+					<div class="col col-table"> {{setting.level}} </div>
+					<div class="col col-table"> {{setting.active? "On" : "Off"}} </div>
+					<div class="col col-table">
+						<i class="ion-ios-trash-outline" ng-click="delete(setting)"></i>
+						<i class="ion-edit" ng-click="edit(setting)"></i>
+					</div>
+				</div>
+			</div>
 		</div>
-		<div class="row" ng-repeat="setting in settings">
-		  <div class="col col-table"> {{setting.company_id}} </div>
-		  <div class="col col-table"> {{setting.price}} </div>
-		  <div class="col col-table"> {{setting.level}} </div>
-		  <div class="col col-table"> {{setting.active? "On" : "Off"}} </div>
-		  <div class="col col-table">
-		  	<i class="ion-ios-trash-outline" ng-click="delete(setting)"></i>
-		  	<i class="ion-edit" ng-click="edit(setting)"></i>
-		  	</div>
-		</div>
-      </div>
-    </div>
+	</ion-content>
 </ion-view>

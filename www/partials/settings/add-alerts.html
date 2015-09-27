@@ -1,0 +1,34 @@
+<ion-view view-title="Add new Alert">
+	<ion-content>
+		<div class="card">
+			<!-- <div class="item item-divider">
+				<label class="item item-input item-stacked-label" ng-click="openSelectModal()">
+				    <span class="input-label">Selected Company : {{ companyName()}}</span>
+				 </label>
+			</div>
+			<div class="item item-divider">
+				<label class="item item-input item-stacked-label">
+				    <input type="text" ng-model="setting.price">
+				 </label>
+			</div> -->
+			<div class="list">
+				<label class="item item-input item-stacked-label">
+				<label class="item item-input item-stacked-label" ng-click="openSelectModal()">
+					<span class="input-label">Selected Company : {{ companyName()}}</span>
+				</label>
+				<label class="item item-input item-stacked-label">
+					<span class="input-label">Price</span>
+					<input type="text" placeholder="0.0" ng-model="setting.price">
+				</label>
+				<label class="item item-input item-stacked-label">
+					<span class="input-label">Up/Down</span>
+					<select ng-model="setting.label">
+						<option value="up">Up</option>
+						<option value="down">Down</option>
+					</select>
+				</label>
+			</div>
+
+		</div>
+	</ion-content>
+</ion-view>
