@@ -94,6 +94,31 @@ angular.module('app', [
 						}
 					}
 				})
+			.state('app.orders', {
+				url: '/orders',
+				views: {
+					'menuContent': {
+						templateUrl: 'pages/orders.html',
+						controller: "OrdersController"
+					}
+				}
+			})
+				.state('app.orders.view', {
+					url: '/view',
+					views: {
+						'orderViews': {
+							templateUrl: 'partials/orders/view.html',
+						}
+					}
+				})
+				.state('app.orders.manage', {
+					url: '/manage',
+					views: {
+						'orderViews': {
+							templateUrl: 'partials/orders/manage.html',
+						}
+					}
+				})				
 			.state('app.alerts', {
 				url: '/alerts',
 				views: {
