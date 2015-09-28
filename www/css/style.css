@@ -7,3 +7,7 @@
     background: #f7f7f7;
     text-align: center;
 }
+
+.order-col > .col {
+	font-size: 30px;
+}

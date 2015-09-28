@@ -4,8 +4,42 @@
       <div class="item item-divider">
         View Orders
       </div>
+      <div class="row">
+      	<div class="col">
+      		<label for="">Filter Company</label>
+      		<select ng-model="search.company" ng-options="company for company in companies" id=""></select>
+      	</div>
+      	<div class="col">
+      		
+      	</div>
+      	<div class="col">
+      		
+      	</div>
+      </div>
       <div class="item item-text-wrap">
-        order views..
+		<div class="row order-col">
+			<div class="col col-table"> <p>Company</p></div>
+			<div class="col col-table"> <p>Expire Date</p> </div>
+			<div class="col col-table"> <p>Order Range</p></div>
+			<div class="col col-table"> <p>Order Type</p> </div>
+			<div class="col col-table"> <p>Quantity</p></div>
+			<div class="col col-table"> <p>Remarks</p> </div>
+			<div class="col col-table"> <p>Remarks</p> </div>
+			<div class="col col-table"> <p>Status</p> </div>
+			<div class="col col-table"> <p>Submission</p> </div>
+		</div>
+		<div class="row order-col" ng-repeat="order in orders">
+			<div class="col col-table"> <p>{{order.company}}</p> </div>
+			<div class="col col-table"> <p>{{order.expired_date}}</p></div>
+			<div class="col col-table"> <p>{{order.order_id}}</p> </div>
+			<div class="col col-table"> <p>{{order.order_range}}</p> </div>
+			<div class="col col-table"> <p>{{order.order_time}}</p> </div>
+			<div class="col col-table"> <p>{{order.order_type}}</p> </div>
+			<div class="col col-table"> <p>{{order.quantity}}</p> </div>
+			<div class="col col-table"> <p>{{order.remarks}}</p> </div>
+			<div class="col col-table"> <p>{{order.status}}</p> </div>
+			<div class="col col-table"> <p>{{order.submission_date}}</p> </div>
+		</div>      	
       </div>
     </div>
 </ion-view>
