@@ -97,6 +97,7 @@ angular.module('app', [
 				})
 			.state('app.orders', {
 				url: '/orders',
+				abstract:true,
 				views: {
 					'menuContent': {
 						templateUrl: 'pages/orders.html',
@@ -117,6 +118,7 @@ angular.module('app', [
 					views: {
 						'orderViews': {
 							templateUrl: 'partials/orders/manage.html',
+							controller: 'ManageOrderController'
 						}
 					}
 				})				
