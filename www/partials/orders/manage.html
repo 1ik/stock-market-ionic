@@ -8,7 +8,7 @@
 		<div class="">
 			<label class="item">
 				<span class="input-label">Selected type</span>
-				<select ng-model="order.action">
+				<select ng-model="order.type">
 					<option ng-repeat="action in actions">{{action}}</option>
 				</select>
 			</label>
@@ -25,10 +25,26 @@
 			<label class="item">
 				<span class="input-label">Order Range</span>
 				<div class="row">
-					<div class="col"><input ng-model="order.from" type="text" placeholder="From"></div>
-					<div class="col"><input ng-model="order.to" type="text" placeholder="To"></div>
+					<div class="col"><input ng-disabled="order.checkMarketPrice" ng-model="order.minRange" type="text" placeholder="From"></div>
+					<div class="col"><input ng-disabled="order.checkMarketPrice" ng-model="order.maxRange" type="text" placeholder="To"></div>
+				</div>
+			</label>
+			<label class="item">
+				<div class="row">
+					<div class="col">
+						<p>If want to {{order.action}} at market price please check the box</p>
+					</div>
+					<div class="col"><input type="checkbox" ng-model="order.checkMarketPrice"></div>
 				</div>
 			</label>			
+			<label class="item">
+				<span class="input-label">Total Price</span>
+				<div class="row">
+					<div class="col"><input disabled ng-model="order.totalMinPrice" type="text" placeholder="From"></div>
+					<div class="col"><input disabled ng-model="order.totalMaxPrice" type="text" placeholder="To"></div>
+				</div>
+			</label>
+			<button ng-click="save()" class="button button-positive button-full">Submit</button>
 		</div>
       </div>
     </div>

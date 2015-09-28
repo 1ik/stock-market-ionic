@@ -1,8 +1,10 @@
 angular.module('app.controllers').controller(
-	'ManageOrderController', ['$scope', 'ordersService', function($scope, ordersService){
+	'ManageOrderController', ['$scope', 'ordersService', '$ionicPopup', '$state',
+	function($scope, ordersService, $ionicPopup, $state){
 		$scope.actions = ['buy', 'sell'];
 		$scope.order = {
-			action : 'buy'
+			type : 'buy',
+			checkMarketPrice: false
 		};
 
 		$scope.companySearching = false;
@@ -17,5 +19,16 @@ angular.module('app.controllers').controller(
 				$scope.companies = companies;
 				$scope.companySearching = false;
 			});
+		}
+
+		$scope.save = function() {
+			ordersService.saveOrder($scope.order).then(function(data){
+				$ionicPopup.alert({
+					title: 'Order Saved!',
+					template: 'Your Order has been saved sucessfully!'
+				}).then(function(d){
+					$state.go('app.orders.view')
+				});
+			})
 		}
 }]);
