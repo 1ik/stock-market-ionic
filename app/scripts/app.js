@@ -109,7 +109,7 @@ angular.module('app', [
 					url: '/view',
 					views: {
 						'orderViews': {
-							templateUrl: 'partials/orders/view.html',
+							templateUrl: 'partials/orders/view-'+media+'.html',
 						}
 					}
 				})

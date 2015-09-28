@@ -1,5 +1,6 @@
 angular.module('app.controllers').controller(
-	'OrdersController', ['$scope', 'ordersService', function($scope, ordersService){
+	'OrdersController', ['$scope', 'ordersService','$ionicPopup', '$state',
+	function($scope, ordersService, $ionicPopup, $state){
 		$scope.companies = ["all"];
 		
 		$scope.fromDatepickerObject = {
@@ -47,7 +48,53 @@ angular.module('app.controllers').controller(
 		}
 		$scope.clearTo = function() {
 			$scope.search.to = "";
-		}		
+		}
+
+		$scope.openOrder = function(order) {
+			$ionicPopup.alert({
+				title: order.company,
+				template: '<div class="list">
+								<a class="item item-avatar">
+									<h2>Expire Date</h2>
+									<p>'+order.expired_date+'</p>
+								</a>
+								<a class="item item-avatar">
+									<h2>Order ID</h2>
+									<p>'+order.order_id+'</p>
+								</a>
+								<a class="item item-avatar">
+									<h2>Order Range</h2>
+									<p>'+order.order_range+'</p>
+								</a>
+								<a class="item item-avatar">
+									<h2>Order Time</h2>
+									<p>'+order.order_time+'</p>
+								</a>
+								<a class="item item-avatar">
+									<h2>Order Type</h2>
+									<p>'+order.order_type+'</p>
+								</a>
+								<a class="item item-avatar">
+									<h2>Quantity</h2>
+									<p>'+order.quantity+'</p>
+								</a>
+								<a class="item item-avatar">
+									<h2>Remarks</h2>
+									<p>'+order.remarks+'</p>
+								</a>
+								<a class="item item-avatar">
+									<h2>Status</h2>
+									<p>'+order.status+'</p>
+								</a>
+								<a class="item item-avatar">
+									<h2>Submission date</h2>
+									<p>'+order.submission_date+'</p>
+								</a>
+							</div>'
+			}).then(function(d){
+				$state.go('app.orders.view')
+			});
+		}
 		
 		$scope.search = {
 			company: "all",
