@@ -3,7 +3,12 @@ angular.module('app.controllers')
 		'$ionicPopup','companyService','$state','$ionicModal','$http', function($scope, portfolioService,
 			$ionicPopup,companyService,$state, $ionicModal,$http){
 
-		$scope.form = {};
+		$scope.form = {
+			breakeven_average: 0,
+			buy_average: 0,
+		};
+
+		$scope.commision = 2.4;
 
 		$scope.openSelectModal = function() {
 			$ionicModal.fromTemplateUrl('templates/modals/company-selector.html', {
@@ -19,6 +24,14 @@ angular.module('app.controllers')
 			$scope.company = company;
 			$scope.modal.hide();
 		}
+
+		$scope.$watch('form',function(newVal,oldVal){
+			$scope.form.buy_value = $scope.form.quantity * $scope.form.buy_average;
+			$scope.form.breakeven_average = ($scope.form.buy_average * $scope.commision) * $scope.commision;
+			$scope.form.buy_value = $scope.form.quantity * $scope.form.buy_average;
+			$scope.form.market_value = $scope.form.quantity * $scope.form.ycp;
+			$scope.form.gain_loss = ($scope.form.ycp  * $scope.form.quantity) - ($scope.form.breakeven_average *  $scope.form.quantity);
+		},true);
 
 		//adding for datas to portfolio
 		$scope.addToPortfolio = function() {
