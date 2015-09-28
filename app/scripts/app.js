@@ -3,7 +3,8 @@ angular.module('app', [
 	'app.controllers', 
 	'app.directives', 
 	'app.services',
-	'ngCordova'
+	'ngCordova',
+	'ionic-datepicker'
 ]).run(['$ionicPlatform', 'pushService', function($ionicPlatform, pushService) {
 	
 	$ionicPlatform.ready(function() {
