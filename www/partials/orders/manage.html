@@ -1,0 +1,51 @@
+<ion-view view-title="View Orders">
+  <ion-content>
+    <div class="card">
+      <div class="item item-divider">
+        Manage Orders
+      </div>
+      <div class="item item-text-wrap">
+		<div class="">
+			<label class="item">
+				<span class="input-label">Selected type</span>
+				<select ng-model="order.type">
+					<option ng-repeat="action in actions">{{action}}</option>
+				</select>
+			</label>
+			<label class="item">
+				<span class="input-label">Selected Company</span>
+				<select ng-model="order.company" ng-disabled="companySearching">
+					<option ng-repeat="company in companies">{{company}}</option>
+				</select>
+			</label>
+			<label class="item">
+				<span class="input-label">Quantity</span>
+				<input type="text" ng-model="order.quantity">
+			</label>
+			<label class="item">
+				<span class="input-label">Order Range</span>
+				<div class="row">
+					<div class="col"><input ng-disabled="order.checkMarketPrice" ng-model="order.minRange" type="text" placeholder="From"></div>
+					<div class="col"><input ng-disabled="order.checkMarketPrice" ng-model="order.maxRange" type="text" placeholder="To"></div>
+				</div>
+			</label>
+			<label class="item">
+				<div class="row">
+					<div class="col">
+						<p>If want to {{order.action}} at market price please check the box</p>
+					</div>
+					<div class="col"><input type="checkbox" ng-model="order.checkMarketPrice"></div>
+				</div>
+			</label>			
+			<label class="item">
+				<span class="input-label">Total Price</span>
+				<div class="row">
+					<div class="col"><input disabled ng-model="order.totalMinPrice" type="text" placeholder="From"></div>
+					<div class="col"><input disabled ng-model="order.totalMaxPrice" type="text" placeholder="To"></div>
+				</div>
+			</label>
+			<button ng-click="save()" class="button button-positive button-full">Submit</button>
+		</div>
+      </div>
+    </div>
+</ion-view>

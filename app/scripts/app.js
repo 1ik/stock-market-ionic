@@ -3,7 +3,8 @@ angular.module('app', [
 	'app.controllers', 
 	'app.directives', 
 	'app.services',
-	'ngCordova'
+	'ngCordova',
+	'ionic-datepicker'
 ]).run(['$ionicPlatform', 'pushService', function($ionicPlatform, pushService) {
 	
 	$ionicPlatform.ready(function() {
@@ -94,6 +95,33 @@ angular.module('app', [
 						}
 					}
 				})
+			.state('app.orders', {
+				url: '/orders',
+				abstract:true,
+				views: {
+					'menuContent': {
+						templateUrl: 'pages/orders.html',
+						controller: "OrdersController"
+					}
+				}
+			})
+				.state('app.orders.view', {
+					url: '/view',
+					views: {
+						'orderViews': {
+							templateUrl: 'partials/orders/view-'+media+'.html',
+						}
+					}
+				})
+				.state('app.orders.manage', {
+					url: '/manage',
+					views: {
+						'orderViews': {
+							templateUrl: 'partials/orders/manage.html',
+							controller: 'ManageOrderController'
+						}
+					}
+				})				
 			.state('app.alerts', {
 				url: '/alerts',
 				views: {

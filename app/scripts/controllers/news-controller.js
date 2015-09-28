@@ -2,7 +2,7 @@ angular.module('app.controllers').controller(
 	'NewsController', ['$scope', 'newsService', function($scope,newsService){
 	
 		$scope.page = 1;
-		$scope.moreText = "SHOW MORE";
+		$scope.moreText = "FETCHING NEWS..";
 
 		$scope.fetchNews = function() {
 			newsService.getDSENews($scope.page).then(function(news){
