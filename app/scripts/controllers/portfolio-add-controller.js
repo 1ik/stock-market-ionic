@@ -1,14 +1,25 @@
 angular.module('app.controllers')
 	.controller('portfolioAddController', ['$scope','portfolioService',
-		'$ionicPopup','companyService','$state','$ionicModal','$http', function($scope, portfolioService,
-			$ionicPopup,companyService,$state, $ionicModal,$http){
+		'$ionicPopup','companyService','$state','$ionicModal','$http', 'settingsService', function($scope, portfolioService,
+			$ionicPopup,companyService,$state, $ionicModal,$http, settingsService) {
 
 		$scope.form = {
 			breakeven_average: 0,
 			buy_average: 0,
 		};
 
-		$scope.commision = 2.4;
+		var broker = settingsService.getBroker();
+		if(broker == null) {
+			$ionicPopup.alert({
+				title: 'Broker not found',
+				template: 'You Need to set your broker in settings screen.'
+			}).then(function(r){
+				$state.go("app.settings.broker");
+			});
+			return;
+		}
+		
+		$scope.commision = broker.comission;
 
 		$scope.openSelectModal = function() {
 			$ionicModal.fromTemplateUrl('templates/modals/company-selector.html', {

@@ -44,6 +44,16 @@
 					<div class="col"><input disabled ng-model="order.totalMaxPrice" type="text" placeholder="To"></div>
 				</div>
 			</label>
+			<div class="item">
+				<div class="row">
+					<div class="col">Select Expire date</div>
+					<div class="col">
+						<ionic-datepicker input-obj="expireDatepickerObject">
+						  <span class="col-table ion-calendar"> Expire date ({{order.expiryDate? order.expiryDate : "touch to select"}})</span>
+						</ionic-datepicker>
+					</div>
+				</div>
+			</div>
 			<button ng-click="save()" class="button button-positive button-full">Submit</button>
 		</div>
       </div>

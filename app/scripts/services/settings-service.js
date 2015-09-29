@@ -27,6 +27,17 @@ angular.module('app.services')
 			removeSettings: function(settings) {
 				var reqUrl = constants.rootURL + 'api_users/destroySettings/' + settings.id;
 				return httpUtils.get(reqUrl, {},{'Token':$localstorage.getObject('userData').token}).promise;
+			},
+
+			updateBroker: function(settings) {
+				var reqUrl = constants.rootURL + 'api_users/update_broker';
+				var params = $.param(settings);
+				$localstorage.setObject('broker', settings);
+				return httpUtils.post(reqUrl, params, {'Token':$localstorage.getObject('userData').token}).promise;
+			},
+
+			getBroker: function() {
+				return $localstorage.getObject('broker');
 			}
 		};
 }])

@@ -5,8 +5,12 @@ angular.module('app.controllers')
 		
 		var alertSettings = settingsService.getAlertSettings();
 
-		alertSettings.then(function(settings){
-			$scope.settings = settings;
+		alertSettings.then(function(settings){			
+			if(settings == "null") {
+				$scope.settings = [];	
+			} else {
+				$scope.settings = settings;
+			}			
 		});
 
 		$scope.title = "Add new Alert";

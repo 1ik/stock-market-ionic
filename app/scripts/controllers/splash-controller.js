@@ -3,8 +3,8 @@ angular.module('app.controllers')
 	function($scope, $http, authService, $ionicModal, $ionicPopup, $state, $localstorage, pushService){
 
 	$scope.form = {
-		email : 'test3@mail.com',
-		password: 'test3'
+		email : 'rakimul@gmail.com',
+		password: '123456'
 	};
 
 	$scope.submitForm = function(email, password, signingUp) {
@@ -41,7 +41,8 @@ angular.module('app.controllers')
 			
 			pushService.register();
 			
-			$localstorage.setObject('userData', { token: data.token, user: data.user });			
+			$localstorage.setObject('userData', { token: data.token, user: data.user });
+			$localstorage.setObject('broker', data.broker);
 //			var device = $localstorage.getObject('device');
             //pushService.registerDevice({deviceId: device.id, deviceType: device.type}) //leaving out ios option atm
 			//login success

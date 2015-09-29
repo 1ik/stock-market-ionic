@@ -1,8 +1,8 @@
 angular.module('app.controllers')
 .controller('appController', ['$scope', '$rootScope', '$window', 'pushService', 
 	'$state', '$ionicPopup',
-	function($scope, $rootScope, $window, pushService, $state, $ionicPopup) {	
-
+	function($scope, $rootScope, $window, pushService, $state, $ionicPopup) {
+		
 		$rootScope.$on('$cordovaPush:notificationReceived', function(event, notification) {
 			switch(notification.event) {
 				

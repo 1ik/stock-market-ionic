@@ -188,7 +188,8 @@ angular.module('app', [
 					url: '/broker',
 					views: {
 						'settingsItem': {
-							templateUrl: 'partials/settings/broker.html'
+							templateUrl: 'partials/settings/broker.html',
+							controller: 'BrokerSettingsController'
 						}
 					}
 				})
