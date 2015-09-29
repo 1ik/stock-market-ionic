@@ -15,4 +15,22 @@ angular.module('app.controllers')
 			return parseFloat(ycp) + parseFloat(balance);
 		}
 
+		$scope.openShare = function(shareBalance) {
+			console.log(shareBalance);
+			$ionicPopup.alert({
+				title: shareBalance.company,
+				template: '<div class="item">
+	            <b>Quantity :</b> '+shareBalance.balance+'
+	          </div><div class="item">
+	            <b>Buy Average :</b> '+shareBalance.buy_average_value+'
+	          </div><div class="item">
+	            <b>Breakeven Average :</b><br/>'+shareBalance.breakeven_average+'
+	          </div><div class="item">
+	            <b>Breakeven Average :</b><br/>'+shareBalance.balance * shareBalance.buy_average_value+'
+	          </div><div class="item">
+	            <b>YCP :</b><br/>'+shareBalance.ycp+'
+	          </div>'
+			});
+		}
+
 	}]);

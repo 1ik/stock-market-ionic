@@ -2,6 +2,7 @@ angular.module('app.controllers').controller(
 	'ManageOrderController', ['$scope', 'ordersService', '$ionicPopup', '$state',
 	function($scope, ordersService, $ionicPopup, $state){
 		$scope.actions = ['buy', 'sell'];
+		
 		$scope.order = {
 			type : 'buy',
 			checkMarketPrice: false
@@ -9,9 +10,14 @@ angular.module('app.controllers').controller(
 
 		$scope.companySearching = false;
 
-		$scope.$watch('order.action',function(val){
+		$scope.$watch('order.type',function(val){
 			fetchCompanies(val);
 		});
+
+		$scope.$watch('order', function(newVal,oldVal){
+			$scope.order.totalMinPrice = $scope.order.quantity * $scope.order.minRange;
+			$scope.order.totalMaxPrice = $scope.order.quantity * $scope.order.maxRange;
+		},true);
 
 		var fetchCompanies = function(type) {
 			$scope.companySearching = true;
@@ -22,7 +28,9 @@ angular.module('app.controllers').controller(
 		}
 
 		$scope.save = function() {
-			ordersService.saveOrder($scope.order).then(function(data){
+			ordersService.saveOrder($scope.order).then(function(data) {
+				console.log(data);
+				return;
 				$ionicPopup.alert({
 					title: 'Order Saved!',
 					template: 'Your Order has been saved sucessfully!'

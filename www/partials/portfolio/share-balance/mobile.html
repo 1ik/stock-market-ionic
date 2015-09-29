@@ -20,35 +20,34 @@
 	<ion-content class="padding">
 		<p>Show Minimal shareblacne info in cards</p>
 
-		 <div class="card" ng-repeat="shareBalance in shareBalances">
+		 <div class="card" ng-repeat="shareBalance in shareBalances" ng-click="openShare(shareBalance)">
 	        <div class="item item-divider">
 	          #{{$index+1}} {{shareBalance.company}}
 	        </div>
 	        <div class="list list-inset">
-
 	          <div class="item">
 	            <b>Quantity :</b> {{shareBalance.balance}}
 	          </div>
-	          <div class="item">
+	          <!-- <div class="item">
 	            <b>Matured Quantity :</b> {{shareBalance.matured_balance}}
-	          </div>
-	          <div class="item">
+	          </div> -->
+	          <!-- <div class="item">
 	            <b>Buy Average :</b> {{shareBalance.buy_average_value}}
-	          </div>
-	          <div class="item">
+	          </div> -->
+	          <!-- <div class="item">
 	            <b>Breakeven Average :</b> {{shareBalance.breakeven_average}}
-	          </div>
-	          <div class="item">
+	          </div> -->
+	          <!-- <div class="item">
 	            <b>Buy Value :</b> {{shareBalance.balance * shareBalance.buy_average_value}}
-	          </div>
-	          <div class="item">
+	          </div> -->
+	          <!-- <div class="item">
 	            <b>YCP :</b> {{shareBalance.ycp}}
-	          </div>
+	          </div> -->
 	          <div class="item">
 	            <b>Market Value :</b> {{marketVal(shareBalance.ycp, shareBalance.balance)}}
 	          </div>
 	          <div class="item">
-	            <b>Gain / Loss :</b> {{shareBalance.gain_loss}}
+	            <b>Gain / Loss :</b> {{shareBalance.loss_gain}}
 	          </div>
 	        </div>
       </div>
