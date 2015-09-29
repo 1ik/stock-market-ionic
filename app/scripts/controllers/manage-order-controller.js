@@ -52,8 +52,6 @@ angular.module('app.controllers').controller(
 			var date = new Date();
 			$scope.order.submissionDate = date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate();
 			ordersService.saveOrder($scope.order).then(function(data) {
-				console.log(data);
-				return;
 				$ionicPopup.alert({
 					title: 'Order Saved!',
 					template: 'Your Order has been saved sucessfully!'
