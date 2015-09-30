@@ -13,23 +13,29 @@
   <ion-content>
     <div class="card">
       <div class="item item-divider">
-        Notice
+        Your Fund Transfer Request History
       </div>
       <div class="item item-text-wrap">
-        We would like to inform that, our Banani branch has been shifted to Uttara. And our new office will be ready for all kind of activities from Sunday, 29.08.15. So, get a fresh welcome to come there.
-        <br>
-        ...
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="item item-divider">
-        Your request has been approved
-      </div>
-      <div class="item item-text-wrap">
-        After transfer your fund in our bank account , send us information with your client ID in our respective email address.
-        <br>
-        ...
+        <div class="row order-col">
+          <div class="col col-table"> <p>SL</p></div>
+          <div class="col col-table"> <p>Requested Date</p> </div>
+          <div class="col col-table"> <p>Requested Type</p></div>
+          <div class="col col-table"> <p>Cheque Collection Point</p> </div>
+          <div class="col col-table"> <p>Delivery Date</p></div>
+          <div class="col col-table"> <p>Amount</p> </div>
+          <div class="col col-table"> <p>Status</p> </div>
+          <div class="col col-table"> <p>Remarks</p> </div>
+        </div>
+        <div class="row order-col" ng-repeat="ft in fts">
+          <div class="col col-table"><p>{{$index+1}}</p></div>
+          <div class="col col-table"><p>{{ft.request_date}}</p></div>
+          <div class="col col-table"><p>{{ft.request_type}}</p></div>
+          <div class="col col-table"><p>{{ft.cheque_collection_branch}}</p></div>
+          <div class="col col-table"><p>{{ft.delivery_date}}</p></div>
+          <div class="col col-table"><p>{{ft.amount}}</p></div>
+          <div class="col col-table"><p>{{ft.status}}</p></div>
+          <div class="col col-table"><p>{{ft.remarks}}</p></div>
+        </div>
       </div>
     </div>
 
