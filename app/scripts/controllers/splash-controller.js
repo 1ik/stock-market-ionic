@@ -3,8 +3,8 @@ angular.module('app.controllers')
 	function($scope, $http, authService, $ionicModal, $ionicPopup, $state, $localstorage, pushService){
 
 	$scope.form = {
-		email : 'test3@mail.com',
-		password: 'test3'
+		email : 'rakimul@gmail.com',
+		password: '123456'
 	};
 
 	$scope.submitForm = function(email, password, signingUp) {

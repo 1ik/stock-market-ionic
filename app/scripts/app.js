@@ -131,6 +131,31 @@ angular.module('app', [
 					}
 				}
 			})
+			.state('app.ft', {
+				url: '/fund-transfers',
+				views: {
+					'menuContent': {
+						templateUrl: 'pages/ft.html',
+						controller: "FTsController"
+					}
+				}
+			})
+				.state('app.ft.view', {
+					url: '/view',
+					views: {
+						'ftItem': {
+							templateUrl: 'partials/ft/view.html'
+						}
+					}
+				})
+				.state('app.ft.request', {
+					url: '/request',
+					views: {
+						'ftItem': {
+							templateUrl: 'partials/ft/request.html'
+						}
+					}
+				})
 			.state('app.news', {
 				url: '/news',
 				views: {

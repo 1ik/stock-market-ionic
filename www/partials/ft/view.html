@@ -1,0 +1,43 @@
+<ion-view view-title="Fund Transfer Requests" cache-view="false">
+  
+  <ion-nav-bar class="bar bar-header bar-dark">
+    <ion-nav-back-button></ion-nav-back-button>
+    <ion-nav-buttons side="left">
+      <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+      <a href= "#/app/fund-transfers/request" class="button button-primary" >Transfer Funds</a>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+
+  <ion-content>
+    <div class="card">
+      <div class="item item-divider">
+        Your Fund Transfer Request History
+      </div>
+      <div class="item item-text-wrap">
+        <div class="row order-col">
+          <div class="col col-table"> <p>SL</p></div>
+          <div class="col col-table"> <p>Requested Date</p> </div>
+          <div class="col col-table"> <p>Requested Type</p></div>
+          <div class="col col-table"> <p>Cheque Collection Point</p> </div>
+          <div class="col col-table"> <p>Delivery Date</p></div>
+          <div class="col col-table"> <p>Amount</p> </div>
+          <div class="col col-table"> <p>Status</p> </div>
+          <div class="col col-table"> <p>Remarks</p> </div>
+        </div>
+        <div class="row order-col" ng-repeat="ft in fts">
+          <div class="col col-table"><p>{{$index+1}}</p></div>
+          <div class="col col-table"><p>{{ft.request_date}}</p></div>
+          <div class="col col-table"><p>{{ft.request_type}}</p></div>
+          <div class="col col-table"><p>{{ft.cheque_collection_branch}}</p></div>
+          <div class="col col-table"><p>{{ft.delivery_date}}</p></div>
+          <div class="col col-table"><p>{{ft.amount}}</p></div>
+          <div class="col col-table"><p>{{ft.status}}</p></div>
+          <div class="col col-table"><p>{{ft.remarks}}</p></div>
+        </div>
+      </div>
+    </div>
+
+  </ion-content>
+</ion-view>
