@@ -9,7 +9,6 @@ angular.module('app.services')
 			var reqUrl = constants.rootURL + 'api_users/setShareBalance';
 			var params = $.param(data);
 			return httpUtils.post(reqUrl, params, {'Token':$localstorage.getObject('userData').token}).promise;
-
 		},
 	
 		getStatus: function(data){
