@@ -1,13 +1,34 @@
 <ion-view view-title="Request a Fund Transfer">
   <ion-content>
-    <div class="card">
-      <div class="item item-divider">
-        Your Fund Transfer Request History
-      </div>
-      <div class="item item-text-wrap">
-        
-      </div>
-    </div>
-
+	<div class="card">
+		<div class="item item-divider">
+			Create a new Fund Transfer Request
+		</div>
+		<div class="item item-text-wrap">
+			<div class="row">
+				<div class="col">select type</div>
+				<div class="col">
+					<select ng-model="ft.type" ng-options="type.value as type.name for type in types"></select>
+				</div>
+			</div>
+		</div>
+		<div class="item item-text-wrap" ng-if="ft.type == 'cheque_requisition'">
+			<div class="row">
+				<div class="col">Collection Point</div>
+				<div class="col">
+					<select ng-model="ft.collectionPoint" ng-options="cp.value as cp.name for cp in collectionPoints"></select>
+				</div>
+			</div>
+		</div>
+		<div class="item item-text-wrap">
+			<div class="row">
+				<div class="col"><input placeholder="Amount" type="text" ng-model="ft.requestedAmount"></div>
+				<div class="col"><button ng-click="submit()" class="button button-positive">submit</button></div>
+			</div>
+		</div>
+		<div class="item item-divider">
+			Your Current Balance is 2200000
+		</div>
+	</div>
   </ion-content>
 </ion-view>
