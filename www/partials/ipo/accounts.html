@@ -5,9 +5,22 @@
         IPO Accounts
       </div>
       <div class="item item-text-wrap">
-        We would like to inform that, our Banani branch has been shifted to Uttara. And our new office will be ready for all kind of activities from Sunday, 29.08.15. So, get a fresh welcome to come there.
-        <br>
-        ...
+        <div class="row order-col">
+          <div class="col col-table"> <p>No</p></div>
+          <div class="col col-table"> <p>Child ID</p> </div>
+          <div class="col col-table"> <p>Child Name</p> </div>
+          <div class="col col-table"> <p>Account Type</p></div>
+          <div class="col col-table"> <p>BO ID</p> </div>
+          <div class="col col-table"> <p>Owner ID</p></div>
+        </div>
+        <div class="row order-col" ng-repeat="acc in childAccounts">
+          <div class="col col-table"> <p>{{$index+1}}</p></div>
+          <div class="col col-table"> <p>{{acc.child_id}}</p></div>
+          <div class="col col-table"> <p>{{acc.child_name}}</p></div>
+          <div class="col col-table"> <p>{{acc.child_account_type}}</p></div>
+          <div class="col col-table"> <p>{{acc.child_BO_Id}}</p></div>
+          <div class="col col-table"> <p>{{acc.owner_id}}</p></div>
+        </div>
       </div>
     </div>
 
