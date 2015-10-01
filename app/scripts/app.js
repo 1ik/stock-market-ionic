@@ -234,6 +234,42 @@ angular.module('app', [
 						}
 					}
 				})
+				.state('app.ipo.accounts', {
+					url: '/accounts',
+					views: {
+						'ipoViews': {
+							templateUrl: 'partials/ipo/accounts.html',
+							controller: 'IpoAccountsController'
+						}
+					}
+				})
+				.state('app.ipo.withdrawal', {
+					url: '/withdrawal',
+					views: {
+						'ipoViews': {
+							templateUrl: 'partials/ipo/withdrawal.html',
+							controller: 'IpoWithdrawalController'
+						}
+					}
+				})
+				.state('app.ipo.new', {
+					url: '/new',
+					views: {
+						'ipoViews': {
+							templateUrl: 'partials/ipo/new.html',
+							controller: 'IpoNewApplicationController'
+						}
+					}
+				})
+				.state('app.ipo.report', {
+					url: '/report',
+					views: {
+						'ipoViews': {
+							templateUrl: 'partials/ipo/report.html',
+							controller: 'IpoReportController'
+						}
+					}
+				})
 
 		// if none of the above states are matched, use this as the fallback
 		$urlRouterProvider.otherwise('/splash');
