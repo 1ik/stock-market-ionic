@@ -238,7 +238,7 @@ angular.module('app', [
 					url: '/accounts',
 					views: {
 						'ipoViews': {
-							templateUrl: 'partials/ipo/accounts.html',
+							templateUrl: 'partials/ipo/accounts-'+media+'.html',
 							controller: 'IpoAccountsController'
 						}
 					}
