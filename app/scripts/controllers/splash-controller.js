@@ -11,25 +11,18 @@ angular.module('app.controllers')
 
 		if(signingUp) {
 			authService.registerUser($scope.form).then(function(data){			
-				var alertPopup = $ionicPopup.alert({
+				$ionicPopup.alert({
 					title: 'Registration Successful',
 					template: 'You have registered successfully. Please log in to continue.'
-				});
-				//save token in the app
-
-				alertPopup.then(function(res) {
+				}).then(function(res) {
 					$scope.signingUp = false;
 				});
-
-
 			}).catch(function(data){
 				
-				var alertPopup = $ionicPopup.alert({
+				$ionicPopup.alert({
 					title: 'Registration Failed',
 					template: 'The email address was incorrect or it already exists.'
-				});
-
-				alertPopup.then(function(res) {
+				}).then(function(res) {
 					$scope.signingUp = true;
 				});
 
@@ -38,25 +31,22 @@ angular.module('app.controllers')
 		}
 
 		authService.authenticateUser(email,password).then(function(data) {
-			
-			pushService.register();
-			
-			$localstorage.setObject('userData', { token: data.token, user: data.user });
-			$localstorage.setObject('broker', data.broker);
-//			var device = $localstorage.getObject('device');
-            //pushService.registerDevice({deviceId: device.id, deviceType: device.type}) //leaving out ios option atm
-			//login success
-			$state.go("app.dashboard")
+			pushService.register();			
+		
+			$localstorage.setObject('userData', { 
+				token: data.token, 
+				user: data.user,
+			});
+			$localstorage.setObject('broker', data.user.broker);
+
+			$state.go("app.dashboard")		
 		}).catch(function(data){
-			
-			var alertPopup = $ionicPopup.alert({
+			$ionicPopup.alert({
 				title: 'Login Failed',
 				template: 'The email and password is not accepted.'
-			});
-
-			alertPopup.then(function(res) {
+			}).then(function(res) {
 				$scope.signingUp = true;
-			});
+			});		
 		});
 	}
 
