@@ -2,12 +2,50 @@
   <ion-content>
     <div class="card">
       <div class="item item-divider">
-        IPO Withdrawal
+        Create New IPO Withdrawal
       </div>
       <div class="item item-text-wrap">
-        We would like to inform that, our Banani branch has been shifted to Uttara. And our new office will be ready for all kind of activities from Sunday, 29.08.15. So, get a fresh welcome to come there.
-        <br>
-        ...
+        <div class="list">
+          <div class="item">
+            <label for="">
+              <span>Available Balance</span>
+              <input ng-model="user.available_balance" disabled type="text">
+            </label>
+          </div>
+          <div class="item">
+            <label for="">
+              <span>Actual Balance</span>
+              <input ng-model="user.actual_balance" disabled type="text">
+            </label>
+          </div>
+          <div class="item">
+            <label for="">
+              <span>Amount</span>
+              <input ng-model="withdrawal.amount" type="text" placeholder="Please Enter amount">
+            </label>
+          </div>
+          <div class="item">
+            <label for="">
+              <span>Type</span>
+              <select ng-model="withdrawal.deposit_withdraw_type" id="">
+                <option value="bank_account">Bank Account</option>
+                <option value="trade_account">Trade Account</option>
+              </select>
+            </label>
+          </div>
+          <div class="item">
+            <label for="">
+              <span>Remarks</span>
+              <input ng-model="withdrawal.remarks" type="text" placeholder="Please Remarks">
+            </label>
+          </div>
+          <div class="item">
+            <ionic-datepicker input-obj="fromDatepickerObject">
+              <span class="col-table ion-calendar"> Request Date ({{withdrawal.request_date? withdrawal.request_date : "Touch to select"}}) </i></span>
+            </ionic-datepicker>
+          </div>
+          <button ng-disabled="submitting" ng-click="submit()" class="button button-positive button-full">submit</button>
+        </div>
       </div>
     </div>
 
