@@ -6,14 +6,17 @@ angular.module('app.services')
 		getChildAccounts: function() {
 			var reqUrl = constants.rootURL + 'api_ipo/childAccounts';
 			return httpUtils.get(reqUrl, {}, {'Token':$localstorage.getObject('userData').token}).promise;
-		}
-		/*
-		sendFTReq: function(data) {
-			console.log(data);
-			var reqUrl = constants.rootURL + 'api_fundtransfer/saveRequest';
+		},
+
+		getIpoWithdrawals: function(params) {
+			var reqUrl = constants.rootURL + 'api_ipo/childAccounts';
+			return httpUtils.get(reqUrl, {}, {'Token':$localstorage.getObject('userData').token}).promise;
+		},
+
+		saveWithdrawalReq: function(data) {
+			var reqUrl = constants.rootURL + 'api_ipo/saveWithdraw';
 			var params = $.param(data);
 			return httpUtils.post(reqUrl, params, {'Token':$localstorage.getObject('userData').token}).promise;
-		},
-		*/
+		}
 	};
 }])
