@@ -1,8 +1,10 @@
 angular.module('app.controllers').controller(
 	'IpoWithdrawalController', ['$scope', '$localstorage', 'ipoService', '$ionicPopup', function($scope, $localstorage, ipoService, $ionicPopup){		
+		$scope.withdrawalReqLabel = "View Withdrawal Requests";
 		$scope.user = $localstorage.getObject('userData').user;
 		$scope.withdrawal = {};
 		$scope.submitting = false;
+		$scope.tab = window.innerWidth > 450;
 		$scope.fromDatepickerObject = {
 			titleLabel: 'Select Date',  //Optional
 			inputDate: new Date(),    //Optional
@@ -31,6 +33,14 @@ angular.module('app.controllers').controller(
 				}).then(function(res) {
 					$scope.withdrawal = {};
 				});
+			});
+		}
+
+		$scope.showWithdrawals = function() {
+			$scope.withdrawalReqLabel = "Fetching.."
+			ipoService.getIpoWithdrawals().then(function(data){
+				$scope.withdrawals = data;
+				console.log(data);
 			});
 		}
 }]);

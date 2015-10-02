@@ -9,7 +9,7 @@ angular.module('app.services')
 		},
 
 		getIpoWithdrawals: function(params) {
-			var reqUrl = constants.rootURL + 'api_ipo/childAccounts';
+			var reqUrl = constants.rootURL + 'api_ipo/withdrawHistory';
 			return httpUtils.get(reqUrl, {}, {'Token':$localstorage.getObject('userData').token}).promise;
 		},
 

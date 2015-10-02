@@ -1,5 +1,56 @@
 <ion-view view-title="IPO Withdrawal">
   <ion-content>
+    <button ng-click="showWithdrawals()" ng-if="!withdrawals" class="button button-full button-positive">{{withdrawalReqLabel}}</button>
+    <div class="card" ng-if="withdrawals">
+      <div class="item item-divider">
+        Withdraw Requests
+      </div>
+
+      <div class="item item-text-wrap" ng-if="tab">
+        <div class="row order-col">
+          <div class="col col-table"> <p>Received Date</p></div>
+          <div class="col col-table"> <p>Transaction</p></div>
+          <div class="col col-table"> <p>Description</p></div>
+          <div class="col col-table"> <p>Amount</p></div>
+          <div class="col col-table"> <p>Remarks</p></div>
+          <div class="col col-table"> <p>Status</p></div>
+        </div>
+        <div class="row order-col" ng-repeat="withdraw in withdrawals">
+          <div class="col col-table"> <p>{{withdraw.Received_Date}}</p></div>
+          <div class="col col-table"> <p>xxxxxx</p></div>
+          <div class="col col-table"> <p>{{withdraw.Deposit_Withdraw_Description}}</p></div>
+          <div class="col col-table"> <p>{{withdraw.Amount}}</p></div>
+          <div class="col col-table"> <p>{{withdraw.Remarks}}</p></div>
+          <div class="col col-table"> <p>{{withdraw.Approval_Status}}</p></div>          
+        </div>
+      </div>
+      
+      <div ng-if="!tab" ng-repeat="withdraw in withdrawals">
+        <div class="item item-divider">
+          Receive Date : {{withdraw.Received_Date}}
+        </div>
+        <div class="item item-text-wrap" >
+          <div class="list">
+            <div class="item">
+              <span>Description: {{withdraw.Deposit_Withdraw_Description}}</span>
+            </div>
+            <div class="item">
+              <span>Transaction: xxxxxx</span>
+            </div>
+            <div class="item">
+              <span>Amount: {{withdraw.Amount}}</span>
+            </div>
+            <div class="item">
+              <span>Remarks: {{withdraw.Remarks}}</span>
+            </div>
+            <div class="item">
+              <span>Approval Status: {{withdraw.Approval_Status}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
     <div class="card">
       <div class="item item-divider">
         Create New IPO Withdrawal
@@ -49,8 +100,4 @@
       </div>
     </div>
   </ion-content>
-
-  <ion-footer-bar align-title="left" class="bar-assertive">
-    <h1 class="title">View Withdraw Requests</h1>
-  </ion-footer-bar>
 </ion-view>
