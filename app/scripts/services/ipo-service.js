@@ -17,6 +17,11 @@ angular.module('app.services')
 			var reqUrl = constants.rootURL + 'api_ipo/saveWithdraw';
 			var params = $.param(data);
 			return httpUtils.post(reqUrl, params, {'Token':$localstorage.getObject('userData').token}).promise;
+		},
+
+		getPendingIpoApplications: function(data) {
+			var reqUrl = constants.rootURL + 'api_ipo/pendingApplications';
+			return httpUtils.get(reqUrl, {}, {'Token':$localstorage.getObject('userData').token}).promise;
 		}
 	};
 }])

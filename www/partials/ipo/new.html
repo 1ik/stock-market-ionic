@@ -1,11 +1,104 @@
 <ion-view view-title="NEW IPO Application">
   <ion-content>
+  	<button ng-hide="pendingIPOs" ng-click="showPendings()" class="button button-positive button-full">{{pendingIpoLabel}}</button>
+  	<div class="card" ng-if="pendingIPOs">
+		<div class="item item-divider">
+			Pending IPOs
+		</div>      
+		<div class="item item-text-wrap">	
+			<div class="row order-col">
+				<div class="col col-table"> <p>Application Date</p></div>
+				<div class="col col-table"> <p>ID</p></div>
+				<div class="col col-table"> <p>Applied IPO</p></div>
+				<div class="col col-table"> <p>Status</p></div>
+				<div class="col col-table"> <p>Remarks</p></div>
+			</div>
+			<div class="row order-col">
+				<div class="col col-table"> <p>{{pendingIPOs.pending_ipo_list.Application_Date}}</p></div>
+				<div class="col col-table"> <p>{{pendingIPOs.pending_ipo_list.id}}</p></div>
+				<div class="col col-table"> <p>{{pendingIPOs.pending_ipo_list.IPOSession_Name}}</p></div>
+				<div class="col col-table"> <p>{{pendingIPOs.pending_ipo_list.Application_Satus}}</p></div>
+				<div class="col col-table"> <p>{{pendingIPOs.pending_ipo_list.Remarks}}</p></div>
+			</div>
+			<div class="row order-col" ng-repeat="row in pendingIPOs.child_pending_ipo_list">
+				<div class="col col-table"> <p>{{row.Application_Date}}</p></div>
+				<div class="col col-table"> <p>{{row.id}}</p></div>
+				<div class="col col-table"> <p>{{row.IPOSession_Name}}</p></div>
+				<div class="col col-table"> <p>{{row.Application_Satus}}</p></div>
+				<div class="col col-table"> <p>{{row.Remarks}}</p></div>
+			</div>
+		</div>
+  	</div>
     <div class="card">
       <div class="item item-divider">
         New IPO Application
-      </div>
+      </div>      
       <div class="item item-text-wrap">
-      
+      	<div class="list">
+      		
+			<div class="item">
+				<label for="">
+					<span>Available Balance</span>
+					<input ng-model="user.available_balance" disabled type="text">
+				</label>
+			</div>
+			<div class="item">
+				<label for="">
+					<span>Actual Balance</span>
+					<input ng-model="user.actual_balance" disabled type="text">
+				</label>
+			</div>
+
+			<div class="item">
+				<label for="">
+					<span>Ipo Sessions</span>
+					<select ng-options="session as session.IPOSession_Name for session in user.iop_session_list" ng-model="ipo.ipo_Session"></select>
+				</label>
+			</div>
+			<div class="item">
+				<label for="">
+					<span>Ipo Sessions Amount</span>
+					<input type="text" ng-model="ipo.ipo_Session.Amount">
+				</label>
+			</div>
+			<div class="item">
+				<label for="">
+					<span>Refund Method</span>
+					<select ng-model="ipo.refund_option">
+						<option value="1">Parent's IPO Account</option>
+						<option value="2">Child's Bank Account</option>
+					</select>
+				</label>
+			</div>
+			<div class="item">
+				<label for="">
+					<span>Total Amount Applied</span>
+					<input disabled type="text" ng-model="totalAppliedAmount">
+				</label>
+			</div>
+      	</div>
+      	
+      	<label for="">Accounts</label>
+      	<div class="row order-col">
+			<div class="col col-table"> <p>ID</p></div>
+			<div class="col col-table"> <p>Name</p></div>
+			<div class="col col-table"> <p>Balance</p></div>
+			<div class="col col-table"> <p>Select</p></div>
+		</div>
+		<div class="row order-col">
+			<div class="col col-table"> <p><b>{{user.user_id}}</b></p></div>
+			<div class="col col-table"> <p><b>{{user.user_full_name}}</b></p></div>
+			<div class="col col-table"> <p><b>{{user.available_balance}}</b></p></div>
+			<div class="col col-table"> <p><input type="checkbox" ng-model="user.selected"></p></div>
+		</div>
+		<div class="row order-col" ng-repeat="child in childAccounts">
+			<div class="col col-table"> <p>{{child.child_id}}</p></div>
+			<div class="col col-table"> <p>{{child.child_name}}</p></div>
+			<div class="col col-table"> <p>xxxx</p></div>
+			<div class="col col-table"> <p><input type="checkbox" ng-model="child.selected"></p></div>
+		</div>
+		
+		<button ng-click="submit()" class="button button-positive button-full" ng-disabled="busy">Apply</button>
       </div>
     </div>
 
