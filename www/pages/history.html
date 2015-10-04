@@ -1,0 +1,93 @@
+<ion-view view-title="Transaction History">
+  <ion-content class="padding">
+    <div class="item item-divider">
+      Transaction Type
+    </div> 
+      <ion-radio ng-model="search.type" ng-value="'money'">Money Transaction</ion-radio>
+      <ion-radio ng-model="search.type" ng-value="'share'">Share Deposit / Withdrawal</ion-radio>
+      <ion-radio ng-model="search.type" ng-value="'trade'">Trade Details</ion-radio>
+    </span>
+
+    <div class="list list-inset">
+      <div class="item item-divider">
+        Date Range
+      </div>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">From (Touch to select)</span>
+        <ionic-datepicker input-obj="fromDatepickerObject">
+          <input type="text"> {{fromDatepickerObject.inputDate | date:'dd - MMMM - yyyy'}}</input>
+        </ionic-datepicker>
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">To (Touch to select)</span>
+        <ionic-datepicker input-obj="toDatepickerObject">
+          <input type="text"> {{toDatepickerObject.inputDate | date:'dd - MMMM - yyyy'}}</input>
+        </ionic-datepicker>
+      </label>    
+    </div>
+    
+
+    <!-- we can show the results here -->
+    <div class="card" ng-if="searching">
+      <div class="list" style="text-align:center">
+          <div class="item item-text-wrap">
+            <div ng-if="results.length == 0" class="row order-col">
+              <div class="col col-table"><p>{{status}}</p></div>
+            </div>
+            <div class="row order-col" ng-if="results.length > 0">
+              <div class="col col-table"><p>Customer ID</p></div>
+              <div ng-if="search.type == 'share'" class="col col-table"><p>Entry Date</p></div>
+              <div class="col col-table"><p>Company </p></div>
+              <div ng-if="search.type == 'share'" class="col col-table"><p>Qty</p></div>
+              <div ng-if="search.type == 'share'" class="col col-table"><p>Deposite withdrawal</p></div>
+              <div ng-if="search.type == 'share'" class="col col-table"><p>No Script</p></div>
+              <div ng-if="search.type == 'share'" class="col col-table"><p>Bill No.</p></div>
+              <div ng-if="search.type == 'share'" class="col col-table"><p>Deposite Type</p></div>
+              <div ng-if="search.type == 'trade'" class="col col-table"><p>Trans Date</p></div>
+              <div ng-if="search.type == 'trade'" class="col col-table"><p>Trans Time</p></div>
+              <div ng-if="search.type == 'trade'" class="col col-table"><p>Buy/Sell</p></div>
+              <div ng-if="search.type == 'trade'" class="col col-table"><p>Group</p></div>
+              <div ng-if="search.type == 'trade'" class="col col-table"><p>Share Qty.</p></div>
+              <div ng-if="search.type == 'trade'" class="col col-table"><p>Price</p></div>
+              <div ng-if="search.type == 'trade'" class="col col-table"><p>Total</p></div>
+              <div ng-if="search.type == 'trade'" class="col col-table"><p>Comm</p></div>
+              <div ng-if="search.type == 'trade'" class="col col-table"><p>Workst. ID</p></div>
+              <div ng-if="search.type == 'money'" class="col col-table"><p>Rcv.Date</p></div>
+              <div ng-if="search.type == 'money'" class="col col-table"><p>Depo. Withdrawal</p></div>
+              <div ng-if="search.type == 'money'" class="col col-table"><p>Amount</p></div>
+              <div ng-if="search.type == 'money'" class="col col-table"><p>Bank</p></div>
+              <div ng-if="search.type == 'money'" class="col col-table"><p>Chq No.</p></div>
+              <div ng-if="search.type == 'money'" class="col col-table"><p>Sl No.</p></div>
+            </div>
+          
+            <div class="row order-col" ng-repeat="result in results">
+              <div class="col col-table"><p>{{result.customer_id}}</p></div>
+              <div ng-if="search.type == 'share'" class="col col-table"><p>{{result.entry_date}}</p></div>
+              <div class="col col-table"><p>{{result.company}}</p></div>
+              <div ng-if="search.type == 'share'" class="col col-table"><p>{{result.quantity}}</p></div>
+              <div ng-if="search.type == 'share'" class="col col-table"><p>{{result.deposit_withdrawal}}</p></div>
+              <div ng-if="search.type == 'share'" class="col col-table"><p>{{result.no_script}}</p></div>
+              <div ng-if="search.type == 'share'" class="col col-table"><p>{{result.bill_no}}</p></div>
+              <div ng-if="search.type == 'share'" class="col col-table"><p>{{result.deposite_type}}</p></div>
+              <div ng-if="search.type == 'trade'" class="col col-table"><p>{{result.tarsection_date}}</p></div>
+              <div ng-if="search.type == 'trade'" class="col col-table"><p>{{result.tarsection_time}}</p></div>
+              <div ng-if="search.type == 'trade'" class="col col-table"><p>{{result.buy_sell}}</p></div>
+              <div ng-if="search.type == 'trade'" class="col col-table"><p>{{result.group}}</p></div>
+              <div ng-if="search.type == 'trade'" class="col col-table"><p>{{result.share_quantity}}</p></div>
+              <div ng-if="search.type == 'trade'" class="col col-table"><p>{{result.price}}</p></div>
+              <div ng-if="search.type == 'trade'" class="col col-table"><p>{{result.total}}</p></div>
+              <div ng-if="search.type == 'trade'" class="col col-table"><p>{{result.comm}}</p></div>
+              <div ng-if="search.type == 'trade'" class="col col-table"><p>{{result.workstation_id}}</p></div>
+              <div ng-if="search.type =='money'" class="col col-table"><p>{{result.recieve_date}}</p></div>
+              <div ng-if="search.type == 'money'" class="col col-table"><p>{{result.deposit_withdrawal}}</p></div>
+              <div ng-if="search.type == 'money'" class="col col-table"><p>{{result.amount}}</p></div>
+              <div ng-if="search.type == 'money'" class="col col-table"><p>{{result.bank_name}}</p></div>
+              <div ng-if="search.type == 'money'" class="col col-table"><p>{{result.cheque_no}}</p></div>
+              <div ng-if="search.type == 'money'" class="col col-table"><p>{{result.sl_no}}</p></div>
+            </div>
+          </div>
+          </a>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

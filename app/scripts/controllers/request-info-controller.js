@@ -19,7 +19,6 @@ angular.module('app.controllers').controller(
 			$scope.submitting = true;
 			reqInfoService.saveNewReqInfo($scope.reqInfo).then(function(data){
 				$scope.submitting = false;
-				$scope.request_infos.push(data);
 				$ionicPopup.alert({
 					title: 'Request accepted',
 					template: 'Your Request for information has been saved and will be reviewed.'
