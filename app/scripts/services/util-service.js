@@ -16,3 +16,18 @@ angular.module('app.services')
     }
   }
 }])
+.service('dateService', [ function(){
+  
+  return {
+    formattedDate: function(dateObj) {
+      // function to get number with leading zeros
+      zeroPadded = function (num, size){ return ('000000000' + num).substr(-size); }
+      var year = dateObj.getFullYear();
+      // var month = dateObj.getMonth();//gave me one less than actual month
+      var month = zeroPadded(dateObj.getMonth()+1,2);
+      var date = zeroPadded(dateObj.getDate(),2);
+      return year+'-'+month+'-'+date;
+    }
+  };
+}])
+

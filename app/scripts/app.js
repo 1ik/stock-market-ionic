@@ -109,7 +109,7 @@ angular.module('app', [
 					url: '/view',
 					views: {
 						'orderViews': {
-							templateUrl: 'partials/orders/view-'+media+'.html',
+							templateUrl: 'partials/orders/view-'+media+'.html'
 						}
 					}
 				})
@@ -243,6 +243,15 @@ angular.module('app', [
 						}
 					}
 				})
+			.state('app.history', {
+				url: '/history',
+				views: {
+					'menuContent': {
+						templateUrl: 'pages/history.html',
+						controller: 'HistoryController'
+					}
+				}
+			})
 
 		// if none of the above states are matched, use this as the fallback
 		$urlRouterProvider.otherwise('/splash');

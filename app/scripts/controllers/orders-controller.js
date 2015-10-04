@@ -1,6 +1,7 @@
 angular.module('app.controllers').controller(
 	'OrdersController', ['$scope', 'ordersService','$ionicPopup', '$state',
 	function($scope, ordersService, $ionicPopup, $state){
+
 		$scope.companies = ["all"];
 		
 		$scope.fromDatepickerObject = {
@@ -46,6 +47,7 @@ angular.module('app.controllers').controller(
 		$scope.clearFrom = function() {
 			$scope.search.from = "";
 		}
+		
 		$scope.clearTo = function() {
 			$scope.search.to = "";
 		}
@@ -95,7 +97,7 @@ angular.module('app.controllers').controller(
 				$state.go('app.orders.view')
 			});
 		}
-		
+
 		$scope.search = {
 			company: "all",
 			from: "",
