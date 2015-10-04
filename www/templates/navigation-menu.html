@@ -1,8 +1,8 @@
-<ion-content>
+<ion-content cache-view="false">
 	<ion-list>
 		<ion-item class="bar bar-header bar-dark"></ion-item>
 		<ion-item menu-close href="#/app/dashboard">
-			Dashboard
+			Dashboard 
 		</ion-item>
 		<ion-item menu-close href="#/app/profile">
 			Profile
@@ -10,25 +10,25 @@
 		<ion-item menu-close href="#/app/portfolio/statuses">
 			Portfolio
 		</ion-item>
-		<ion-item menu-close href="#/app/orders/view">
+		<ion-item menu-close href="#/app/orders/view" ng-hide="!user.kscl">
 			Order Management
 		</ion-item>
-		<ion-item menu-close href="">
+		<ion-item menu-close href="#/app/market-info">
 			Market Info
 		</ion-item>
 		<ion-item menu-close href="#/app/alerts">
 			Alerts
 		</ion-item>
-		<ion-item menu-close href="">
+		<ion-item menu-close href="" ng-if="user.kscl">
 			IPO Mangement
 		</ion-item>
-		<ion-item menu-close href="#/app/fund-transfers/view">
+		<ion-item menu-close href="#/app/fund-transfers/view" ng-hide="!user.kscl">
 			Fund Transfer
 		</ion-item>
-		<ion-item menu-close href="#/app/history">
+		<ion-item menu-close href="#/app/history" ng-hide="!user.kscl">
 			History
 		</ion-item>
-		<ion-item menu-close href="#/app/rq-info/view">
+		<ion-item menu-close href="#/app/rq-info/view" ng-hide="!user.kscl">
 			Request Information
 		</ion-item>
 		<ion-item menu-close href="#/app/news">

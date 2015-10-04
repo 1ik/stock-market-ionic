@@ -121,7 +121,16 @@ angular.module('app', [
 							controller: 'ManageOrderController'
 						}
 					}
-				})				
+				})
+			.state('app.marketInfos', {
+				url: '/market-info',
+				views: {
+					'menuContent': {
+						templateUrl: 'pages/market-info.html',
+						controller: "MarketInfoController"
+					}
+				}
+			})			
 			.state('app.alerts', {
 				url: '/alerts',
 				views: {

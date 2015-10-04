@@ -1,8 +1,10 @@
 angular.module('app.controllers')
 .controller('appController', ['$scope', '$rootScope', '$window', 'pushService', 
-	'$state', '$ionicPopup',
-	function($scope, $rootScope, $window, pushService, $state, $ionicPopup) {
+	'$state', '$ionicPopup', '$localstorage',
+	function($scope, $rootScope, $window, pushService, $state, $ionicPopup, $localstorage) {
 		
+		$scope.user = $localstorage.getObject('userData').user;
+
 		$rootScope.$on('$cordovaPush:notificationReceived', function(event, notification) {
 			switch(notification.event) {
 				
