@@ -1,0 +1,27 @@
+<ion-view view-title="Request informations" cache-view="false">
+
+  <ion-content>
+    <div class="card">
+      <div class="item item-divider">
+        New Request information
+      </div>
+      <div class="item item-text-wrap">
+        <div class="list">
+          <div class="item">
+            <span>Subject</span>
+            <input ng-model="reqInfo.subject" type="text" placeholder="Write Subject">
+          </div>
+          <div class="item">
+            <span>Body</span>
+            <textarea ng-model="reqInfo.body" placeholder="Write the request here" cols="30" rows="10"></textarea>
+          </div>
+          <div class="item">
+            <span>Account Change ? </span>
+            <input type="checkbox" ng-model="reqInfo.accountChange" />
+          </div>
+        </div>
+        <button ng-disable="submitting" ng-click="submit()" class="button button-positive button-full">Submit</button>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
