@@ -5,7 +5,20 @@
         IPO Reports
       </div>
       <div class="item item-text-wrap">
-
+		<div class="row order-col">
+			<div class="col col-table"> <p>Application Date</p></div>
+			<div class="col col-table"> <p>ID</p></div>
+			<div class="col col-table"> <p>Name</p></div>
+			<div class="col col-table"> <p>Status</p></div>
+			<div class="col col-table"> <p>Description</p></div>
+		</div>
+		<div class="row order-col" ng-repeat="row in reports.appliedIpoList">
+			<div class="col col-table"> <p>row.Application_Date</p></div>
+			<div class="col col-table"> <p>row.id</p></div>
+			<div class="col col-table"> <p>Name</p></div>
+			<div class="col col-table"> <p>Status</p></div>
+			<div class="col col-table"> <p>Description</p></div>
+		</div>
       </div>
     </div>
 

@@ -3,21 +3,20 @@ angular.module('app.controllers').controller(
 		
 		$scope.pendingIpoLabel = "View Pending IPOs";
 		$scope.busy = true;
-		$scope.ipo_Session = {};
+		$scope.user = $localstorage.getObject('userData').user;
+		$scope.user.ipo_Session = {};
 
 		ipoService.getChildAccounts().then(function(resp){
 			$scope.busy = false;
-			$scope.childAccounts = resp.childAccounts;
-			console.log(resp);
+			$scope.childAccounts = resp;
 		}).catch(function(data){
 			alert('failed to fetch child acc info.');
 		});
-
-		$scope.user = $localstorage.getObject('userData').user;
 		
 		$scope.ipo = {
 			ipo_Session_id: "",
-			account_ids: []
+			child_id: [],
+			refund_option: "1"
 		};
 
 		//mock.
@@ -45,16 +44,19 @@ angular.module('app.controllers').controller(
 
 		$scope.submit = function() {
 			if($scope.user.selected) {
-				$scope.ipo.account_ids.push($scope.user.user_id);
+				$scope.ipo.child_id.push($scope.user.user_id);
 			}
 			
 			$scope.childAccounts.map(function(acc){
 				if(acc.selected){
-					$scope.ipo.account_ids.push(acc.child_id);
+					$scope.ipo.child_id.push(acc.child_id);
 				}
 			});
 
-			$scope.ipo.ipo_Session_id = $scope.ipo.ipo_Session.id;
-
+			$scope.ipo.ipo_Session_id = $scope.user.ipo_Session.id;
+			
+			ipoService.createNewIpo($scope.ipo).then(function(data){
+				console.log(data);
+			});
 		}
 }]);

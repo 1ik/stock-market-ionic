@@ -22,6 +22,18 @@ angular.module('app.services')
 		getPendingIpoApplications: function(data) {
 			var reqUrl = constants.rootURL + 'api_ipo/pendingApplications';
 			return httpUtils.get(reqUrl, {}, {'Token':$localstorage.getObject('userData').token}).promise;
+		},
+
+		getIpoReports: function(data) {
+			var reqUrl = constants.rootURL + 'api_ipo/report?' + $.param(data);
+			return httpUtils.get(reqUrl, {}, {'Token':$localstorage.getObject('userData').token}).promise;
+		},
+
+		createNewIpo: function(ipo) {
+			var reqUrl = constants.rootURL + 'api_ipo/saveNewApplication';
+			var params = $.param(ipo);
+			return httpUtils.post(reqUrl, params, {'Token':$localstorage.getObject('userData').token}).promise;
 		}
+
 	};
 }])

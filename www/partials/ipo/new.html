@@ -52,13 +52,13 @@
 			<div class="item">
 				<label for="">
 					<span>Ipo Sessions</span>
-					<select ng-options="session as session.IPOSession_Name for session in user.iop_session_list" ng-model="ipo.ipo_Session"></select>
+					<select ng-options="session as session.IPOSession_Name for session in user.iop_session_list" ng-model="user.ipo_Session"></select>
 				</label>
 			</div>
 			<div class="item">
 				<label for="">
 					<span>Ipo Sessions Amount</span>
-					<input type="text" ng-model="ipo.ipo_Session.Amount">
+					<input type="text" ng-model="user.ipo_Session.Amount">
 				</label>
 			</div>
 			<div class="item">
@@ -94,7 +94,7 @@
 		<div class="row order-col" ng-repeat="child in childAccounts">
 			<div class="col col-table"> <p>{{child.child_id}}</p></div>
 			<div class="col col-table"> <p>{{child.child_name}}</p></div>
-			<div class="col col-table"> <p>xxxx</p></div>
+			<div class="col col-table"> <p>{{child.account_balance}}</p></div>
 			<div class="col col-table"> <p><input type="checkbox" ng-model="child.selected"></p></div>
 		</div>
 		
