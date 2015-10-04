@@ -156,6 +156,31 @@ angular.module('app', [
 						}
 					}
 				})
+			.state('app.requestInformation', {
+				url: '/rq-info',
+				views: {
+					'menuContent': {
+						templateUrl: 'pages/rq-info.html',
+						controller: "ReqInfoController"
+					}
+				}
+			})
+				.state('app.requestInformation.view', {
+					url: '/view',
+					views: {
+						'rqInfoItem': {
+							templateUrl: 'partials/request-info/view.html'
+						}
+					}
+				})
+				.state('app.requestInformation.create', {
+					url: '/new',
+					views: {
+						'rqInfoItem': {
+							templateUrl: 'partials/request-info/create.html'
+						}
+					}
+				})			
 			.state('app.news', {
 				url: '/news',
 				views: {

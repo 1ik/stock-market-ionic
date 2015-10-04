@@ -1,0 +1,36 @@
+<ion-view view-title="Request informations" cache-view="false">
+  
+  <ion-nav-bar class="bar bar-header bar-dark">
+    <ion-nav-back-button></ion-nav-back-button>
+    <ion-nav-buttons side="left">
+      <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+      <a href="#/app/rq-info/new" class="button button-primary" >New</a>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+
+  <ion-content>
+    <div class="card">
+      <div class="item item-divider">
+        Your Request informations. <i ng-click="fetchInfos()" style="float: right" class="icon ion-android-refresh"></i>
+      </div>
+      <div class="item item-text-wrap">
+        <div class="row order-col">
+          <div class="col col-table"> <p><b>Date</b></p></div>
+          <div class="col col-table"> <p><b>Subject</b></p> </div>
+          <div class="col col-table"> <p><b>Description</b></p></div>
+          <div class="col col-table"> <p><b>Status</b></p> </div>
+        </div>
+        <div class="row order-col" ng-repeat="rq in request_infos">
+          <div class="col col-table"><p>{{rq.Received_Date}}</p></div>
+          <div class="col col-table"><p>{{rq.Subject}}</p></div>
+          <div class="col col-table"><p>{{rq.Body}}</p></div>
+          <div class="col col-table"><p>{{rq.status}}</p></div>
+        </div>
+      </div>
+
+    </div>
+
+  </ion-content>
+</ion-view>
