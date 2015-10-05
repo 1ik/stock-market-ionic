@@ -5,6 +5,11 @@ angular.module('app.controllers')
 		
 		$scope.user = $localstorage.getObject('userData').user;
 
+		$scope.logout =  function() {
+			$state.go("splash",{},{reload: true});
+			$window.location.reload(true);
+		}
+
 		$rootScope.$on('$cordovaPush:notificationReceived', function(event, notification) {
 			switch(notification.event) {
 				
@@ -57,4 +62,5 @@ angular.module('app.controllers')
 					break;
 			}
 		});
+
 }]);
