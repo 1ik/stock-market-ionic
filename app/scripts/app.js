@@ -16,7 +16,6 @@ angular.module('app', [
 		if (window.StatusBar) {
 			StatusBar.styleDefault();
 		}
-		
 	})
 }])
 
@@ -130,7 +129,7 @@ angular.module('app', [
 						controller: "MarketInfoController"
 					}
 				}
-			})			
+			})
 			.state('app.alerts', {
 				url: '/alerts',
 				views: {
@@ -153,7 +152,7 @@ angular.module('app', [
 					url: '/view',
 					views: {
 						'ftItem': {
-							templateUrl: 'partials/ft/view.html'
+							templateUrl: 'partials/ft/view-'+media+'.html'
 						}
 					}
 				})
@@ -261,10 +260,63 @@ angular.module('app', [
 					}
 				}
 			})
-
+			.state('app.ipo', {
+				url: '/ipo',
+				views: {
+					'menuContent': {
+						templateUrl: 'pages/ipo.html',
+						controller: 'IpoController'
+					}
+				}
+			})
+				.state('app.ipo.index', {
+					url: '/index',
+					views: {
+						'ipoViews': {
+							templateUrl: 'partials/ipo/index.html'
+						}
+					}
+				})
+				.state('app.ipo.accounts', {
+					url: '/accounts',
+					views: {
+						'ipoViews': {
+							templateUrl: 'partials/ipo/accounts-'+media+'.html',
+							controller: 'IpoAccountsController'
+						}
+					}
+				})
+				.state('app.ipo.withdrawal', {
+					url: '/withdrawal',
+					views: {
+						'ipoViews': {
+							templateUrl: 'partials/ipo/withdrawal.html',
+							controller: 'IpoWithdrawalController'
+						}
+					}
+				})
+				.state('app.ipo.new', {
+					url: '/new',
+					views: {
+						'ipoViews': {
+							templateUrl: 'partials/ipo/new.html',
+							controller: 'IpoNewApplicationController'
+						}
+					}
+				})
+				.state('app.ipo.report', {
+					url: '/report',
+					views: {
+						'ipoViews': {
+							templateUrl: 'partials/ipo/report.html',
+							controller: 'IpoReportController'
+						}
+					}
+				})
 		// if none of the above states are matched, use this as the fallback
 		$urlRouterProvider.otherwise('/splash');
 }]);
+
 
 //initializations..
 angular.module('app.controllers', [])

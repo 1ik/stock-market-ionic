@@ -1,0 +1,103 @@
+<ion-view view-title="IPO Withdrawal">
+  <ion-content>
+    <button ng-click="showWithdrawals()" ng-if="!withdrawals" class="button button-full button-positive">{{withdrawalReqLabel}}</button>
+    <div class="card" ng-if="withdrawals">
+      <div class="item item-divider">
+        Withdraw Requests
+      </div>
+
+      <div class="item item-text-wrap" ng-if="tab">
+        <div class="row order-col">
+          <div class="col col-table"> <p>Received Date</p></div>
+          <div class="col col-table"> <p>Transaction</p></div>
+          <div class="col col-table"> <p>Description</p></div>
+          <div class="col col-table"> <p>Amount</p></div>
+          <div class="col col-table"> <p>Remarks</p></div>
+          <div class="col col-table"> <p>Status</p></div>
+        </div>
+        <div class="row order-col" ng-repeat="withdraw in withdrawals">
+          <div class="col col-table"> <p>{{withdraw.Received_Date}}</p></div>
+          <div class="col col-table"> <p>xxxxxx</p></div>
+          <div class="col col-table"> <p>{{withdraw.Deposit_Withdraw_Description}}</p></div>
+          <div class="col col-table"> <p>{{withdraw.Amount}}</p></div>
+          <div class="col col-table"> <p>{{withdraw.Remarks}}</p></div>
+          <div class="col col-table"> <p>{{withdraw.Approval_Status}}</p></div>          
+        </div>
+      </div>
+      
+      <div ng-if="!tab" ng-repeat="withdraw in withdrawals">
+        <div class="item item-divider">
+          Receive Date : {{withdraw.Received_Date}}
+        </div>
+        <div class="item item-text-wrap" >
+          <div class="list">
+            <div class="item">
+              <span>Description: {{withdraw.Deposit_Withdraw_Description}}</span>
+            </div>
+            <div class="item">
+              <span>Transaction: xxxxxx</span>
+            </div>
+            <div class="item">
+              <span>Amount: {{withdraw.Amount}}</span>
+            </div>
+            <div class="item">
+              <span>Remarks: {{withdraw.Remarks}}</span>
+            </div>
+            <div class="item">
+              <span>Approval Status: {{withdraw.Approval_Status}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="card">
+      <div class="item item-divider">
+        Create New IPO Withdrawal
+      </div>
+      <div class="item item-text-wrap">
+        <div class="list">
+          <div class="item">
+            <label for="">
+              <span>Available Balance</span>
+              <input ng-model="user.available_balance" disabled type="text">
+            </label>
+          </div>
+          <div class="item">
+            <label for="">
+              <span>Actual Balance</span>
+              <input ng-model="user.actual_balance" disabled type="text">
+            </label>
+          </div>
+          <div class="item">
+            <label for="">
+              <span>Amount</span>
+              <input ng-model="withdrawal.amount" type="text" placeholder="Please Enter amount">
+            </label>
+          </div>
+          <div class="item">
+            <label for="">
+              <span>Type</span>
+              <select ng-model="withdrawal.deposit_withdraw_type" id="">
+                <option value="bank_account">Bank Account</option>
+                <option value="trade_account">Trade Account</option>
+              </select>
+            </label>
+          </div>
+          <div class="item">
+            <label for="">
+              <span>Remarks</span>
+              <input ng-model="withdrawal.remarks" type="text" placeholder="Please Remarks">
+            </label>
+          </div>
+          <div class="item">
+            <ionic-datepicker input-obj="fromDatepickerObject">
+              <span class="col-table ion-calendar"> Request Date ({{withdrawal.request_date? withdrawal.request_date : "Touch to select"}}) </i></span>
+            </ionic-datepicker>
+          </div>
+          <button ng-disabled="submitting" ng-click="submit()" class="button button-positive button-full">submit</button>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
