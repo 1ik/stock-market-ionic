@@ -1,0 +1,28 @@
+<ion-view view-title="IPO Accounts">
+  <ion-content>
+    <div class="card">
+      <div class="item item-divider">
+        IPO Accounts <span ng-if="childAccounts.length > 0">({{childAccounts.length}} Accounts)</span>
+      </div>
+      <div class="item item-text-wrap">
+        <div class="row order-col">
+          <div class="col col-table"> <p>No</p></div>
+          <div class="col col-table"> <p>Child ID</p> </div>
+          <div class="col col-table"> <p>Child Name</p> </div>
+          <div class="col col-table"> <p>Account Type</p></div>
+          <div class="col col-table"> <p>BO ID</p> </div>
+          <div class="col col-table"> <p>Owner ID</p></div>
+        </div>
+        <div class="row order-col" ng-repeat="acc in childAccounts">
+          <div class="col col-table"> <p>{{$index+1}}</p></div>
+          <div class="col col-table"> <p>{{acc.child_id}}</p></div>
+          <div class="col col-table"> <p>{{acc.child_name}}</p></div>
+          <div class="col col-table"> <p>{{acc.child_account_type}}</p></div>
+          <div class="col col-table"> <p>{{acc.child_BO_Id}}</p></div>
+          <div class="col col-table"> <p>{{acc.owner_id}}</p></div>
+        </div>
+      </div>
+    </div>
+
+  </ion-content>
+</ion-view>
