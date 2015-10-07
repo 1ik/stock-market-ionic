@@ -6,6 +6,7 @@ angular.module('app.controllers').controller(
 		$scope.user = $localstorage.getObject('userData').user;
 		$scope.user.ipo_Session = {};
 
+
 		ipoService.getChildAccounts().then(function(resp){
 			$scope.busy = false;
 			$scope.childAccounts = resp;
@@ -18,20 +19,6 @@ angular.module('app.controllers').controller(
 			child_id: [],
 			refund_option: "1"
 		};
-
-		//mock.
-		$scope.user.iop_session_list = [
-			{
-				id: 33,
-				IPOSession_Name: "KDSALTD",
-				Amount: 10
-			},
-			{
-				id: 39,
-				IPOSession_Name: "SIMTEX",
-				Amount:10
-			},
-		];
 
 		$scope.showPendings = function() {
 			$scope.pendingIpoLabel = "fetching..";
