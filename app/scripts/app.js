@@ -255,7 +255,7 @@ angular.module('app', [
 				url: '/history',
 				views: {
 					'menuContent': {
-						templateUrl: 'pages/history.html',
+						templateUrl: 'pages/history-'+media+'.html',
 						controller: 'HistoryController'
 					}
 				}

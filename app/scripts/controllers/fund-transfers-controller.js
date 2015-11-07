@@ -37,7 +37,7 @@ angular.module('app.controllers').controller(
 		];
 
 		$scope.types = [
-			{name: "Direct Transfer", value: "direct_transfer"},
+			{name: "Direct Transfer (EFT)", value: "direct_transfer"},
 			{name: "Cheque Requisition", value: "cheque_requisition"},
 			{name: "Transfer To IPO", value: "transfer_to_ipo"}
 		];
