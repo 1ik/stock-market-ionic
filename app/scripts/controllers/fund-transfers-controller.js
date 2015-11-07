@@ -13,6 +13,11 @@ angular.module('app.controllers').controller(
 			}
 		}
 
+		ftService.accountDetails().then(function(data){
+			$scope.extraInfo = data;
+			console.log(data);
+		});
+
 		if ($state.current.name == 'app.ft.view') {
 			ftService.getFTRequests().then(function(fts){
 				$scope.fts = fts;

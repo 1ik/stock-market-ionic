@@ -37,16 +37,20 @@
 				</div>
 				<div class="item item-text-wrap">
 					<div class="row">
+						<div class="col col-table">Bank Name</div>
+						<div class="col col-table">{{extraInfo.bank_details.bank_name}}</div>
+					</div>
+					<div class="row">
 						<div class="col col-table">Branch Name</div>
-						<div class="col col-table">MOTIJHEEL</div>
+						<div class="col col-table">{{extraInfo.bank_details.branch_name}}</div>
 					</div>
 					<div class="row">
 						<div class="col col-table">Account No</div>
-						<div class="col col-table">4004670766000</div>
+						<div class="col col-table">{{extraInfo.bank_details.account_no}}</div>
 					</div>
 					<div class="row">
 						<div class="col col-table">Bank Routing No</div>
-						<div class="col col-table">020274245</div>
+						<div class="col col-table">{{extraInfo.bank_details.bank_routing_no}}</div>
 					</div>
 				</div>
 			</div>			
@@ -60,15 +64,15 @@
 				<div class="item item-text-wrap">
 					<div class="row">
 						<div class="col col-table">Current Balance</div>
-						<div class="col col-table">-12356483.61</div>
+						<div class="col col-table">-{{extraInfo.account_details.current_balance}}</div>
 					</div>
 					<div class="row">
 						<div class="col col-table">Matured Balance</div>
-						<div class="col col-table">-12356483.61</div>
+						<div class="col col-table">-{{extraInfo.account_details.matured_balance}}</div>
 					</div>
 					<div class="row">
 						<div class="col col-table">Requested date</div>
-						<div class="col col-table">07-11-2015</div>
+						<div class="col col-table">-{{extraInfo.account_details.request_date}}</div>
 					</div>
 				</div>
 			</div>
@@ -81,7 +85,7 @@
 				<div class="item item-text-wrap">
 					<div class="row">
 						<div class="col col-table">Total Amount</div>
-						<div class="col col-table">0.00</div>
+						<div class="col col-table">-{{extraInfo.pending_request.total_ammount}}</div>
 					</div>
 				</div>
 			</div>			
@@ -98,11 +102,11 @@
 				<div class="item item-text-wrap">
 					<div class="row">
 						<div class="col col-table">Available Balance:</div>
-						<div class="col col-table">5000</div>
+						<div class="col col-table">-{{extraInfo.ipo_account_details.available_balance}}</div>
 					</div>
 					<div class="row">
 						<div class="col col-table">Actual Balance:</div>
-						<div class="col col-table">5000.00</div>
+						<div class="col col-table">-{{extraInfo.ipo_account_details.actual_balance}}</div>
 					</div>
 				</div>
 			</div>
@@ -115,15 +119,15 @@
 				<div class="item item-text-wrap">
 					<div class="row">
 						<div class="col col-table">Current Balance</div>
-						<div class="col col-table">-12356483.61</div>
+						<div class="col col-table">-{{extraInfo.trade_account_details.current_balance}}</div>
 					</div>
 					<div class="row">
 						<div class="col col-table">Matured Balance</div>
-						<div class="col col-table">-12356483.61</div>
+						<div class="col col-table">-{{extraInfo.trade_account_details.matured_balance}}</div>
 					</div>
 					<div class="row">
 						<div class="col col-table">Requested date</div>
-						<div class="col col-table">07-11-2015</div>
+						<div class="col col-table">-{{extraInfo.trade_account_details.request_date}}</div>
 					</div>
 				</div>
 			</div>

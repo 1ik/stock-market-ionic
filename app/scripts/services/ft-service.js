@@ -14,5 +14,10 @@ angular.module('app.services')
 			var params = $.param(data);
 			return httpUtils.post(reqUrl, params, {'Token':$localstorage.getObject('userData').token}).promise;
 		},
+
+		accountDetails: function() {
+			var reqUrl = constants.rootURL + 'api_fundtransfer/account_details';
+			return httpUtils.get(reqUrl, {}, {'Token':$localstorage.getObject('userData').token}).promise;
+		}
 	};
 }])
