@@ -1,6 +1,18 @@
 angular.module('app.controllers').controller(
-	'FTsController', ['$scope', 'ftService','$state', '$ionicPopup', function($scope, ftService, $state, $ionicPopup){
+	'FTsController', ['$scope', 'ftService','$state', '$ionicPopup', '$cordovaNetwork',
+	function($scope, ftService, $state, $ionicPopup, $cordovaNetwork){
 		
+		if(ionic.Platform.isIOS() || ionic.Platform.isAndroid()) {
+			if(!$cordovaNetwork.isOnline()) {
+				$ionicPopup.alert({
+					title: 'You are offline',
+					template: 'Please check your internet connection and come back.'
+				}).then(function(d){
+					$state.go('app.orders.view')
+				});
+			}
+		}
+
 		if ($state.current.name == 'app.ft.view') {
 			ftService.getFTRequests().then(function(fts){
 				$scope.fts = fts;
@@ -8,8 +20,8 @@ angular.module('app.controllers').controller(
 		}
 
 		$scope.ft = {
-			requestedAmount: 0,
-			collectionPoint: '',
+			requested_amount: 0,
+			collection_point: '',
 			type: ''
 		};
 
@@ -34,5 +46,9 @@ angular.module('app.controllers').controller(
 					$state.go("app.ft.view");
 				});
 			});
+		}
+
+		$scope.goToTransferFunds = function() {
+			$state.go('app.ft.request');		
 		}
 }]);

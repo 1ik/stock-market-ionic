@@ -160,7 +160,7 @@ angular.module('app', [
 					url: '/request',
 					views: {
 						'ftItem': {
-							templateUrl: 'partials/ft/request.html'
+							templateUrl: 'partials/ft/request-'+media+'.html'
 						}
 					}
 				})
@@ -308,7 +308,7 @@ angular.module('app', [
 					url: '/report',
 					views: {
 						'ipoViews': {
-							templateUrl: 'partials/ipo/report.html',
+							templateUrl: 'partials/ipo/report-'+media+'.html',
 							controller: 'IpoReportController'
 						}
 					}

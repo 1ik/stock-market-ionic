@@ -10,9 +10,27 @@ angular.module('app.controllers').controller(
 		ipoService.getChildAccounts().then(function(resp){
 			$scope.busy = false;
 			$scope.childAccounts = resp;
+			$scope.childAccounts.unshift(angular.copy({
+				child_name: $scope.user.user_full_name,
+				account_balance: $scope.user.available_balance
+			}));
+		
 		}).catch(function(data){
 			alert('failed to fetch child acc info.');
 		});
+
+		$scope.$watch('childAccounts',function(){
+			var selecteds = _.reject($scope.childAccounts,function(ca){
+				return ca.selected == undefined || ca.selected == false;
+			})
+			
+			var usersSelected = selecteds.length;
+			if($scope.user.selected) {
+				usersSelected += 1;
+			}
+			$scope.totalAppliedAmount = $scope.user.ipo_Session.Amount * usersSelected;
+			
+		},true);
 		
 		$scope.ipo = {
 			ipo_Session_id: "",

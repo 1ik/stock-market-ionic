@@ -80,19 +80,11 @@
       	
       	<label for="">Accounts</label>
       	<div class="row order-col">
-			<div class="col col-table"> <p>ID</p></div>
 			<div class="col col-table"> <p>Name</p></div>
 			<div class="col col-table"> <p>Balance</p></div>
 			<div class="col col-table"> <p>Select</p></div>
 		</div>
-		<div class="row order-col">
-			<div class="col col-table"> <p><b>{{user.user_id}}</b></p></div>
-			<div class="col col-table"> <p><b>{{user.user_full_name}}</b></p></div>
-			<div class="col col-table"> <p><b>{{user.available_balance}}</b></p></div>
-			<div class="col col-table"> <p><input type="checkbox" ng-model="user.selected"></p></div>
-		</div>
 		<div class="row order-col" ng-repeat="child in childAccounts">
-			<div class="col col-table"> <p>{{child.child_id}}</p></div>
 			<div class="col col-table"> <p>{{child.child_name}}</p></div>
 			<div class="col col-table"> <p>{{child.account_balance}}</p></div>
 			<div class="col col-table"> <p><input type="checkbox" ng-model="child.selected"></p></div>

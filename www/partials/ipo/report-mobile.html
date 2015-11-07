@@ -1,0 +1,24 @@
+ <ion-view view-title="IPO Reports">
+  <ion-content>
+
+    <div class="card">
+      <div class="item item-divider">
+        IPO Reports
+        <p style="float:right">session: <select ng-model="selected.session" ng-options="session.IPOSession_Name for session in ipoSessions"></select></p>
+      </div>
+    </div>
+    <div class="card" ng-repeat="row in reports.appliedIpoList">
+		<div class="item item-divider">
+			{{row.IPOSession_Name}}
+			<span style="float:right">{{row.Application_Satus}}</span>
+		</div>
+		<div class="item text-wrap">
+			<div class="col">Application Date : {{row.Application_Date}}</div>
+			<div class="col">IPO Session : {{row.IPOSession_Name}}</div>
+			<div class="col">Remarks : {{row.Remarks}}</div>
+		</div>
+    </div>
+
+
+  </ion-content>
+</ion-view>

@@ -3,7 +3,9 @@
     <div class="card">
       <div class="item item-divider">
         IPO Reports
+        <p style="float:right">session: <select ng-model="selected.session" ng-options="session.IPOSession_Name for session in ipoSessions"></select></p>
       </div>
+
       <div class="item item-text-wrap">
 		<div class="row order-col">
 			<div class="col col-table"> <p>Application Date</p></div>
@@ -12,6 +14,7 @@
 			<div class="col col-table"> <p>Status</p></div>
 			<div class="col col-table"> <p>Description</p></div>
 		</div>
+
 		<div class="row order-col" ng-repeat="row in reports.appliedIpoList">
 			<div class="col col-table"> <p>{{row.Application_Date}}</p></div>
 			<div class="col col-table"> <p>{{row.id}}</p></div>

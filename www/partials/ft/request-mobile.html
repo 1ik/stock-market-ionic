@@ -29,68 +29,62 @@
 	</div>
 
 	
-	<div class="row" ng-show="ft.type == 'cheque_requisition' || ft.type == 'direct_transfer'">
-		<div class="col">
-			<div class="card">
-				<div class="item item-divider">
-					Bank Details
+	<div ng-show="ft.type == 'cheque_requisition' || ft.type == 'direct_transfer'">
+		<div class="card">
+			<div class="item item-divider">
+				Bank Details
+			</div>
+			<div class="item item-text-wrap">
+				<div class="row">
+					<div class="col col-table">Branch Name</div>
+					<div class="col col-table">MOTIJHEEL</div>
 				</div>
-				<div class="item item-text-wrap">
-					<div class="row">
-						<div class="col col-table">Branch Name</div>
-						<div class="col col-table">MOTIJHEEL</div>
-					</div>
-					<div class="row">
-						<div class="col col-table">Account No</div>
-						<div class="col col-table">4004670766000</div>
-					</div>
-					<div class="row">
-						<div class="col col-table">Bank Routing No</div>
-						<div class="col col-table">020274245</div>
-					</div>
+				<div class="row">
+					<div class="col col-table">Account No</div>
+					<div class="col col-table">4004670766000</div>
 				</div>
-			</div>			
-		</div>
+				<div class="row">
+					<div class="col col-table">Bank Routing No</div>
+					<div class="col col-table">020274245</div>
+				</div>
+			</div>
+		</div>			
 		
-		<div class="col">
-			<div class="card">
-				<div class="item item-divider">
-					Account Details
+		<div class="card">
+			<div class="item item-divider">
+				Account Details
+			</div>
+			<div class="item item-text-wrap">
+				<div class="row">
+					<div class="col col-table">Current Balance</div>
+					<div class="col col-table">-12356483.61</div>
 				</div>
-				<div class="item item-text-wrap">
-					<div class="row">
-						<div class="col col-table">Current Balance</div>
-						<div class="col col-table">-12356483.61</div>
-					</div>
-					<div class="row">
-						<div class="col col-table">Matured Balance</div>
-						<div class="col col-table">-12356483.61</div>
-					</div>
-					<div class="row">
-						<div class="col col-table">Requested date</div>
-						<div class="col col-table">07-11-2015</div>
-					</div>
+				<div class="row">
+					<div class="col col-table">Matured Balance</div>
+					<div class="col col-table">-12356483.61</div>
+				</div>
+				<div class="row">
+					<div class="col col-table">Requested date</div>
+					<div class="col col-table">07-11-2015</div>
 				</div>
 			</div>
 		</div>
-		<div class="col">
-			<div class="card" ng-show="ft.type == 'cheque_requisition' || ft.type == 'direct_transfer'">
-				<div class="item item-divider">
-					Already Pending Request
+
+		<div class="card" ng-show="ft.type == 'cheque_requisition' || ft.type == 'direct_transfer'">
+			<div class="item item-divider">
+				Already Pending Request
+			</div>
+			<div class="item item-text-wrap">
+				<div class="row">
+					<div class="col col-table">Total Amount</div>
+					<div class="col col-table">0.00</div>
 				</div>
-				<div class="item item-text-wrap">
-					<div class="row">
-						<div class="col col-table">Total Amount</div>
-						<div class="col col-table">0.00</div>
-					</div>
-				</div>
-			</div>			
-		</div>		
+			</div>
+		</div>
 	</div>
 
 	
-	<div class="row" ng-show="ft.type == 'transfer_to_ipo'">
-		<div class="col">
+	<div ng-show="ft.type == 'transfer_to_ipo'">
 			<div class="card">
 				<div class="item item-divider">
 					IPO Account Details
@@ -106,8 +100,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="col">
 			<div class="card">
 				<div class="item item-divider">
 					Trade Account Details
@@ -127,7 +119,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
 	</div>
 
   </ion-content>
