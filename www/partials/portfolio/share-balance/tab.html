@@ -34,7 +34,7 @@
 			<div class="col">Gain/Loss</div>
 		</div>
 
-		<div class="row" ng-repeat="shareBalance in shareBalances" ng-hide="error">
+		<div class="table-stripped row" ng-repeat="shareBalance in shareBalances" ng-hide="error">
 			<div class="col">{{shareBalance.company}}</div>
 			<div class="col">{{shareBalance.balance}}</div>
 			<div class="col">{{shareBalance.matured_balance}}</div>
@@ -43,7 +43,7 @@
 			<div class="col">{{shareBalance.balance * shareBalance.buy_average_value}}</div>
 			<div class="col">{{shareBalance.ycp}}</div>
 			<div class="col">{{marketVal(shareBalance.ycp, shareBalance.balance)}}</div>
-			<div class="col">{{shareBalance.loss_gain}}</div>
-		</div>		
+			<div class="col" ng-class="{'green' : shareBalance.loss_gain >= 0, 'red': shareBalance.loss_gain < 0 }">{{shareBalance.loss_gain}}</div>
+		</div>
 	</ion-content>
 </ion-view>

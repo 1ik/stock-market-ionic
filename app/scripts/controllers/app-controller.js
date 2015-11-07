@@ -7,7 +7,7 @@ angular.module('app.controllers')
 
 		$scope.logout =  function() {
 			$state.go("splash",{},{reload: true});
-			$window.location.reload(true);
+			//$window.location.reload(true);
 		}
 
 		$rootScope.$on('$cordovaPush:notificationReceived', function(event, notification) {

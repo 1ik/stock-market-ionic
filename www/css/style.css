@@ -11,3 +11,24 @@
 .order-col > .col {
 	font-size: 30px;
 }
+
+.green, .green p {
+	color: green;
+}
+
+.red, .red p {
+	color: red;
+}
+
+div.table-stripped:nth-child(even) {
+	background-color: #f7f7f7;
+}
+
+.item-divider.green {
+	background-color: green;
+	color:white;
+}
+.item-divider.red{
+	background-color: red;
+	color:white;
+}

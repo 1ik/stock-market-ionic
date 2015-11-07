@@ -1,0 +1,29 @@
+<ion-modal-view ng-controller="companySelectorController">
+	<ion-header-bar>
+		<h1 class="title">{{title}}</h1>
+	</ion-header-bar>
+	<ion-content>
+		<ion-list>
+		  
+		  <ion-item>
+		    	<label class="item item-input">
+				  <label for="">Filter Company</label>
+		      		<select ng-model="search.company" ng-options="company for company in companies" id=""></select>
+				</label>
+		  </ion-item>
+
+		  <ion-item>
+		    	<label class="item item-input">
+				  <label for="">Order Status {{search}}</label>
+		      		<select ng-model="search.order_status">
+		      			<option value="1">Executed</option>
+		      			<option value="2">Pending</option>
+		      			<option value="3">Rejected</option>
+		      			<option value="4">Canceled</option>
+		      		</select>
+				</label>
+		  </ion-item>
+
+		</ion-list>
+	</ion-content>
+</ion-modal-view>

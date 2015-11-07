@@ -2,10 +2,10 @@ angular.module('app.controllers')
 .controller('SplashController', ['$scope','$http', 'authService', '$ionicModal', '$ionicPopup', '$state','$localstorage','pushService', 
 	function($scope, $http, authService, $ionicModal, $ionicPopup, $state, $localstorage, pushService){
 
-	$scope.form = {
-		email : 'rakimul@gmail.com',
-		password: '123456'
-	};
+	// $scope.form = {
+	// 	email : 'rakimul@gmail.com',
+	// 	password: '123456'
+	// };
 
 	$scope.submitForm = function(email, password, signingUp) {
 

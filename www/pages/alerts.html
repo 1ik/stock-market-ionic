@@ -1,6 +1,6 @@
 <ion-view view-title="Alerts">
     <ion-content>
-        <div class="card" ng-repeat="alert in notifications">
+        <div class="card" ng-repeat="alert in notifications | limitTo:limit">
             <div class="item item-divider">
                 {{alert.title}}
             </div>
@@ -8,5 +8,6 @@
                 <p>{{alert.message}}</p>
             </div>
         </div>
+        <button ng-disabled= "limit >= notifications.length" ng-click = "limit = limit + 4" class="button button-block button-positive">MORE</button>
     </ion-content>
 </ion-view>

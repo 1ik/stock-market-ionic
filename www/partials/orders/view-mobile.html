@@ -16,22 +16,42 @@
       <div class="item item-divider">
         View Orders
       </div>
-      <div class="row">
+      <button class="button button-block button-positive" ng-click="showFilters = !showFilters"> {{showFilters ? "HIDE" : "SHOW"}} FILTER</button>
+      
+      <div class="row" style="padding-left:30px;" ng-show="showFilters">
       	<div class="col">
       		<label for="">Filter Company</label>
-      		<select ng-model="search.company" ng-options="company for company in companies" id=""></select>
+      		<select style="margin-left : 30px;" ng-model="search.company" ng-options="company for company in companies" id=""></select>
+      	</div>		
+      </div>
+      <div class="row" style="padding-left:30px;" ng-show="showFilters">
+      	<div class="col">
+      		<label for="">Filter status</label>
+      		<select style="margin-left : 50px;" ng-model="search.status">
+      			<option value="">All</option>
+      			<option value="executed">Executed</option>
+      			<option value="pending">Pending</option>
+      			<option value="rejected">Rejected</option>
+      			<option value="cancelled">Cancelled</option>
+      		</select>
       	</div>
+      </div>
+      <div class="row" style="padding-left:30px;padding-top:10px" ng-show="showFilters">
       	<div class="col">
       		<ionic-datepicker input-obj="fromDatepickerObject">
-			  <span class="col-table ion-calendar"> From ({{search.from == "" ? "Touch to select" : search.from}}) <i ng-click="clearFrom()" ng-if="search.from != ''" class="ion-backspace"></i></span>
+				<span class="col-table ion-calendar"> From ({{search.from == "" ? "Touch to select" : search.from}}) <i ng-click="clearFrom()" ng-if="search.from != ''" class="ion-backspace"></i></span>
 			</ionic-datepicker>
       	</div>
+      </div>
+      <div class="row" style="padding-left:30px; padding-top:10px;" ng-show="showFilters">
       	<div class="col">
       		<ionic-datepicker input-obj="toDatepickerObject">
 			  <span class="col-table ion-calendar"> To ({{search.to == "" ? "Touch to select" : search.to}}) <i ng-click="clearTo()" ng-if="search.to != ''" class="ion-backspace"></i></span>
 			</ionic-datepicker>
       	</div>
       </div>
+
+
       <!--
       <div class="item item-text-wrap">
 		<div class="row order-col">
@@ -60,26 +80,36 @@
       </div>
       -->
     </div>
-	<div class="card" ng-repeat="order in orders" ng-click="openOrder(order)">
-		<div class="item item-divider">
-			{{order.company}}
+	<div class="card" ng-repeat="order in orders" ng-click="openOrder(order)" ng-hide="orders.length == 0">
+		<div class="item item-divider" ng-class="{'green' : order.order_type == 'Buy', 'red' : order.order_type == 'Sell'}">
+			{{order.company}} <i style="float: right">{{order.status}}</i>
 		</div>
 		<div class="item item-text-wrap">
+			<div ng-if="!firstTimeOrder" class="row">Tap on the card to see more</div>
 			<div class="row">
 				<div class="col">
-					<p>Order ID</p>
-					<p>{{order.order_id}}</p>
+					<p>Submission</p>
+					<p>{{order.submission_date}}</p>
 				</div>
 				<div class="col">
-					<p>Order time</p>
-					<p>{{order.order_time}}</p>
+					<p>Quantity</p>
+					<p>{{order.quantity}}</p>
 				</div>
 				<div class="col">
-					<p>Order Status</p>
-					<p>{{order.status}}</p>
+					<p>Remarks</p>
+					<p>{{order.remarks}}</p>
 				</div>
 			</div>
 		</div>
 	</div>
+	<div class="card" ng-show="orders.length == 0">
+		<div class="item item-text-wrap">
+			NO ORDERS
+		</div>
+	</div>
+</ion-content>
+<ion-footer-bar style="margin-bottom : 10px;">
+  <button ng-click="goToOrderManage()" class="button button-block button-positive"> BUY / SELL</button>
+</ion-footer-bar>
 
 </ion-view>

@@ -1,7 +1,18 @@
 angular.module('app.controllers').controller(
-	'ManageOrderController', ['$scope', 'ordersService', '$ionicPopup', '$state', '$rootScope',
-	function($scope, ordersService, $ionicPopup, $state, $rootScope) {
-
+	'ManageOrderController', ['$scope', 'ordersService', '$ionicPopup', '$state', '$rootScope', '$cordovaNetwork',
+	function($scope, ordersService, $ionicPopup, $state, $rootScope, $cordovaNetwork) {
+		
+		if(ionic.Platform.isIOS() || ionic.Platform.isAndroid()) {
+			if(!$cordovaNetwork.isOnline()) {
+				$ionicPopup.alert({
+					title: 'You are offline',
+					template: 'Please check your internet connection and come back.'
+				}).then(function(d){
+					$state.go('app.orders.view')
+				});
+			}
+		}
+		
 		$scope.actions = ['buy', 'sell'];
 		$scope.expireDatepickerObject = {
 			titleLabel: 'Select Expire Date',  //Optional
