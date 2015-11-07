@@ -1,7 +1,7 @@
 angular.module('app.controllers')
 .controller('AlertSettingsController', ['$scope', 'settingsService', '$ionicPopup', '$state', '$ionicModal',
-	'$stateParams',
-	function($scope, settingsService, $ionicPopup, $state, $ionicModal, $stateParams){
+	'$stateParams', 'portfolioService',
+	function($scope, settingsService, $ionicPopup, $state, $ionicModal, $stateParams, portfolioService){
 		
 		var alertSettings = settingsService.getAlertSettings();
 
@@ -11,6 +11,10 @@ angular.module('app.controllers')
 			} else {
 				$scope.settings = settings;
 			}			
+		});
+
+		portfolioService.getShareBalance().then(function(data){
+			$scope.shareBalances = data.share_balance;
 		});
 
 		$scope.title = "Add new Alert";
@@ -104,17 +108,19 @@ angular.module('app.controllers')
 		}
 
 		$scope.selectCompany = function(company) {
-			console.log(company);
 			$scope.company = company;
-			$scope.newSetting.company_id = company.company_short_code;
+			$scope.newSetting.company_id = company.company;
 			$scope.modal.hide();
+
+			$scope.SBCompany = _.findWhere($scope.shareBalances, {company: company.company})
+			console.log($scope.SBCompany);
 		}
 		
 		$scope.companyName = function() {			
 			if(_.isEmpty($scope.company)) {
 				return "No company (Touch To select)";
 			}
-			return $scope.company.company_short_code + " (Touch to change)";
+			return $scope.company.company + " (Touch to change)";
 		}		
 
 }]);

@@ -38,5 +38,90 @@
 			</div>
 
 		</div>
+
+
+		<div class="card" ng-show="company">
+			<div class="item item-divider">
+				{{company.company}}
+			</div>
+			<div class="item item-textwrap">
+				<div class="row">
+					<div class="col col-table">change</div>
+					<div class="col col-table">{{company.change}}</div>
+				</div>
+				<div class="row">
+					<div class="col col-table">high</div>
+					<div class="col col-table">{{company.high}}</div>
+				</div>
+				<div class="row">
+					<div class="col col-table">low</div>
+					<div class="col col-table">{{company.low}}</div>
+				</div>
+				<div class="row">
+					<div class="col col-table">ltp</div>
+					<div class="col col-table">{{company.ltp}}</div>
+				</div>
+				<div class="row">
+					<div class="col col-table">trade</div>
+					<div class="col col-table">{{company.trade}}</div>
+				</div>
+				<div class="row">
+					<div class="col col-table">value</div>
+					<div class="col col-table">{{company.value}}</div>
+				</div>
+				<div class="row">
+					<div class="col col-table">volume</div>
+					<div class="col col-table">{{company.volume}}</div>
+				</div>
+				<div class="row">
+					<div class="col col-table">ycp</div>
+					<div class="col col-table">{{company.ycp}}</div>
+				</div>
+
+			</div>
+		</div>
+
+
+
+		<div class="card" ng-show="SBCompany">
+			<div class="item item-divider">
+				Portfolio status for {{company.company}}
+			</div>
+			<div class="item item-textwrap">
+				<div class="row">
+					<div class="col col-table">Balance</div>
+					<div class="col col-table">{{SBCompany.balance}}</div>
+				</div>
+				<div class="row">
+					<div class="col col-table">Breakeven Avg.</div>
+					<div class="col col-table">{{SBCompany.breakeven_average}}</div>
+				</div>
+				<div class="row">
+					<div class="col col-table">Buy Avg value</div>
+					<div class="col col-table">{{SBCompany.buy_average_value}}</div>
+				</div>
+				<div class="row">
+					<div class="col col-table">Loss Gain</div>
+					<div class="col col-table">{{SBCompany.loss_gain}}</div>
+				</div>
+				<div class="row">
+					<div class="col col-table">LTP</div>
+					<div class="col col-table">{{SBCompany.ltp}}</div>
+				</div>
+				<div class="row">
+					<div class="col col-table">Market group</div>
+					<div class="col col-table">{{SBCompany.market_group}}</div>
+				</div>
+				<div class="row">
+					<div class="col col-table">Matured balance</div>
+					<div class="col col-table">{{SBCompany.matured_balance}}</div>
+				</div>
+				<div class="row">
+					<div class="col col-table">YCP</div>
+					<div class="col col-table">{{SBCompany.ycp}}</div>
+				</div>
+
+			</div>
+		</div>
 	</ion-content>
 </ion-view>

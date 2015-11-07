@@ -46,7 +46,7 @@ angular.module('app.controllers')
 
 		//adding for datas to portfolio
 		$scope.addToPortfolio = function() {
-			$scope.form.company = $scope.company.company_full_name;
+			$scope.form.company = $scope.company.company;
 
 			portfolioService.addPortfolio($scope.form).then(function(data){	
 				var alertPopup = $ionicPopup.alert({
@@ -75,7 +75,7 @@ angular.module('app.controllers')
 			if(_.isEmpty($scope.company)) {
 				return "No company (Touch To select)";
 			}
-			return $scope.company.company_full_name + " (Touch to change)";
+			return $scope.company.company + " (Touch to change)";
 		}
 
 	}]);

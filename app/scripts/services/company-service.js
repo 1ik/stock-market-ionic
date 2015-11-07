@@ -6,7 +6,7 @@ angular.module('app.services')
 		getCompanies : function(companyName) {
 			var dfd = $q.defer();
 			
-			$http.get(constants.rootURL + 'api_users/companies/' + companyName).success(function(data){
+			$http.get(constants.rootURL + 'api_info/markets?company=' + companyName).success(function(data){
 				dfd.resolve(data);
 			}).error(function(data){
 				dfd.reject({

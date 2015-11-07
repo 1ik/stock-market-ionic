@@ -10,6 +10,7 @@ angular.module('app.controllers')
 		$scope.title = "Fetching Companies...";
 		companyService.getCompanies(companyName).then(function(companies){
 			$scope.title = "Select Company";
+			console.log(companies);
 			$scope.companies = companies;
 		}).catch(function(error){
 			$scope.title = "Select Company";
