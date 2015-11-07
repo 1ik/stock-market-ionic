@@ -1,7 +1,7 @@
 angular.module('app.controllers')
 .controller('AlertSettingsController', ['$scope', 'settingsService', '$ionicPopup', '$state', '$ionicModal',
-	'$stateParams', 'portfolioService',
-	function($scope, settingsService, $ionicPopup, $state, $ionicModal, $stateParams, portfolioService){
+	'$stateParams', 'portfolioService', 'companyService',
+	function($scope, settingsService, $ionicPopup, $state, $ionicModal, $stateParams, portfolioService,companyService){
 		
 		var alertSettings = settingsService.getAlertSettings();
 
@@ -30,9 +30,16 @@ angular.module('app.controllers')
 
 				$scope.newSetting.active = $scope.newSetting.active == "1" ? true : false;
 				
+
 				$scope.company = {
-					company_short_code: $scope.newSetting.company_id
+					company: $scope.newSetting.company_id
 				};
+
+				companyService.getCompanies($scope.company.company).then(function(data){
+					$scope.company = data[0];
+					$scope.SBCompany = _.findWhere($scope.shareBalances, {company: $scope.company.company})
+				});
+
 			});
 		}
 

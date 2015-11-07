@@ -1,19 +1,5 @@
 <ion-view view-title="Alert Settings" cache-view="false">
-	<ion-nav-bar class="bar bar-header bar-dark padding">
-		<ion-nav-back-button></ion-nav-back-button>
-		<ion-nav-buttons side="left">
-			<button class="button button-icon button-clear ion-navicon" menu-toggle="left">
-			</button>
-		</ion-nav-buttons>
 
-		<ion-nav-buttons side="right">
-			<div class="buttons buttons-right header-item">
-				<span class="right-buttons">
-      				<a class="button button-positive" ng-click="addSettings()">Add</a>
-    			</span>
-    		</div>
-		</ion-nav-buttons>
-	</ion-nav-bar>
 	<ion-content>
 		<div class="card">
 			<div class="item item-divider">
@@ -30,7 +16,7 @@
 				<div class="row" ng-repeat="setting in settings">
 					<div class="col col-table"> {{setting.company_id}} </div>
 					<div class="col col-table"> {{setting.price}} </div>
-					<div class="col col-table"> {{setting.level}} </div>
+					<div class="col col-table"> {{setting.level == 'up' ? 'Above' : 'Below'}} </div>
 					<div class="col col-table"> {{setting.active == "1" ? "On" : "Off"}} </div>
 					<div class="col col-table">
 						<i class="ion-ios-trash-outline" ng-click="delete(setting)"></i>
@@ -39,5 +25,9 @@
 				</div>
 			</div>
 		</div>
+
 	</ion-content>
+	<ion-footer-bar style="margin-bottom : 10px;">
+		  <button ng-click="addSettings()()" class="button button-block button-positive"> ADD  SETTINGS</button>
+		</ion-footer-bar>
 </ion-view>

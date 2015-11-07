@@ -2,12 +2,16 @@ angular.module('app.controllers')
 .controller('appController', ['$scope', '$rootScope', '$window', 'pushService', 
 	'$state', '$ionicPopup', '$localstorage',
 	function($scope, $rootScope, $window, pushService, $state, $ionicPopup, $localstorage) {
+
+		// screen.lockOrientation('landscape');
 		
 		$scope.user = $localstorage.getObject('userData').user;
 
 		$scope.logout =  function() {
 			$state.go("splash",{},{reload: true});
-			//$window.location.reload(true);
+			setTimeout(function(){
+				$window.location.reload(true);
+			},1000);
 		}
 
 		$rootScope.$on('$cordovaPush:notificationReceived', function(event, notification) {

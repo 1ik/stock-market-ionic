@@ -27,6 +27,15 @@ angular.module('app', [
 .config(['$stateProvider', '$urlRouterProvider', '$ionicConfigProvider', '$httpProvider', 
 	function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $httpProvider) {  
 		var media = window.innerWidth <= 450 ? 'mobile' : 'tab';
+		
+		document.addEventListener("deviceready", function(){
+			if(media == 'mobile') {
+				window.plugins.orientationLock.lock("portrait");
+			} else {
+				window.plugins.orientationLock.lock("landscape");
+			}
+		}, false);
+
 
 		$stateProvider      
 		.state('splash', {

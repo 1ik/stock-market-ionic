@@ -4,8 +4,14 @@ angular.module('app.controllers').controller(
 		$scope.page = 1;
 		$scope.moreText = "FETCHING NEWS..";
 
+		$scope.bn24News = [];
+		
+		newsService.getBNNews().then(function(data){
+			$scope.bn24News = data;
+		});
+
 		$scope.fetchNews = function() {
-			newsService.getDSENews($scope.page).then(function(news){
+			newsService.getDSENews().then(function(news){
 				$scope.newsItems = news;
 				$scope.moreText = "SHOW MORE";
 			}).catch(function(error){

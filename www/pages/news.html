@@ -2,15 +2,25 @@
   <ion-content>
 
 
-    <div class="card" ng-repeat="news in newsItems">
+    <div class="card" ng-repeat="news in bn24News">
       <div class="item item-divider">
-        {{news.dse_trading_code}}
+        {{news.title}}
+        <span style="float:right">{{news.datetime}}</span>
       </div>
       <div class="item item-text-wrap">
-        <p>{{news.dse_news}}</p>
-        <p><b>{{news.dse_news_date}}</b></p>
+        <p>{{news.summery}}</p>
+        <p><a href="{{news.main_news_url}}">READ MORE ON [BANGLANEWS24.COM]</a></p>
       </div>
     </div>
-    <button class="button button-primary button-full" ng-click="showMore()">{{moreText}}</button>
+
+    <div class="card" ng-repeat="news in newsItems">
+      <div class="item item-divider">
+        {{news.title}}
+      </div>
+      <div class="item item-text-wrap">
+        <p>{{news.body}}</p>
+        <p><b>{{news.date}}</b></p>
+      </div>
+    </div>
   </ion-content>
 </ion-view>

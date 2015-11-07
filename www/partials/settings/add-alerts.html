@@ -17,16 +17,17 @@
 					<span class="input-label">Selected Company : {{ companyName()}}</span>
 				</label>
 				<label class="item item-input item-stacked-label">
+					<span class="input-label">Above/Below</span>
+					<select ng-model="newSetting.level">
+						<option value="up">Above</option>
+						<option value="down">Below</option>
+					</select>
+				</label>
+				<label class="item item-input item-stacked-label">
 					<span class="input-label">Price</span>
 					<input type="text" placeholder="0.0" ng-model="newSetting.price">
 				</label>
-				<label class="item item-input item-stacked-label">
-					<span class="input-label">Up/Down</span>
-					<select ng-model="newSetting.level">
-						<option value="up">Up</option>
-						<option value="down">Down</option>
-					</select>
-				</label>
+				
 				<label class="item item-input item-stacked-label" >
 					<ion-toggle ng-model="newSetting.active" toggle-class="toggle-calm">Active</ion-toggle>
 				</label>
