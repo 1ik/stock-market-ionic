@@ -21,7 +21,7 @@ angular.module('app', [
 				}
 			});
 		  } else {
-		  	$ionicHistory.goBack();
+		  	$ionicHistory.goBack();	
 		  }
 
 		}
@@ -154,7 +154,7 @@ angular.module('app', [
 				url: '/market-info',
 				views: {
 					'menuContent': {
-						templateUrl: 'pages/market-info.html',
+						templateUrl: 'pages/market-info-'+media+'.html',
 						controller: "MarketInfoController"
 					}
 				}

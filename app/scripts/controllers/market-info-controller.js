@@ -1,7 +1,18 @@
 angular.module('app.controllers').controller(
-	'MarketInfoController', ['$scope', 'marketInfoService', function($scope, marketInfoService){
+	'MarketInfoController', ['$scope', 'companyService', function($scope, companyService){
+		$scope.search = {
+			companyName: ""
+		}
+
+		var searchCompany = function(companyName) {
+			companyService.getCompanies(companyName).then(function(data){
+				$scope.companies = data;
+				console.log(data);
+			});
+		}
+
+		$scope.$watch('search', function(newV,oldV){
+			searchCompany(newV.companyName);
+		},true)
 		
-		marketInfoService.getMarketInformations().then(function(data){
-			console.log(data);
-		})
 }]);

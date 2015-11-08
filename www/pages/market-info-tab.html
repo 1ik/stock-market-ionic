@@ -1,0 +1,36 @@
+<ion-view view-title="Market Informations" cache-view="false">
+
+  <ion-content>
+    <div class="card">
+      <div class="item item-divider">
+        Market Info <input type="search.." ng-model="search.companyName" style="float:right">
+      </div>
+      <div class="item item-text-wrap">
+        <div class="row order-col">
+          <div class="col col-table"> <p>Company</p></div>
+          <div class="col col-table"> <p>Change</p></div>
+          <div class="col col-table"> <p>High</p> </div>
+          <div class="col col-table"> <p>Low</p></div>
+          <div class="col col-table"> <p>LTP</p> </div>
+          <div class="col col-table"> <p>Trade</p> </div>
+          <div class="col col-table"> <p>Value</p> </div>
+          <div class="col col-table"> <p>Volume</p> </div>
+          <div class="col col-table"> <p>YCP</p> </div>
+        </div>
+        <div class="row order-col" ng-repeat="ft in companies">
+          <div class="col col-table"><p>{{ft.company}}</p></div>
+          <div class="col col-table"><p>{{ft.change}}</p></div>
+          <div class="col col-table"><p>{{ft.high}}</p></div>
+          <div class="col col-table"><p>{{ft.low}}</p></div>
+          <div class="col col-table"><p>{{ft.ltp}}</p></div>
+          <div class="col col-table"><p>{{ft.trade}}</p></div>
+          <div class="col col-table"><p>{{ft.value}}</p></div>
+          <div class="col col-table"><p>{{ft.volume}}</p></div>
+          <div class="col col-table"><p>{{ft.ycp}}</p></div>
+        </div>
+      </div>
+    </div>
+
+  </ion-content>
+
+</ion-view>
