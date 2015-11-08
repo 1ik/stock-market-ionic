@@ -1,6 +1,6 @@
 angular.module('app.controllers')
-	.controller('portfolioShareBalanceController', ['$scope','portfolioService','$ionicPopup','$state', function($scope, portfolioService, $ionicPopup, $state){
-
+	.controller('portfolioShareBalanceController', ['$scope','portfolioService','$ionicPopup','$state',
+		function($scope, portfolioService, $ionicPopup, $state){
 		portfolioService.getShareBalance().then(function(data){
 			$scope.shareBalances = data.share_balance;
 			$scope.error = false;

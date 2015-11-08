@@ -12,15 +12,12 @@ angular.module('app.services')
 		},
 
 		saveNotification: function (notification) {
-			var notifications = [notification];
-			
-			if($window.localStorage['pushNotifications'] != undefined) {
-				notifications = JSON.parse($window.localStorage['pushNotifications']);
-			}
+			var notices = $window.localStorage['pushNotifications'] || '[]';
 
-			notification.read = false;
-			notifications.unshift(notification);
-			$window.localStorage['pushNotifications'] = JSON.stringify(notifications);
+			notices = JSON.parse(notices);
+			notices.unshift(notification);
+
+			$window.localStorage['pushNotifications'] = JSON.stringify(notices);
 		},
 
 		/**
@@ -29,7 +26,7 @@ angular.module('app.services')
 		register: function() {
 			//register for android
 			if(ionic.Platform.isAndroid()) {
-				$cordovaPush.register({"senderID": "324920710438"}).then(function(result) {
+				$cordovaPush.register({"senderID": "707198023393"}).then(function(result) {
 					//registration success.
 				});
 			}

@@ -5,7 +5,27 @@ angular.module('app', [
 	'app.services',
 	'ngCordova',
 	'ionic-datepicker'
-]).run(['$ionicPlatform', 'pushService', function($ionicPlatform, pushService) {
+]).run(['$ionicPlatform', 'pushService', '$ionicPopup', '$ionicHistory', function($ionicPlatform, pushService, $ionicPopup, $ionicHistory) {
+	
+
+	$ionicPlatform.registerBackButtonAction(function(event) {
+		if (true) { // your check here
+		  
+		  if ($ionicHistory.viewHistory().backView == null) {
+			$ionicPopup.confirm({
+				title: 'System warning',
+				template: 'are you sure you want to exit?'
+			}).then(function(res) {
+				if (res) {
+					ionic.Platform.exitApp();
+				}
+			});
+		  } else {
+		  	$ionicHistory.goBack();
+		  }
+
+		}
+	}, 100);
 	
 	$ionicPlatform.ready(function() {
 		if (window.cordova && window.cordova.plugins.Keyboard) {
