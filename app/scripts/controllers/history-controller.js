@@ -3,6 +3,8 @@ angular.module('app.controllers')
 	function($scope, dateService, historyService, $ionicPopup){
 		$scope.status = "No data";
 
+		$scope.loading = false;
+
 		$scope.search = {
 			type: "",
 			from: "",
@@ -37,7 +39,9 @@ angular.module('app.controllers')
 	    	if(true){
 	    		$scope.searching = true
 	    		$scope.status = "SEARCHING .."
+	    		$scope.loading = true;
 	    		historyService.getHistory(params).then(function(data){
+	    			$scope.loading = false;
 		    		if (_.isArray(data) && data.length > 0) {
 		    			$scope.results = data;
 		    		} else {

@@ -3,7 +3,7 @@
 
     <ion-list>
       <ion-item>
-        <label for="">Select Transactioni Type</label>
+        <label for="">Select Transaction Type</label>
         <select style="float: right" name="" id="" ng-model="search.type">
           <option value="money">Money</option>
           <option value="share">Share</option>
@@ -13,18 +13,19 @@
       
       <ion-item>
           <ionic-datepicker input-obj="fromDatepickerObject">
-            <span class="col-table ion-calendar"> From Date ({{fromDatepickerObject.inputDate? fromDatepickerObject.inputDate : "touch to select"}})</span>
+            <span class="col-table ion-calendar"> From Date ({{search.from? search.from : "touch to select"}})</span>
           </ionic-datepicker>
+          <span ng-show="loading" style="float : right">Loading</span>
       </ion-item>
       
       <ion-item>
         <ionic-datepicker input-obj="toDatepickerObject">
-            <span class="col-table ion-calendar"> To Date ({{toDatepickerObject.inputDate? toDatepickerObject.inputDate : "touch to select"}})</span>
+            <span class="col-table ion-calendar"> To Date ({{search.to? search.to : "touch to select"}})</span>
           </ionic-datepicker>
       </ion-item>  
     </ion-list>
 
-    <div class="card" ng-repeat="result in results" ng-show="search.type == 'share' ">
+    <div class="card" ng-repeat="result in results" ng-show="search.type == 'share'">
       <div class="item item-text-wrap">
         <div class="row">
           <div class="col col-table">Entry Date</div>
@@ -123,6 +124,12 @@
           <div class="col col-table">Workst. ID</div>
           <div class="col col-table">{{result.workstation_id}}</div>
         </div>
+      </div>
+    </div>
+    
+    <div class="card" ng-show="results.length == 0">
+      <div class="item item-divider">
+        NO DATA
       </div>
     </div>
 
