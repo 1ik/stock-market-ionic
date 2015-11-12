@@ -51,14 +51,14 @@
 
 			<div class="item">
 				<label for="">
-					<span>Ipo Sessions</span>
+					<span>Company</span>
 					<select ng-options="session as session.IPOSession_Name for session in user.ipo_session_list" ng-model="user.ipo_Session"></select>
 				</label>
 			</div>
 			<div class="item">
 				<label for="">
-					<span>Ipo Sessions Amount</span>
-					<input type="text" ng-model="user.ipo_Session.Amount">
+					<span>Ipo Amount</span>
+					<input placeholder="type ipo amount" type="number" ng-model="user.ipo_Session.Amount">
 				</label>
 			</div>
 			<div class="item">

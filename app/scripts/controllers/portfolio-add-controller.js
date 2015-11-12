@@ -46,8 +46,32 @@ angular.module('app.controllers')
 
 		//adding for datas to portfolio
 		$scope.addToPortfolio = function() {
-			$scope.form.company = $scope.company.company;
+			var message = '';
+			if($scope.company == undefined) {
+				message = 'please select a company';
+			}
+			
+			if($scope.form.quantity == undefined || $scope.form.quantity == null || $scope.form.quantity <= 0) {
+				message = 'Please provide appropriate quantity';
+			}
+			
+			if($scope.form.buy_average == undefined || $scope.form.buy_average == null || $scope.form.buy_average <= 0) {
+				message = 'Please provide appropriate Buy Unit Price';
+			}
 
+			if($scope.form.ycp == undefined || $scope.form.ycp == null || $scope.form.ycp <= 0) {
+				console.log($scope.form.ycp, _.isEmpty($scope.form.ycp));
+				message = 'Please provide appropriate YCP';
+			}
+
+			if(message) {
+				var alertPopup = $ionicPopup.alert({
+					title: 'Invalid Form',
+					template: message
+				});
+			}
+			$scope.form.company = $scope.company.company;
+			
 			portfolioService.addPortfolio($scope.form).then(function(data){	
 				var alertPopup = $ionicPopup.alert({
 					title: 'Portfolio added successfully',

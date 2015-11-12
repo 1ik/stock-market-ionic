@@ -7,7 +7,7 @@
     <div class="row responsive-sm">
       <div class="card col">
         <div class="item item-divider">
-          Money Balance
+          Money Balance <span ng-show="loading">(Loading)</span>
         </div>
         <div class="list list-inset" ng-show="!status.money_balance">
           <div class="item">
@@ -56,7 +56,7 @@
       </div>
       <div class="card col">
         <div class="item item-divider">
-          Overall Status
+          Overall Status <span ng-show="loading">(Loading)</span>
         </div>
         <div class="list list-inset" ng-show="!status.over_all">
           <div class="item">

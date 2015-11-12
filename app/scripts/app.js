@@ -13,7 +13,7 @@ angular.module('app', [
 		  
 		  if ($ionicHistory.viewHistory().backView == null) {
 			$ionicPopup.confirm({
-				title: 'System warning',
+				title: 'Exitting Application',
 				template: 'are you sure you want to exit?'
 			}).then(function(res) {
 				if (res) {

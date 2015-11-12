@@ -7,7 +7,7 @@
       <div class="item item-text-wrap">
 		<div class="">
 			<label class="item">
-				<span class="input-label">Selected type</span>
+				<span class="input-label">Select Order Type</span>
 				<select ng-model="order.type">
 					<option ng-repeat="action in actions">{{action}}</option>
 				</select>
@@ -20,7 +20,7 @@
 			</label>
 			<label class="item">
 				<span class="input-label">Quantity</span>
-				<input placeholder="Type quantity" type="text" ng-model="order.quantity">
+				<input placeholder="Type quantity" type="number" ng-model="order.quantity" >
 			</label>
 			
 			<label class="item">
@@ -35,8 +35,8 @@
 			<label class="item" ng-if="!order.checkMarketPrice" ng-if="!order.checkMarketPrice">
 				<span class="input-label">Order Range</span>
 				<div class="row">
-					<div class="col"><input ng-disabled="order.checkMarketPrice" ng-model="order.minRange" type="text" placeholder="Type From"></div>
-					<div class="col"><input ng-disabled="order.checkMarketPrice" ng-model="order.maxRange" type="text" placeholder="Type To"></div>
+					<div class="col"><input ng-disabled="order.checkMarketPrice" ng-model="order.minRange" type="number" placeholder="Type From"></div>
+					<div class="col"><input ng-disabled="order.checkMarketPrice" ng-model="order.maxRange" type="number" placeholder="Type To"></div>
 				</div>
 			</label>
 

@@ -1,0 +1,57 @@
+<ion-view view-title="{{marketInfoTitle}}" cache-view="false">
+
+  <ion-content>
+
+    <div class="card">
+      <div class="item item-divider">
+        <p style="text-align: center">Market Info</p>
+      </div>
+      <div class="item item-divider" style="text-align :center">
+        <input placeholder="search.." ng-model="search.companyName">
+      </div>
+    </div>
+    
+
+    <div class="card" ng-repeat="ft in companies">
+      <div class="item item-divider" style="text-align:center">
+        {{ft.company}}
+      </div>
+      <div class="item item-text-wrap">
+        <div class="row order-col">
+          <div class="col col-table"><p>Change</p></div>
+          <div class="col col-table"><p>{{ft.change}}</p></div>
+        </div>
+        <div class="row order-col">
+          <div class="col col-table"><p>High</p></div>
+          <div class="col col-table"><p>{{ft.high}}</p></div>
+        </div>
+        <div class="row order-col">
+          <div class="col col-table"><p>Low</p></div>
+          <div class="col col-table"><p>{{ft.low}}</p></div>
+        </div>
+        <div class="row order-col">
+          <div class="col col-table"><p>LTP</p></div>
+          <div class="col col-table"><p>{{ft.ltp}}</p></div>
+        </div>
+        <div class="row order-col">
+          <div class="col col-table"><p>Trade</p></div>
+          <div class="col col-table"><p>{{ft.trade}}</p></div>
+        </div>
+        <div class="row order-col">
+          <div class="col col-table"><p>Value</p></div>
+          <div class="col col-table"><p>{{ft.value}}</p></div>
+        </div>
+        <div class="row order-col">
+          <div class="col col-table"><p>Volume</p></div>
+          <div class="col col-table"><p>{{ft.volume}}</p></div>
+        </div>
+        <div class="row order-col">
+          <div class="col col-table"><p>YCP</p></div>
+          <div class="col col-table"><p> <i style="color: red" ng-show="ft.ycp < ft.previous_ycp" class="ion-arrow-down-c"></i> <i style="color:green" ng-show="ft.ycp > ft.previous_ycp" class="ion-arrow-up-c"></i> {{ft.ycp}}</p></div>
+        </div>
+      </div>
+    </div>
+
+  </ion-content>
+
+</ion-view>

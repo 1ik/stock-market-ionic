@@ -1,8 +1,7 @@
 <ion-view view-title="DSE News">
   <ion-content>
 
-
-    <div class="card" ng-repeat="news in bn24News">
+    <div class="card" ng-repeat="news in bn24News" ng-show="showbn24 == true">
       <div class="item item-divider">
         {{news.title}}
         <span style="float:right">{{news.datetime}}</span>
@@ -13,7 +12,7 @@
       </div>
     </div>
 
-    <div class="card" ng-repeat="news in newsItems">
+    <div class="card" ng-repeat="news in newsItems" ng-show="showbn24 == false">
       <div class="item item-divider">
         {{news.title}}
       </div>
@@ -23,4 +22,10 @@
       </div>
     </div>
   </ion-content>
+  <ion-footer-bar style="margin-bottom : 40px;" >
+    <div class="row" style="margin-bottom : 40px;">
+      <div class="col"><button ng-class="{'button-outline' : showbn24}" ng-click="showbn24 = false" class="button button-block button-positive"> DSE NEWS </button></div>
+      <div class="col"><button ng-class="{'button-outline' : !showbn24}" ng-click="showbn24 = true" class="button button-block button-positive"> BN24 NEWS </button></div>
+    </div>
+  </ion-footer-bar>
 </ion-view>

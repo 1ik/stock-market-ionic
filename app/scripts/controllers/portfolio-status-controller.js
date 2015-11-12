@@ -1,8 +1,14 @@
 angular.module('app.controllers')
-	.controller('portfolioStatusController', ['$scope','portfolioService','$ionicPopup', function($scope, portfolioService, $ionicPopup){
+	.controller('portfolioStatusController', ['$scope','portfolioService','$ionicPopup', '$localstorage',
+		function($scope, portfolioService, $ionicPopup, $localstorage){
 
-		$scope.status = null;
+		$scope.loading = true;
+		$scope.status = $localstorage.getObject('portfolioStatus');
+
 		portfolioService.getStatus().then(function(data){
+			$scope.loading = false;
+
+			$localstorage.setObject('portfolioStatus', data);
 			$scope.status = data;
 		}).catch(function(data){
 			var alertPopup = $ionicPopup.alert({

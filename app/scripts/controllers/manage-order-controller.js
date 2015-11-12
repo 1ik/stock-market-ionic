@@ -44,6 +44,9 @@ angular.module('app.controllers').controller(
 
 		$scope.$watch('order.type',function(val){
 			fetchCompanies(val);
+			$scope.order.quantity = 0;
+			$scope.order.minRange = 0;
+			$scope.order.maxRange = 0;
 		});
 
 		$scope.$watch('order', function(newVal,oldVal){
@@ -60,6 +63,31 @@ angular.module('app.controllers').controller(
 		}
 
 		$scope.save = function() {
+			message = '';
+			if($scope.order.quantity == undefined || $scope.order.quantity == null || $scope.order.quantity <= 0) {
+				message = "Please enter correct order quantity";
+			}
+
+			if($scope.order.company == undefined) {
+				message = "Please select a company";
+			}
+
+			if($scope.order.checkMarketPrice == false) {
+				if($scope.order.minRange == undefined || $scope.order.maxRange == null) {
+					message = "Please enter correct min range and max range"
+				}
+			}
+
+			if(message) {
+				$ionicPopup.alert({
+					title: 'Invalid Order',
+					template: message
+				});
+				return false;
+			}
+			console.log($scope.order);
+			return false;
+
 			var date = new Date();
 			$scope.order.submissionDate = date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate();
 			ordersService.saveOrder($scope.order).then(function(data) {

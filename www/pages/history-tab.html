@@ -3,8 +3,8 @@
 
     <ion-list>
       <ion-item>
-        <label for="">Select Transactioni Type</label>
-        <select style="float: right" name="" id="" ng-model="search.type">
+        <label for="">Select Transaction Type</label>
+        <select name="" id="" ng-model="search.type">
           <option value="money">Money</option>
           <option value="share">Share</option>
           <option value="trade">Trade</option>
@@ -15,12 +15,12 @@
         <div class="row">
           <div class="col">
             <ionic-datepicker input-obj="fromDatepickerObject">
-              <span class="col-table ion-calendar"> From Date ({{fromDatepickerObject.inputDate? fromDatepickerObject.inputDate : "touch to select"}})</span>
+              <span class="col-table ion-calendar"> From Date ({{search.from? search.from : "touch to select"}})</span>
             </ionic-datepicker>
           </div>
           <div class="col">
             <ionic-datepicker input-obj="toDatepickerObject">
-              <span class="col-table ion-calendar"> To Date ({{toDatepickerObject.inputDate? toDatepickerObject.inputDate : "touch to select"}})</span>
+              <span class="col-table ion-calendar"> To Date ({{search.to? search.to : "touch to select"}})</span>
             </ionic-datepicker>
           </div>
         </div>

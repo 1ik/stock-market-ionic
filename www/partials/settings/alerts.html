@@ -3,7 +3,7 @@
 	<ion-content>
 		<div class="card">
 			<div class="item item-divider">
-				Alert Settings
+				Alert Settings <span ng-if="loading">(Loading)</span>
 			</div>
 			<div class="item item-text-wrap">
 				<div class="row">
@@ -28,6 +28,6 @@
 
 	</ion-content>
 	<ion-footer-bar style="margin-bottom : 10px;">
-		  <button ng-click="addSettings()()" class="button button-block button-positive"> ADD  SETTINGS</button>
+		  <button ng-click="addSettings()()" class="button button-block button-positive"> ADD  ALERT</button>
 		</ion-footer-bar>
 </ion-view>

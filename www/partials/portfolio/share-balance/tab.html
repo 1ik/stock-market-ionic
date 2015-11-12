@@ -1,4 +1,4 @@
-<ion-view>
+<ion-view view-title="SHARE BALANCE">
 
 	<ion-content class="padding" style="font-size:11px">
 		<div class="item-divider row" ng-show="error">
@@ -23,7 +23,7 @@
 			<div class="col">{{shareBalance.matured_balance}}</div>
 			<div class="col">{{shareBalance.buy_average_value}}</div>
 			<div class="col">{{shareBalance.breakeven_average}}</div>
-			<div class="col">{{shareBalance.balance * shareBalance.buy_average_value}}</div>
+			<div class="col">{{ buyVal(shareBalance.balance, shareBalance.buy_average_value) }}</div>
 			<div class="col">{{shareBalance.ycp}}</div>
 			<div class="col">{{marketVal(shareBalance.ycp, shareBalance.balance)}}</div>
 			<div class="col" ng-class="{'green' : shareBalance.loss_gain >= 0, 'red': shareBalance.loss_gain < 0 }">{{shareBalance.loss_gain}}</div>

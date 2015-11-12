@@ -10,33 +10,34 @@
 
 	<ion-content class="padding">
 		<div class="card padding">
+
 	        <div class="list">
 				<label class="item item-input item-stacked-label" ng-click="openSelectModal()">
 					<span class="input-label">Selected Company : {{ companyName()}}</span>
 				</label>
 				<label class="item item-input item-stacked-label">
 					<span class="input-label">Quantity</span>
-					<input type="text" ng-model="form.quantity" placeholder="Enter a Quantity">
+					<input type="number" ng-model="form.quantity" placeholder="Enter a Quantity">
 				</label>
 				<label class="item item-input item-stacked-label">
 					<span class="input-label">Buy Unit Price</span>
-					<input type="text" ng-model="form.buy_average" placeholder="Enter a Buy Unit Price">
+					<input type="number" ng-model="form.buy_average" placeholder="Enter a Buy Unit Price">
 				</label>
 				<label class="item item-input item-stacked-label">
 					<span class="input-label">Breakeven Unit Price</span>
-					<input disabled type="text" ng-model="form.breakeven_average" placeholder="Enter a Breakeven Unit Price">
+					<input disabled type="number" ng-model="form.breakeven_average" placeholder="Enter a Breakeven Unit Price">
 				</label>
 				<label class="item item-input item-stacked-label">
 					<span class="input-label">Buy Value</span>
-					<input disabled type="text" ng-model="form.buy_value" placeholder="Enter a Buy Value">
+					<input disabled type="number" ng-model="form.buy_value" placeholder="Enter a Buy Value">
 				</label>
 				<label class="item item-input item-stacked-label">
 					<span class="input-label">YCP</span>
-					<input type="text" ng-model="form.ycp" placeholder="Enter the YCP">
+					<input type="number" ng-model="form.ycp" placeholder="Enter the YCP">
 				</label>
 				<label class="item item-input item-stacked-label">
 					<span class="input-label">Market Value</span>
-					<input disabled type="text" ng-model="form.market_value" placeholder="Enter a Market Value">
+					<input disabled type="number" ng-model="form.market_value">
 				</label>
 				<label class="item item-input item-stacked-label">
 					<span class="input-label">Gain / Loss (YCP)</span>

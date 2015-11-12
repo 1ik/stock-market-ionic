@@ -15,6 +15,11 @@ angular.module('app.controllers')
 			return parseFloat(ycp) + parseFloat(balance);
 		}
 
+		$scope.buyVal = function(v1 , v2) {
+			var val = v1 * v2;
+			return val.toFixed(2);
+		}
+
 		$scope.openShare = function(shareBalance) {
 			console.log(shareBalance);
 			$ionicPopup.alert({
@@ -31,6 +36,11 @@ angular.module('app.controllers')
 	            <b>YCP :</b><br/>'+shareBalance.ycp+'
 	          </div>'
 			});
+		}
+
+		$scope.getBuyVal = function() {
+			var val = $scope.shareBalance.balance * $scope.shareBalance.buy_average_value;
+			return val.toFixed(2);
 		}
 
 	}]);

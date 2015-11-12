@@ -1,15 +1,21 @@
 angular.module('app.controllers')
 .controller('AlertSettingsController', ['$scope', 'settingsService', '$ionicPopup', '$state', '$ionicModal',
-	'$stateParams', 'portfolioService', 'companyService',
-	function($scope, settingsService, $ionicPopup, $state, $ionicModal, $stateParams, portfolioService,companyService){
+	'$stateParams', 'portfolioService', 'companyService', '$localstorage',
+	function($scope, settingsService, $ionicPopup, $state, $ionicModal, $stateParams, portfolioService,companyService, $localstorage){
+		
+		$scope.settings = $localstorage.getObject('alertSettings').settings;
+
 		
 		var alertSettings = settingsService.getAlertSettings();
 
+		$scope.loading = true;
 		alertSettings.then(function(settings){			
+			$scope.loading = false;
 			if(settings == "null") {
 				$scope.settings = [];	
 			} else {
 				$scope.settings = settings;
+				$localstorage.setObject('alertSettings', {settings:settings});
 			}			
 		});
 
@@ -53,6 +59,21 @@ angular.module('app.controllers')
 		}
 
 		$scope.submitAdd = function() {
+			var message = '';
+			if($scope.newSetting.company_id == undefined) {
+				message = "Please select company";
+			}
+			if($scope.newSetting.price == undefined || $scope.newSetting.price == null) {
+				message = "Please enter correct price";
+			}
+
+			if(message) {
+				$ionicPopup.alert({
+					title: 'Invalid Settings',
+					template: message,
+				});
+				return;
+			}
 
 			if($scope.editing) {
 				settingsService.updateAlertSetting($scope.newSetting).then(function(resp){

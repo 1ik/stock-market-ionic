@@ -23,18 +23,17 @@ angular.module('app.controllers').controller(
 				$scope.fts = fts;
 			});
 		}
-
-		$scope.ft = {
-			requested_amount: 0,
-			collection_point: '',
-			type: ''
-		};
-
+		
 		$scope.collectionPoints = [
 			{name: "Head Office", value: "head_office"},
 			{name: "Dhanmondi Branch", value: "dhanmondi_branch"},
 			{name: "Banani Branch", value: "banani_branch"},
 		];
+
+		$scope.ft = {
+			collection_point: '',
+			type: ''
+		};
 
 		$scope.types = [
 			{name: "Direct Transfer (EFT)", value: "direct_transfer"},
@@ -43,6 +42,30 @@ angular.module('app.controllers').controller(
 		];
 
 		$scope.submit = function() {
+			message = '';
+			if($scope.ft.requested_amount == undefined || $scope.ft.requested_amount == null) {
+				message = 'Please put correct request amount';
+			}
+
+			if($scope.ft.type == '') {
+				message = 'Please select correct transfer type';	
+			}
+
+			if($scope.ft.type == 'cheque_requisition') {
+				if($scope.ft.collection_point == '') {
+					message = 'Please select collection point';			
+				}
+			}
+
+			if(message) {
+				var alertPopup = $ionicPopup.alert({
+					title: 'Fund Transfer Successful',
+					template: message
+				});
+				return false;
+			}
+
+
 			ftService.sendFTReq($scope.ft).then(function(d){
 				var alertPopup = $ionicPopup.alert({
 					title: 'Fund Transfer Successful',
