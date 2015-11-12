@@ -1,3 +1,35 @@
+<ion-view view-title="Fund Transfer Requests" cache-view="false">
+
+  <ion-content>
+
+    <div class="card">
+      <div class="item item-divider">
+        Request Informations. <span ng-show="loading"> (Loading) </span> <i ng-click="fetchInfos()" style="float: right" class="icon ion-android-refresh"></i>
+      </div>
+    </div>
+    
+
+    <div class="card" ng-repeat="rq in request_infos">
+      <div class="item item-divider">
+        {{rq.Subject}}
+      </div>
+      <div class="item item-text-wrap">
+          <p style="font-size: 16px; margin-bottom:15px">{{rq.Body}}</p>
+          <p><b>{{rq.Received_Date}}</b> <b style="float:right">{{rq.status}}</b></p>
+      </div>
+    </div>
+
+  </ion-content>
+
+  <ion-footer-bar style="margin-bottom : 10px;">
+    <button ng-click="goToNewReq()" class="button button-block button-positive"> New Request Info</button>
+  </ion-footer-bar>
+
+</ion-view>
+
+
+<!-- 
+
 <ion-view view-title="Request informations" cache-view="false">
   
   <ion-content>
@@ -29,3 +61,4 @@
 
 
 </ion-view>
+ -->

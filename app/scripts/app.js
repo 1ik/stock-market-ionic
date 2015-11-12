@@ -206,7 +206,7 @@ angular.module('app', [
 					url: '/view',
 					views: {
 						'rqInfoItem': {
-							templateUrl: 'partials/request-info/view.html'
+							templateUrl: 'partials/request-info/view-'+media+'.html'
 						}
 					}
 				})
