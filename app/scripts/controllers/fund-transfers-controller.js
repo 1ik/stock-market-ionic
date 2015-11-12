@@ -1,6 +1,7 @@
 angular.module('app.controllers').controller(
-	'FTsController', ['$scope', 'ftService','$state', '$ionicPopup', '$cordovaNetwork',
-	function($scope, ftService, $state, $ionicPopup, $cordovaNetwork){
+	'FTsController', ['$scope', 'ftService','$state', '$ionicPopup', '$cordovaNetwork', '$localstorage',
+	function($scope, ftService, $state, $ionicPopup, $cordovaNetwork, $localstorage){
+
 		
 		if(ionic.Platform.isIOS() || ionic.Platform.isAndroid()) {
 			if(!$cordovaNetwork.isOnline()) {
@@ -12,15 +13,18 @@ angular.module('app.controllers').controller(
 				});
 			}
 		}
+		$scope.loading = true;
 
 		ftService.accountDetails().then(function(data){
+			$scope.loading = false;
 			$scope.extraInfo = data;
-			console.log(data);
 		});
 
+		$scope.fts = $localstorage.getObject('fts').fts;
 		if ($state.current.name == 'app.ft.view') {
 			ftService.getFTRequests().then(function(fts){
 				$scope.fts = fts;
+				$localstorage.setObject('fts', {fts:fts});
 			});
 		}
 		

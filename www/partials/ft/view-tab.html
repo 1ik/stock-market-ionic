@@ -3,18 +3,18 @@
   <ion-content>
     <div class="card">
       <div class="item item-divider">
-        Your Fund Transfer Request History
+        Your Fund Transfer Request History <span ng-show="loading" style="float: right">Loading</span>
       </div>
-      <div class="item item-text-wrap">
+      <div class="item item-text-wrap" ng-show="fts.length > 0">
         <div class="row order-col">
-          <div class="col col-table"> <p>SL</p></div>
-          <div class="col col-table"> <p>Requested Date</p> </div>
-          <div class="col col-table"> <p>Requested Type</p></div>
-          <div class="col col-table"> <p>Amount</p> </div>
-          <div class="col col-table"> <p>Status</p> </div>
-          <div class="col col-table"> <p>Remarks</p> </div>
+          <div class="col col-table"> <p><b>SL</b></p></div>
+          <div class="col col-table"> <p><b>Requested Date</b></p> </div>
+          <div class="col col-table"> <p><b>Requested Type</b></p></div>
+          <div class="col col-table"> <p><b>Amount</b></p> </div>
+          <div class="col col-table"> <p><b>Status</b></p> </div>
+          <div class="col col-table"> <p><b>Remarks</b></p> </div>
         </div>
-        <div class="row order-col" ng-repeat="ft in fts">
+        <div class="row order-col" ng-repeat="ft in fts" ng-show="fts.length > 0">
           <div class="col col-table"><p>{{$index+1}}</p></div>
           <div class="col col-table"><p>{{ft.request_date}}</p></div>
           <div class="col col-table"><p>{{ft.request_type}}</p></div>
@@ -22,6 +22,11 @@
           <div class="col col-table"><p>{{ft.status}}</p></div>
           <div class="col col-table"><p>{{ft.remarks}}</p></div>
         </div>
+      </div>
+    </div>
+    <div class="card" ng-show="fts.length == 0">
+      <div class="item item-divider">
+        NO DATA
       </div>
     </div>
 
