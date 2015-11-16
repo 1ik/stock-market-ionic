@@ -6,10 +6,15 @@ angular.module('app.controllers').controller(
 			session: $scope.ipoSessions[0]
 		};
 
-		$scope.$watch('selected', function(){ doSearch() },true);
+		$scope.$watch('selected', function(newV){ doSearch() },true);
 
 		var doSearch = function(){
+			if(!$scope.selected.session) {
+				return;
+			} 
+			$scope.loading = true;
 			ipoService.getIpoReports({ipo_Session_id: $scope.selected.session.id}).then(function(data){
+				$scope.loading = false;
 				$scope.reports = data;
 				$scope.reports.appliedIpoList.unshift(data.userAppliedIpo);
 				// $scope.reports.appliedIpoList.push({

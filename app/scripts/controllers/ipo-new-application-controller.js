@@ -48,6 +48,7 @@ angular.module('app.controllers').controller(
 
 
 		$scope.submit = function() {
+			
 			if($scope.user.selected) {
 				$scope.ipo.child_id.push($scope.user.user_id);
 			}

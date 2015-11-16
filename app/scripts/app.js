@@ -114,6 +114,15 @@ angular.module('app', [
 						}
 					}
 				})
+				.state('app.portfolio.company_details', {
+					url: '/company-details/:company',
+					views: {
+						'portfolioItem': {
+							templateUrl: 'partials/portfolio/company-detail/view-'+media+'.html',
+							controller: 'portfolioCompanyDetailController'
+						}
+					}
+				})
 				.state('app.portfolio.add', {
 					url: '/add',
 					views: {
@@ -145,7 +154,7 @@ angular.module('app', [
 					url: '/manage',
 					views: {
 						'orderViews': {
-							templateUrl: 'partials/orders/manage.html',
+							templateUrl: 'partials/orders/manage-'+media+'.html',
 							controller: 'ManageOrderController'
 						}
 					}

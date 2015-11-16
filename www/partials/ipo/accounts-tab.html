@@ -3,8 +3,10 @@
     <div class="card">
       <div class="item item-divider">
         IPO Accounts <span ng-if="childAccounts.length > 0">({{childAccounts.length}} Accounts)</span>
+
+        <span style="float:right" ng-show="loading">Loading</span>
       </div>
-      <div class="item item-text-wrap">
+      <div class="item item-text-wrap" ng-show="childAccounts.length > 0">
         <div class="row order-col">
           <div class="col col-table"> <p>No</p></div>
           <div class="col col-table"> <p>Child ID</p> </div>
@@ -22,6 +24,11 @@
           <div class="col col-table"> <p>{{acc.owner_id}}</p></div>
         </div>
       </div>
+    </div>
+    <div class="card" ng-show="childAccounts.length == 0 && !loading">
+      <dic class="item item-divider">
+        NO ACCOUNTS
+      </dic>
     </div>
 
   </ion-content>

@@ -1,9 +1,17 @@
 angular.module('app.controllers')
 .controller('appController', ['$scope', '$rootScope', '$window', 'pushService', 
-	'$state', '$ionicPopup', '$localstorage',
-	function($scope, $rootScope, $window, pushService, $state, $ionicPopup, $localstorage) {
+	'$state', '$ionicPopup', '$localstorage','$ionicPlatform',
+	function($scope, $rootScope, $window, pushService, $state, $ionicPopup, $localstorage, $ionicPlatform) {
 
 		// screen.lockOrientation('landscape');
+		$rootScope.$on('$cordovaNetwork:offline', function(event, networkState){
+			var alertPopup = $ionicPopup.alert({
+				title: 'Whoops You are Offline',
+				template: 'Your device seems not to be connected to internet. Please check your connection.'
+			}).then(function(){
+				ionic.Platform.exitApp();
+			});
+		})
 		
 		$scope.user = $localstorage.getObject('userData').user;
 

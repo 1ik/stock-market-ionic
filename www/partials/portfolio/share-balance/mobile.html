@@ -1,9 +1,15 @@
 <ion-view view-title="SHARE BALANCE">
 
 	<ion-content class="padding">
-		 <div class="card" ng-repeat="shareBalance in shareBalances" ng-click="openShare(shareBalance)">
+		 <div class="card" ng-show="updating">
+		 	<div class="item item-divider">
+		 		<p style="text-align: center">UPDATING</p>
+		 	</div>
+		 </div>
+		 <div class="card" ng-repeat="shareBalance in shareBalances">
 	        <div class="item item-divider">
 	          #{{$index+1}} {{shareBalance.company}}
+	          <span ng-click="showCompanyDetail(shareBalance.company)" style="float:right">DETAILS</span>
 	        </div>
 	        <div class="list list-inset">
 	          <div class="item">
@@ -29,6 +35,9 @@
 	          </div>
 	          <div class="item">
 	            <b>Gain / Loss :</b> {{shareBalance.loss_gain}}
+	          </div>
+	          <div class="item" ng-click="openShare(shareBalance);">
+	          	MORE
 	          </div>
 	        </div>
       </div>

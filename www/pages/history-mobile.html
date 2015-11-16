@@ -24,7 +24,8 @@
           </ionic-datepicker>
       </ion-item>  
     </ion-list>
-
+    
+    <!--
     <div class="card" ng-repeat="result in results" ng-show="search.type == 'share'">
       <div class="item item-text-wrap">
         <div class="row">
@@ -49,9 +50,35 @@
         </div>
       </div>
     </div>
+    -->
+    <div class="card" ng-repeat="result in results" ng-show="search.type == 'share'">
+    <div class="item item-divider">
+      {{result.entry_date}} <i style="float: right">{{result.deposite_type}}</i>
+    </div>
+    <div class="item item-text-wrap">
+      <div class="row">
+        <div class="col">
+          <p><b>Qty</b></p>
+          <p>{{result.quantity}}</p>
+        </div>
+        <div class="col">
+          <p><b>Deposite withdrawal</b></p>
+          <p>{{result.deposit_withdrawal}}</p>
+        </div>
+        <div class="col">
+          <p><b>Bill No</b></p>
+          <p>{{result.bill_no}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
-    <div class="card" ng-repeat="result in results" ng-show="search.type == 'money' ">
+
+
+
+
+<!--     <div class="card" ng-repeat="result in results" ng-show="search.type == 'money' ">
       <div class="item item-divider">
         {{result.company}}
       </div>
@@ -81,9 +108,33 @@
           <div class="col col-table">{{result.sl_no}}</div>
         </div>
       </div>
+    </div> -->
+    <div class="card" ng-repeat="result in results" ng-show="search.type == 'money'">
+    <div class="item item-divider">
+      {{result.company}} <button ng-click="openMoney(result)" style="float: right">MORE</button>
     </div>
+    <div class="item item-text-wrap">
+      <div class="row">
+        <div class="col">
+          <p><b>Rcv.Date</b></p>
+          <p>{{result.recieve_date}}</p>
+        </div>
+        <div class="col">
+          <p><b>Deposite withdrawal</b></p>
+          <p>{{result.deposit_withdrawal}}</p>
+        </div>
+        <div class="col">
+          <p><b>Amount</b></p>
+          <p>{{result.amount}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <div class="card" ng-repeat="result in results" ng-show="search.type == 'trade' ">
+
+
+
+<!--     <div class="card" ng-repeat="result in results" ng-show="search.type == 'trade' ">
       <div class="item item-divider">
         {{result.company}}
       </div>
@@ -125,7 +176,28 @@
           <div class="col col-table">{{result.workstation_id}}</div>
         </div>
       </div>
+    </div> -->
+  <div class="card" ng-repeat="result in results" ng-show="search.type == 'trade'">
+    <div class="item item-divider">
+      {{result.company}} <button ng-click="openTrade(result)" style="float: right">MORE</button>
     </div>
+    <div class="item item-text-wrap">
+      <div class="row">
+        <div class="col">
+          <p><b>Trans Date</b></p>
+          <p>{{result.tarsection_date}}</p>
+        </div>
+        <div class="col">
+          <p><b>Trans Time</b></p>
+          <p>{{result.tarsection_time}}</p>
+        </div>
+        <div class="col">
+          <p><b>Buy/Sell</b></p>
+          <p>{{result.buy_sell}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
     
     <div class="card" ng-show="results.length == 0">
       <div class="item item-divider">

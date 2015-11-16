@@ -1,8 +1,15 @@
 angular.module('app.controllers')
-	.controller('portfolioShareBalanceController', ['$scope','portfolioService','$ionicPopup','$state',
-		function($scope, portfolioService, $ionicPopup, $state){
+	.controller('portfolioShareBalanceController', ['$scope','portfolioService','$ionicPopup','$state', '$localstorage',
+		function($scope, portfolioService, $ionicPopup, $state, $localstorage){
+		
+		$scope.shareBalances = $localstorage.getObject('shareBalances').shbs;
+
+		$scope.updating = true;
 		portfolioService.getShareBalance().then(function(data){
+			$scope.updating = false;
 			$scope.shareBalances = data.share_balance;
+			$localstorage.setObject('shareBalances', {shbs:data.share_balance});
+
 			$scope.error = false;
 		}).catch(function(data){
 			$scope.error = true;
@@ -41,6 +48,14 @@ angular.module('app.controllers')
 		$scope.getBuyVal = function() {
 			var val = $scope.shareBalance.balance * $scope.shareBalance.buy_average_value;
 			return val.toFixed(2);
+		}
+
+		$scope.showCompanyDetail = function(company) {
+			$state.go('app.portfolio.company_details', {company: company});
+			// portfolioService.getCompanyDetail(company).then(function(data){
+			// 	console.log(data);
+			// });
+
 		}
 
 	}]);

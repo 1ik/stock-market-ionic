@@ -54,4 +54,48 @@ angular.module('app.controllers')
 		    	});
 	    	}
     	}
+
+
+		$scope.openMoney = function(result) {
+			$ionicPopup.alert({
+				title: result.company,
+				template: '<div class="list">
+								<a class="item item-avatar">
+									<h2>Bank</h2>
+									<p>'+result.bank_name+'</p>
+								</a>
+								<a class="item item-avatar">
+									<h2>Chq No.</h2>
+									<p>'+result.cheque_no+'</p>
+								</a>
+								<a class="item item-avatar">
+									<h2>Sl No.</h2>
+									<p>'+result.sl_no+'</p>
+								</a>
+							</div>'
+			});
+		}
+		$scope.openTrade = function(result) {
+			$ionicPopup.alert({
+				title: result.company,
+				template: '<div class="list">
+								<a class="item item-avatar">
+									<h2>Price</h2>
+									<p>'+result.price+'</p>
+								</a>
+								<a class="item item-avatar">
+									<h2>Total</h2>
+									<p>'+result.total+'</p>
+								</a>
+								<a class="item item-avatar">
+									<h2>Comm</h2>
+									<p>'+result.comm+'</p>
+								</a>
+								<a class="item item-avatar">
+									<h2>Workst. ID</h2>
+									<p>'+result.workstation_id+'</p>
+								</a>
+							</div>'
+			});
+		}		
 }]);

@@ -1,0 +1,27 @@
+<ion-view view-title="{{title}}">
+
+	<ion-content class="padding" style="font-size:11px">
+
+		<div class="item-divider row" ng-hide="error">
+			<div style="text-align:right" class="col">Transection Date</div>
+			<div style="text-align:right" class="col">Buy Quanity</div>
+			<div style="text-align:right" class="col">Buy Avg</div>
+			<div style="text-align:right" class="col">Total Buy Amount</div>
+			<div style="text-align:right" class="col">Sale Quanity</div>
+			<div style="text-align:right" class="col">Total Sell Amount</div>
+			<div style="text-align:right" class="col">Balance Quantity</div>
+			<div style="text-align:right" class="col">Remarks</div>
+		</div>
+
+		<div class="table-stripped row" ng-repeat="detail in details" ng-hide="error">
+			<div style="text-align:right" class="col">{{detail.transection_date}}</div>
+			<div style="text-align:right" class="col">{{detail.buy_quantity}}</div>
+			<div style="text-align:right" class="col">{{detail.total_buy_avg}}</div>
+			<div style="text-align:right" class="col">{{detail.total_buy_amount}}</div>
+			<div style="text-align:right" class="col">{{detail.sale_quantity}}</div>
+			<div style="text-align:right" class="col">{{detail.total_sell_amount}}</div>
+			<div style="text-align:right" class="col">{{detail.balance_quantity}}</div>
+			<div style="text-align:right" class="col">{{detail.remark}}</div>
+		</div>
+	</ion-content>
+</ion-view>

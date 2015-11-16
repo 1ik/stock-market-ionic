@@ -88,7 +88,10 @@ angular.module('app.controllers').controller(
 			status: ""
 		};
 
+		$scope.loading = true;
+
 		ordersService.getOrders({}).then(function(orders){
+			$scope.loading = false;
 			$scope.orders = orders;
 			_.each(orders, function(order){
 				if($scope.companies.indexOf(order.company) == -1) {
@@ -120,8 +123,9 @@ angular.module('app.controllers').controller(
 			if($scope.search.status == "") {
 				delete search.status;
 			}
-
+			$scope.loading = true;
 			ordersService.getOrders(search).then(function(orders) {
+				$scope.loading = false;
 				$scope.orders = orders;
 			});
 		}

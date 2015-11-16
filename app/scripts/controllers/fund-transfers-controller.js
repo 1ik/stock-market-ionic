@@ -83,4 +83,20 @@ angular.module('app.controllers').controller(
 		$scope.goToTransferFunds = function() {
 			$state.go('app.ft.request');		
 		}
+
+		$scope.openFT = function(ft) {
+			$ionicPopup.alert({
+				title: ft.request_date,
+				template: '<div class="list">
+								<a class="item item-avatar">
+									<h2>Cheque Collection</h2><br/>
+									<p>'+ft.cheque_collection_branch+'</p>
+								</a>
+								<a class="item item-avatar">
+									<h2>Remarks</h2>
+									<p>'+ft.remarks+'</p>
+								</a>
+							</div>'
+			});
+		}
 }]);

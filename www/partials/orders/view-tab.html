@@ -3,7 +3,7 @@
   <ion-content>
     <div class="card">
       <div class="item item-divider">
-        View Orders
+        View Orders <span style="float:right" ng-show="loading">Loading</span>
       </div>
       <div class="row">
       	<button class="button button-block button-positive" ng-click="showFilters = !showFilters"> {{showFilters ? "HIDE" : "SHOW"}} FILTER</button>
@@ -38,12 +38,12 @@
 		</div>      
       <div class="item item-text-wrap" ng-show="orders.length > 0">
 		<div class="row order-col">
-			<div class="col col-table"> <p>Submission</p> </div>
-			<div class="col col-table"> <p>Company</p></div>
-			<div class="col col-table"> <p>Quantity</p></div>
-			<div class="col col-table"> <p>Status</p> </div>
-			<div class="col col-table"> <p>Remarks</p> </div>
-			<div class="col col-table"> <p>MORE</p> </div>
+			<div class="col col-table"> <p><b>Submission</b></p> </div>
+			<div class="col col-table"> <p><b>Company</b></p></div>
+			<div class="col col-table"> <p><b>Quantity</b></p></div>
+			<div class="col col-table"> <p><b>Status</b></p> </div>
+			<div class="col col-table"> <p><b>Remarks</b></p> </div>
+			<div class="col col-table"> <p><b>MORE</b></p> </div>
 			
 		</div>
 		<div ng-class="{'green': order.order_type == 'Buy', 'red' : order.order_type == 'Sell'}" class="row order-col" ng-repeat="order in orders">

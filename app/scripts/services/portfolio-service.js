@@ -21,12 +21,9 @@ angular.module('app.services')
 			return httpUtils.get(reqUrl, {},{'Token':$localstorage.getObject('userData').token}).promise;
 		},
 		
-		test: function(){
-			console.log('again')
-			console.log('testing')
-			var reqUrl = 'http://ksclbd.com/api/index.php/api_users/test'
-			// var params = 'company=”some value”&quantity=”some value”&matured_quantity=”some value”&buy_average=”some value”&breakeven_average=”some value”&buy_value=”some value”'
-			return httpUtils.get(reqUrl, {},{'Token':'55f35ad5294d36.52045325'}).promise;
+		getCompanyDetail: function(company) {
+			var reqUrl = constants.rootURL + 'api_users/company_details?company=' + company;
+			return httpUtils.get(reqUrl, {},{'Token':$localstorage.getObject('userData').token}).promise;	
 		}
 	};
 }])

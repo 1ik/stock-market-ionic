@@ -33,11 +33,11 @@
      <div class="card" ng-show="search.type == 'share' && results.length > 0">
       <div class="item item-text-wrap">
         <div class="row order-col">
-          <div class="col col-table"> <p>Entry Date</p></div>
-          <div class="col col-table"> <p>Qty</p> </div>
-          <div class="col col-table"> <p>Deposite withdrawal</p></div>
-          <div class="col col-table"> <p>Bill No</p> </div>
-          <div class="col col-table"> <p>Deposite Type</p> </div>
+          <div class="col col-table"> <p><b>Entry Date</b></p></div>
+          <div class="col col-table"> <p><b>Qty</b></p> </div>
+          <div class="col col-table"> <p><b>Deposite withdrawal</b></p></div>
+          <div class="col col-table"> <p><b>Bill No</b></p> </div>
+          <div class="col col-table"> <p><b>Deposite Type</b></p> </div>
         </div>
         <div class="row order-col" ng-repeat="result in results" ng-show="search.type == 'share' && results.length > 0">
           <div class="col col-table"><p>{{result.entry_date}}</p></div>
@@ -52,12 +52,12 @@
      <div class="card" ng-show="search.type == 'money' && results.length > 0">
       <div class="item item-text-wrap">
         <div class="row order-col">
-          <div class="col col-table"> <p>Rcv.Date</p></div>
-          <div class="col col-table"> <p>Depo. Withdrawal</p> </div>
-          <div class="col col-table"> <p>Amount</p></div>
-          <div class="col col-table"> <p>Bank</p> </div>
-          <div class="col col-table"> <p>Chq No.</p> </div>
-          <div class="col col-table"> <p>Sl No.</p> </div>
+          <div class="col col-table"> <p><b>Rcv.Date</b></p></div>
+          <div class="col col-table"> <p><b>Depo. Withdrawal</b></p> </div>
+          <div class="col col-table"> <p><b>Amount</b></p></div>
+          <div class="col col-table"> <p><b>Bank</b></p> </div>
+          <div class="col col-table"> <p><b>Chq No.</b></p> </div>
+          <div class="col col-table"> <p><b>Sl No. </b></p> </div>
         </div>
         <div class="row order-col" ng-repeat="result in results" ng-show="search.type == 'money' && results.length > 0">
           <div class="col col-table"><p>{{result.recieve_date}}</p></div>
@@ -74,15 +74,15 @@
      <div class="card" ng-show="search.type == 'trade' && results.length > 0">
       <div class="item item-text-wrap">
         <div class="row order-col">
-          <div class="col col-table"> <p>Trans Date</p></div>
-          <div class="col col-table"> <p>Trans Time</p> </div>
-          <div class="col col-table"> <p>Buy/Sell</p></div>
-          <div class="col col-table"> <p>Group</p></div>
-          <div class="col col-table"> <p>Share Qty.</p> </div>
-          <div class="col col-table"> <p>Price</p> </div>
-          <div class="col col-table"> <p>Total</p> </div>
-          <div class="col col-table"> <p>Comm</p> </div>
-          <div class="col col-table"> <p>Workst. ID</p> </div>
+          <div class="col col-table"> <p><b>Trans Date</b></p></div>
+          <div class="col col-table"> <p><b>Trans Time</b></p> </div>
+          <div class="col col-table"> <p><b>Buy/Sell</b></p></div>
+          <div class="col col-table"> <p><b>Group</b></p></div>
+          <div class="col col-table"> <p><b>Share Qty.</b></p> </div>
+          <div class="col col-table"> <p><b>Price</b></p> </div>
+          <div class="col col-table"> <p><b>Total</b></p> </div>
+          <div class="col col-table"> <p><b>Comm</b></p> </div>
+          <div class="col col-table"> <p><b>Workst. ID</b></p> </div>
         </div>
         <div class="row order-col" ng-repeat="result in results" ng-show="search.type == 'trade' && results.length > 0">
           <div class="col col-table"><p>{{result.tarsection_date}}</p></div>

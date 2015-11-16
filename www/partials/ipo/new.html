@@ -6,14 +6,14 @@
 			Pending IPOs
 		</div>      
 		<div class="item item-text-wrap">	
-			<div class="row order-col">
+			<div class="row order-col" ng-show="pendingIPOs.child_pending_ipo_list && pendingIPOs.child_pending_ipo_list.length > 0">
 				<div class="col col-table"> <p>Application Date</p></div>
 				<div class="col col-table"> <p>ID</p></div>
 				<div class="col col-table"> <p>Applied IPO</p></div>
 				<div class="col col-table"> <p>Status</p></div>
 				<div class="col col-table"> <p>Remarks</p></div>
 			</div>
-			<div class="row order-col">
+			<div class="row order-col" ng-if="pendingIPOs.pending_ipo_list.id">
 				<div class="col col-table"> <p>{{pendingIPOs.pending_ipo_list.Application_Date}}</p></div>
 				<div class="col col-table"> <p>{{pendingIPOs.pending_ipo_list.id}}</p></div>
 				<div class="col col-table"> <p>{{pendingIPOs.pending_ipo_list.IPOSession_Name}}</p></div>
@@ -26,6 +26,9 @@
 				<div class="col col-table"> <p>{{row.IPOSession_Name}}</p></div>
 				<div class="col col-table"> <p>{{row.Application_Satus}}</p></div>
 				<div class="col col-table"> <p>{{row.Remarks}}</p></div>
+			</div>
+			<div class="item item-divider" ng-show="!pendingIPOs.pending_ipo_list.id || pendingIPOs.child_pending_ipo_list.length > 0">
+				NO PENDING IPO
 			</div>
 		</div>
   	</div>

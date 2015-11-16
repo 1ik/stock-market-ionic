@@ -1,6 +1,6 @@
 angular.module('app.controllers').controller(
-	'ManageOrderController', ['$scope', 'ordersService', '$ionicPopup', '$state', '$rootScope', '$cordovaNetwork',
-	function($scope, ordersService, $ionicPopup, $state, $rootScope, $cordovaNetwork) {
+	'ManageOrderController', ['$scope', 'ordersService', '$ionicPopup', '$state', '$rootScope', '$cordovaNetwork', '$localstorage',
+	function($scope, ordersService, $ionicPopup, $state, $rootScope, $cordovaNetwork, $localstorage) {
 		
 		if(ionic.Platform.isIOS() || ionic.Platform.isAndroid()) {
 			if(!$cordovaNetwork.isOnline()) {
@@ -45,8 +45,8 @@ angular.module('app.controllers').controller(
 		$scope.$watch('order.type',function(val){
 			fetchCompanies(val);
 			$scope.order.quantity = 0;
-			$scope.order.minRange = 0;
-			$scope.order.maxRange = 0;
+			$scope.order.minRange = undefined;
+			$scope.order.maxRange = undefined;
 		});
 
 		$scope.$watch('order', function(newVal,oldVal){
@@ -56,9 +56,16 @@ angular.module('app.controllers').controller(
 
 		var fetchCompanies = function(type) {
 			$scope.companySearching = true;
+
+			companies = $localstorage.getObject(type + ".companies").comps;
+
+			if(companies) {
+				$scope.companies = companies;
+			}
 			ordersService.getCompanies(type).then(function(companies){
 				$scope.companies = companies;
 				$scope.companySearching = false;
+				$localstorage.setObject(type + ".companies", {comps: companies});
 			});
 		}
 

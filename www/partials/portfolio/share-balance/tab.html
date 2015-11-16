@@ -1,32 +1,35 @@
 <ion-view view-title="SHARE BALANCE">
 
 	<ion-content class="padding" style="font-size:11px">
-		<div class="item-divider row" ng-show="error">
-			<p>Failed to Get Share balance information from server.</p>
-		</div>
+		<div class="card">
+			<div class="item-divider row" ng-show="error">
+				<p>Failed to Get Share balance information from server.</p>
+			</div>
+			<div class="item-divider row" ng-hide="error">
+				<div style="text-align:right" class="col">Company</div>
+				<div style="text-align:right" class="col">Quantity</div>
+				<div style="text-align:right" class="col">Matured Qn</div>
+				<div style="text-align:right" class="col">Buy Avg</div>
+				<div style="text-align:right" class="col">Breakeven Avg</div>
+				<div style="text-align:right" class="col">Buy Val</div>
+				<div style="text-align:right" class="col">YCP</div>
+				<div style="text-align:right" class="col">Market Val</div>
+				<div style="text-align:right" class="col">Gain/Loss</div>
+				<div style="text-align:right" class="col">Details</div>
+			</div>
 
-		<div class="item-divider row" ng-hide="error">
-			<div class="col">Company</div>
-			<div class="col">Quantity</div>
-			<div class="col">Matured Qn</div>
-			<div class="col">Buy Avg</div>
-			<div class="col">Breakeven Avg</div>
-			<div class="col">Buy Val</div>
-			<div class="col">YCP</div>
-			<div class="col">Market Val</div>
-			<div class="col">Gain/Loss</div>
-		</div>
-
-		<div class="table-stripped row" ng-repeat="shareBalance in shareBalances" ng-hide="error">
-			<div class="col">{{shareBalance.company}}</div>
-			<div class="col">{{shareBalance.balance}}</div>
-			<div class="col">{{shareBalance.matured_balance}}</div>
-			<div class="col">{{shareBalance.buy_average_value}}</div>
-			<div class="col">{{shareBalance.breakeven_average}}</div>
-			<div class="col">{{ buyVal(shareBalance.balance, shareBalance.buy_average_value) }}</div>
-			<div class="col">{{shareBalance.ycp}}</div>
-			<div class="col">{{marketVal(shareBalance.ycp, shareBalance.balance)}}</div>
-			<div class="col" ng-class="{'green' : shareBalance.loss_gain >= 0, 'red': shareBalance.loss_gain < 0 }">{{shareBalance.loss_gain}}</div>
+			<div class="table-stripped row" ng-repeat="shareBalance in shareBalances" ng-hide="error">
+				<div class="col">{{shareBalance.company}}</div>
+				<div style="text-align:right" class="col">{{shareBalance.balance}}</div>
+				<div style="text-align:right" class="col">{{shareBalance.matured_balance}}</div>
+				<div style="text-align:right" class="col">{{shareBalance.buy_average_value}}</div>
+				<div style="text-align:right" class="col">{{shareBalance.breakeven_average}}</div>
+				<div style="text-align:right" class="col">{{ buyVal(shareBalance.balance, shareBalance.buy_average_value) }}</div>
+				<div style="text-align:right" class="col">{{shareBalance.ycp}}</div>
+				<div style="text-align:right" class="col">{{marketVal(shareBalance.ycp, shareBalance.balance)}}</div>
+				<div style="text-align:right" class="col" ng-class="{'green' : shareBalance.loss_gain >= 0, 'red': shareBalance.loss_gain < 0 }">{{shareBalance.loss_gain}}</div>
+				<div style="text-align:right" class="col"><span ng-click="showCompanyDetail(shareBalance.company)">Detail</span></div>
+			</div>
 		</div>
 	</ion-content>
 </ion-view>

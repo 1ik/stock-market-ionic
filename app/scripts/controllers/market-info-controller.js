@@ -1,5 +1,5 @@
 angular.module('app.controllers').controller(
-	'MarketInfoController', ['$scope', 'companyService', '$localstorage', function($scope, companyService, $localstorage){
+	'MarketInfoController', ['$scope', 'companyService', '$localstorage', '$ionicPopup', function($scope, companyService, $localstorage, $ionicPopup){
 
 		$scope.search = {
 			companyName: ""
@@ -39,6 +39,34 @@ angular.module('app.controllers').controller(
 
 		$scope.refresh = function() {
 			$scope.fetchData();
+		}
+
+		$scope.openCompany = function(company) {
+			$ionicPopup.alert({
+				title: company.company,
+				template: '<div class="list">
+						<a class="item item-avatar">
+							<h2>LTP</h2>
+							<p>'+company.ltp+'</p>
+						</a>
+						<a class="item item-avatar">
+							<h2>Trade</h2>
+							<p>'+company.trade+'</p>
+						</a>
+						<a class="item item-avatar">
+							<h2>Value</h2>
+							<p>'+company.value+'</p>
+						</a>
+						<a class="item item-avatar">
+							<h2>Volume</h2>
+							<p>'+company.volume+'</p>
+						</a>
+						<a class="item item-avatar">
+							<h2>Change</h2>
+							<p>'+company.change+'</p>
+						</a>
+					</div>'
+			});
 		}
 		
 }]);

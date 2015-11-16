@@ -1,0 +1,61 @@
+<ion-view view-title="View Orders">
+  <ion-content>
+    <div class="card">
+      <div class="item item-divider" ng-class="{'green' : order.type == 'buy', 'red' : order.type == 'sell'}">
+        Manage Orders
+      </div>
+      <div class="item item-text-wrap">
+		<div class="">
+			<label class="item">
+				<span class="input-label">Select Order Type</span>
+				<select ng-model="order.type">
+					<option ng-repeat="action in actions">{{action}}</option>
+				</select>
+			</label>
+			<label class="item">
+				<span class="input-label">Select Company <span ng-show="companySearching">(Loading..)</span></span>
+				<select ng-model="order.company">
+					<option ng-repeat="company in companies">{{company}}</option>
+				</select>
+			</label>
+			<label class="item">
+				<span class="input-label">Quantity</span>
+				<input placeholder="Type quantity" type="number" ng-model="order.quantity" >
+			</label>
+			
+			<label class="item">
+				<div class="row">
+					<div class="col">
+						If want to {{order.type}} at market price please check the box
+					</div>
+					<div class="col"><input type="checkbox" ng-model="order.checkMarketPrice"></div>
+				</div>
+			</label>
+
+			<label class="item" ng-if="!order.checkMarketPrice" ng-if="!order.checkMarketPrice">
+				<span class="input-label">Order Range</span>
+				<div class="row">
+					<div class="col"><input ng-disabled="order.checkMarketPrice" ng-model="order.minRange" type="number" placeholder="Type From"></div>
+					<div class="col"><input ng-disabled="order.checkMarketPrice" ng-model="order.maxRange" type="number" placeholder="Type To"></div>
+				</div>
+			</label>
+
+			<label class="item" ng-if="!order.checkMarketPrice">
+				<span class="input-label">Total Price</span>
+				<div class="row">
+					<div class="col"><input disabled ng-model="order.totalMinPrice" type="text" placeholder="From"></div>
+					<div class="col"><input disabled ng-model="order.totalMaxPrice" type="text" placeholder="To"></div>
+				</div>
+			</label>
+			<div class="item">
+				<div class="row">
+					<ionic-datepicker input-obj="expireDatepickerObject">
+					  <span class="col-table ion-calendar"> Expire date ({{order.expiryDate? order.expiryDate : "touch to select"}})</span>
+					</ionic-datepicker>
+				</div>
+			</div>
+			<button ng-click="save()" class="button button-positive button-full">Submit</button>
+		</div>
+      </div>
+    </div>
+</ion-view>

@@ -2,11 +2,11 @@
   <ion-content>
     <div class="card">
       <div class="item item-divider">
-        IPO Reports
+        IPO Reports <span ng-show="loading">Loading</span>
         <p style="float:right">session: <select ng-model="selected.session" ng-options="session.IPOSession_Name for session in ipoSessions"></select></p>
       </div>
 
-      <div class="item item-text-wrap">
+      <div class="item item-text-wrap" ng-show="reports.appliedIpoList && reports.appliedIpoList.length > 0">
 		<div class="row order-col">
 			<div class="col col-table"> <p>Application Date</p></div>
 			<div class="col col-table"> <p>ID</p></div>
@@ -22,6 +22,12 @@
 			<div class="col col-table"> <p>{{row.Application_Satus}}</p></div>
 			<div class="col col-table"> <p>{{row.Remarks}}</p></div>
 		</div>
+      </div>
+      
+    </div>
+    <div class="card">
+    	<div class="item item-divider" ng-show="reports.appliedIpoList.length < 0 || reports.appliedIpoList == undefined">
+      	NO DATA
       </div>
     </div>
 

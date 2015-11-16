@@ -6,7 +6,7 @@
         Withdraw Requests
       </div>
 
-      <div class="item item-text-wrap" ng-if="tab">
+      <div class="item item-text-wrap" ng-if="tab" ng-show="withdrawals.length > 0">
         <div class="row order-col">
           <div class="col col-table"> <p>Received Date</p></div>
           <div class="col col-table"> <p>Transaction</p></div>
@@ -24,6 +24,7 @@
           <div class="col col-table"> <p>{{withdraw.Approval_Status}}</p></div>          
         </div>
       </div>
+
       
       <div ng-if="!tab" ng-repeat="withdraw in withdrawals">
         <div class="item item-divider">
@@ -49,7 +50,12 @@
           </div>
         </div>
       </div>
+    </div>
 
+    <div class="card" ng-show="withdrawals.length == 0">
+      <div class="item-divider">
+        <p style="text-align:center">NO DATA</p>
+      </div>
     </div>
     <div class="card">
       <div class="item item-divider">

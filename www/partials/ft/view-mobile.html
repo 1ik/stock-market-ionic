@@ -8,7 +8,7 @@
       </div>
     </div>
     
-
+    <!--
     <div class="card" ng-repeat="ft in fts">
       <div class="item item-divider">
         Amount : {{ft.amount}}
@@ -40,6 +40,29 @@
         </div>
       </div>
     </div>
+    -->
+  <div class="card" ng-repeat="ft in fts" ng-hide="fts.length == 0">
+    <div class="item item-divider">
+      {{ft.request_date}} <i style="float: right">{{ft.status}}</i>
+    </div>
+    <div class="item item-text-wrap">
+      <div class="row">
+        <div class="col">
+          <p><b>Amount</b></p>
+          <p>{{ft.amount}}</p>
+        </div>
+        <div class="col">
+          <p><b>Delivery Date</b></p>
+          <p>{{ft.delivery_date}}</p>
+        </div>
+        <div class="col">
+          <p><b>Requested Type</b></p>
+          <p>{{ft.request_type}}</p>
+        </div>
+      </div>
+      <button ng-click="openFT(ft)">MORE</button>
+    </div>
+  </div>
 
   </ion-content>
 
