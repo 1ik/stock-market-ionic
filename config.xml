@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.kscl.app" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.e2e.sharemarket" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>KSCL App</name>
   <description>
-        An Ionic Framework and Cordova project.
+        An application for easy shar market business management.
     </description>
-  <author email="hi@ionicframework" href="http://ionicframework.com/">
-      Ionic Framework Team
+  <author email="stackoverflow789@gmail.com" href="http://ksclbd.com/">
+      Anik Hasan
     </author>
   <content src="index.html"/>
   <access origin="*"/>
@@ -68,4 +68,5 @@
     <splash src="resources/ios/splash/Default~iphone.png" width="320" height="480"/>
   </platform>
   <icon src="resources/ios/icon/icon-small@3x.png"/>
+  <allow-navigation href="http://*/*" />
 </widget>

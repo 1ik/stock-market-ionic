@@ -1,10 +1,10 @@
-<ion-view view-title="{{marketInfoTitle}}" cache-view="false">
+<ion-view view-title="MARKET INFO" cache-view="false">
 
   <ion-content>
 
     <div class="card">
       <div class="item item-divider">
-        <p style="text-align: center">Market Info <span ng-show="loading"> (Loading) </span></p>
+        <p style="text-align: center">{{marketInfoTitle}}<span ng-show="loading"> (Loading) </span></p>
       </div>
       <div class="item item-divider" style="text-align :center">
         <input placeholder="search.." ng-model="search.companyName">
@@ -28,6 +28,10 @@
         <div class="col">
           <p><b>Low</b></p>
           <p>{{company.low}}</p>
+        </div>
+        <div class="col">
+          <p><b>LTP</b></p>
+          <p>{{company.ltp}}</p>
         </div>
       </div>
     </div>

@@ -23,7 +23,7 @@ angular.module('app', [
 		  } else {
 		  	$ionicHistory.goBack();	
 		  }
-
+		  
 		}
 	}, 100);
 	
@@ -44,18 +44,11 @@ angular.module('app', [
 	"mock": false
 })
 
-.config(['$stateProvider', '$urlRouterProvider', '$ionicConfigProvider', '$httpProvider', 
+.config(['$stateProvider', '$urlRouterProvider', '$ionicConfigProvider', '$httpProvider',
 	function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $httpProvider) {  
-		var media = window.innerWidth <= 450 ? 'mobile' : 'tab';
-		
-		document.addEventListener("deviceready", function(){
-			if(media == 'mobile') {
-				window.plugins.orientationLock.lock("portrait");
-			} else {
-				window.plugins.orientationLock.lock("landscape");
-			}
-		}, false);
+		$ionicConfigProvider.views.transition('none'); 
 
+		var media = window.innerWidth <= 450 ? 'mobile' : 'tab';
 
 		$stateProvider      
 		.state('splash', {
@@ -74,7 +67,8 @@ angular.module('app', [
 				url: '/dashboard',
 				views: {
 					'menuContent': {
-						templateUrl: 'pages/dashboard.html'
+						templateUrl: 'pages/dashboard.html',
+						controller: 'DashController'
 					}
 				}
 			})
@@ -289,6 +283,15 @@ angular.module('app', [
 						}
 					}
 				})
+				.state('app.settings.password', {
+					url: '/change-password',
+					views: {
+						'settingsItem': {
+							templateUrl: 'partials/settings/change-password.html',
+							controller: 'PasswordSettingsController'
+						}
+					}
+				})
 			.state('app.history', {
 				url: '/history',
 				views: {
@@ -355,6 +358,20 @@ angular.module('app', [
 		$urlRouterProvider.otherwise('/splash');
 }]);
 
+
+ionic.Platform.ready(function(){
+	ionic.Platform.fullScreen();
+	var isIOS = ionic.Platform.isIOS();
+  	var isAndroid = ionic.Platform.isAndroid();
+	if(isIOS || isAndroid) {
+		var media = window.innerWidth <= 450 ? 'mobile' : 'tab';
+		if(media == 'mobile') {
+			screen.lockOrientation('portrait');
+		}  else {
+			screen.lockOrientation('landscape');
+		}	
+	}
+});
 
 //initializations..
 angular.module('app.controllers', [])

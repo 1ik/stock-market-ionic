@@ -46,10 +46,6 @@ angular.module('app.controllers').controller(
 				title: company.company,
 				template: '<div class="list">
 						<a class="item item-avatar">
-							<h2>LTP</h2>
-							<p>'+company.ltp+'</p>
-						</a>
-						<a class="item item-avatar">
 							<h2>Trade</h2>
 							<p>'+company.trade+'</p>
 						</a>

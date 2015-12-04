@@ -1,18 +1,22 @@
 <ion-view view-title="DSE News">
   <ion-content>
-
-    <div class="card" ng-repeat="news in bn24News" ng-show="showbn24 == true">
+    <div class="card" ng-show="updating == true">
+      <div class="item item-text-wrap">
+        <p style="text-align:center">Updating</p>
+      </div>
+    </div>
+    <div class="card" ng-repeat="news in prothomAloNews" ng-show="showProthomAlo == true">
       <div class="item item-divider">
-        {{news.title}}
-        <span style="float:right">{{news.datetime}}</span>
+        {{news.title}}<br/><b style="font-size: 11px">{{news.time}}</b>
       </div>
       <div class="item item-text-wrap">
-        <p>{{news.summery}}</p>
-        <p><a href="{{news.main_news_url}}">READ MORE ON [BANGLANEWS24.COM]</a></p>
+        <p>{{news.body}}</p>
+        <p><a href="" ng-click="openLink(news.link)">READ MORE ON [Prothomalo]</a></p>
       </div>
     </div>
 
-    <div class="card" ng-repeat="news in newsItems" ng-show="showbn24 == false">
+    
+    <div class="card" ng-repeat="news in newsItems" ng-show="showProthomAlo == false">
       <div class="item item-divider">
         {{news.title}}
       </div>
@@ -24,8 +28,8 @@
   </ion-content>
   <ion-footer-bar style="margin-bottom : 40px;" >
     <div class="row" style="margin-bottom : 40px;">
-      <div class="col"><button ng-class="{'button-outline' : showbn24}" ng-click="showbn24 = false" class="button button-block button-positive"> DSE NEWS </button></div>
-      <div class="col"><button ng-class="{'button-outline' : !showbn24}" ng-click="showbn24 = true" class="button button-block button-positive"> BN24 NEWS </button></div>
+      <div class="col"><button ng-class="{'button-outline' : showProthomAlo}" ng-click="showProthomAlo = false" class="button button-block button-positive"> DSE NEWS </button></div>
+      <div class="col"><button ng-class="{'button-outline' : !showProthomAlo}" ng-click="showProthomAlo = true" class="button button-block button-positive"> Prothomalo NEWS </button></div>
     </div>
   </ion-footer-bar>
 </ion-view>

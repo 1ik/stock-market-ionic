@@ -23,51 +23,28 @@ angular.module('app.controllers')
 		}
 
 		$rootScope.$on('$cordovaPush:notificationReceived', function(event, notification) {
+			console.log(notification, 'app-controller');
+
 			switch(notification.event) {
 				
 				case 'registered':
-					var pushRegistration = '';
-
-					if($window.localStorage['pushRegistration'] != undefined) {
-						pushRegistration = JSON.parse($window.localStorage['pushRegistration']);						
-					} else {
-						pushRegistration = {
-							remote : {
-								android: { device_token : ''},
-								ios : {device_token: ''}
-							},
-							local : {
-								android: { device_token : ''},
-								ios : {device_token: ''}	
-							}
-						};
-					}
-					
-					pushRegistration.remote.android.device_token = notification.regid;					
-					
-					if (notification.regid.length > 0 ) {
-						if(pushRegistration.remote.android.device_token 
-							!= pushRegistration.local.android.device_token) {
-							pushService.sendRegistrationToServer({
-								deviceId: notification.regid,
-								deviceType: "gcm"
-							}).then(function(response){
-								pushRegistration.local.android.device_token = notification.regid;
-								$window.localStorage['pushRegistration'] = JSON.stringify(pushRegistration);
-							}).catch(function(err){});
-						}
-					}
-					break;
+				
+					pushService.sendRegistrationToServer({
+						deviceId: notification.regid,
+						deviceType: "gcm"
+					}).then(function(response){
+					}).catch(function(err){});
+				
+					break;				
 				
 				case 'message':
-					pushService.saveNotification(notification.payload);
-					/*
+					pushService.saveNotification(notification);
+					
 					$ionicPopup.alert({
-						title: notification.payload.title,
-						template: notification.payload.message
+						title: notification.title,
+						template: notification.message
 					});
-					*/
-					alert(notification.payload.title + " : " + notification.payload.message);
+
 					break;
 
 				default:

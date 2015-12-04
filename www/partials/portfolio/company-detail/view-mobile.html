@@ -1,23 +1,42 @@
 <ion-view view-title="{{title}}">
 
 	<ion-content class="padding">
-		 <div class="card" ng-repeat="detail in details" ng-click="openDetail(shareBalance)">
+		 <div class="card" ng-repeat="detail in details">
 	        <div class="item item-divider">
-	          #{{$index+1}} {{detail.transection_date}}
+	          #{{$index+1}} {{formatDate(detail.transection_date)}}
 			  <span ng-click="openDetail(detail)" style="float:right">MORE</span>
 	        </div>
-	        <div class="list list-inset">
-	          <div class="item">
+	        <div class="list list-inset" >
+	          
+	          <div class="item" ng-show="detail.sale_quantity < detail.buy_quantity">
 	            <b>Buy Quanity :</b> {{detail.buy_quantity}}
 	            <br/>
 	            <em style="font-size: 10px; color:#3aabbcc">({{detail.remark}})</em>
 	          </div>
-	          <div class="item">
-	            <b>Buy Avg :</b> {{detail.total_buy_avg}}
-	          </div>
-	          <div class="item">
+	          <div class="item" ng-show="detail.sale_quantity < detail.buy_quantity">
 	            <b>Total Buy Amount :</b> {{detail.total_buy_amount}}
 	          </div>
+	          <div class="item" ng-show="detail.sale_quantity < detail.buy_quantity">
+	            <b>Buy Avg :</b> {{detail.total_buy_avg}}
+	          </div>
+	          
+	          <div class="item" ng-show="detail.sale_quantity > detail.buy_quantity">
+	            <b>Sale Quanity :</b> {{detail.sale_quantity}}
+	            <br/>
+	            <em style="font-size: 10px; color:#3aabbcc">({{detail.remark}})</em>
+	          </div>
+	          <div class="item" ng-show="detail.sale_quantity > detail.buy_quantity">
+	            <b>Sale Amount :</b> {{detail.total_sell_amount}}
+	            <br/>
+	          </div>
+	          <div class="item" ng-show="detail.sale_quantity > detail.buy_quantity">
+	            <b>Sale Average :</b> {{detail.total_sell_avg}}
+	            <br/>
+	          </div>
+
+
+
+	          
 
 	        </div>
       </div>

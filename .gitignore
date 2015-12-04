@@ -7,3 +7,4 @@ plugins/
 www/lib
 www/styles.min.css
 www/scripts.min.js
+push-notifications/

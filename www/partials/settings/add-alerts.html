@@ -1,16 +1,22 @@
 <ion-view view-title="{{title}}">
 	<ion-content>
 		<div class="card">
-			<ion-list>
+			<ion-list>				
+				<!-- <ion-item>
+					<label style="padding-bottom:40px;" class="item item-input item-stacked-label" >
+						Selected Company
+						<button ng-click="openSelectModal()" >{{ companyName()}}</button>
+					</label>
+				</ion-item> -->
+				<ion-item>
+					<label for="price"> Select Company :  </label>
+					<button ng-click="openSelectModal()" >{{ companyName()}}</button>
+				</ion-item>
+
 				<ion-item>
 					<label for="price"> Price </label>
 					<input id="price" type="number" placeholder="Type Price" ng-model="newSetting.price">
 				</ion-item>
-
-				<ion-item>
-					<label style="padding-bottom:40px;" class="item item-input item-stacked-label" ng-click="openSelectModal()">
-					<span class="input-label">Selected Company : <br/>{{ companyName()}}</span>
-				</label>
 				
 				<ion-item>
 					<span class="input-label">Above/Below</span>
@@ -83,17 +89,22 @@
 					<div class="col col-table">{{SBCompany.balance}}</div>
 				</div>
 				<div class="row">
-					<div class="col col-table">Breakeven Avg.</div>
-					<div class="col col-table">{{SBCompany.breakeven_average}}</div>
+					<div class="col col-table">Matured balance</div>
+					<div class="col col-table">{{SBCompany.matured_balance}}</div>
 				</div>
 				<div class="row">
 					<div class="col col-table">Buy Avg value</div>
 					<div class="col col-table">{{SBCompany.buy_average_value}}</div>
 				</div>
 				<div class="row">
-					<div class="col col-table">Loss Gain</div>
+					<div class="col col-table">Breakeven Avg.</div>
+					<div class="col col-table">{{SBCompany.breakeven_average}}</div>
+				</div>				
+				<div class="row">
+					<div class="col col-table">Loss/Gain</div>
 					<div class="col col-table">{{SBCompany.loss_gain}}</div>
 				</div>
+				<!--
 				<div class="row">
 					<div class="col col-table">LTP</div>
 					<div class="col col-table">{{SBCompany.ltp}}</div>
@@ -102,15 +113,12 @@
 					<div class="col col-table">Market group</div>
 					<div class="col col-table">{{SBCompany.market_group}}</div>
 				</div>
-				<div class="row">
-					<div class="col col-table">Matured balance</div>
-					<div class="col col-table">{{SBCompany.matured_balance}}</div>
-				</div>
+				
 				<div class="row">
 					<div class="col col-table">YCP</div>
 					<div class="col col-table">{{SBCompany.ycp}}</div>
 				</div>
-
+				-->
 			</div>
 		</div>
 	</ion-content>

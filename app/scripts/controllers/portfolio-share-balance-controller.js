@@ -36,9 +36,9 @@ angular.module('app.controllers')
 	          </div><div class="item">
 	            <b>Buy Average :</b> '+shareBalance.buy_average_value+'
 	          </div><div class="item">
-	            <b>Breakeven Average :</b><br/>'+shareBalance.breakeven_average+'
+	            <b>Buy Amount :</b><br/>'+shareBalance.balance * shareBalance.buy_average_value+'
 	          </div><div class="item">
-	            <b>Breakeven Average :</b><br/>'+shareBalance.balance * shareBalance.buy_average_value+'
+	            <b>Breakeven Average :</b><br/>'+shareBalance.breakeven_average+'
 	          </div><div class="item">
 	            <b>YCP :</b><br/>'+shareBalance.ycp+'
 	          </div>'
@@ -52,10 +52,5 @@ angular.module('app.controllers')
 
 		$scope.showCompanyDetail = function(company) {
 			$state.go('app.portfolio.company_details', {company: company});
-			// portfolioService.getCompanyDetail(company).then(function(data){
-			// 	console.log(data);
-			// });
-
 		}
-
 	}]);

@@ -6,8 +6,7 @@ angular.module('app.services')
 		sendRegistrationToServer: function(data) {
 
 			var reqUrl = constants.rootURL + 'api_users/device';
-			var	params = 'device_id='+data.deviceId+'&device_type='+data.deviceType;
-			
+			var	params = 'device_id='+data.deviceId+'&device_type='+data.deviceType;			
 			return httpUtils.post(reqUrl, params,{'Token':$localstorage.getObject('userData').token}).promise;
 		},
 
@@ -29,6 +28,24 @@ angular.module('app.services')
 				$cordovaPush.register({"senderID": "707198023393"}).then(function(result) {
 					//registration success.
 				});
+			} else {
+				
+				if(ionic.Platform.isIOS()) {
+
+					var iosConfig = {
+						"badge": true,
+						"sound": true,
+						"alert": true,
+					};
+
+					$cordovaPush.register(iosConfig).then(function(deviceToken) {
+						console.log("device token", deviceToken);
+						var reqUrl = constants.rootURL + 'api_users/device';
+						var	params = 'device_id='+deviceToken+'&device_type=apn';
+						httpUtils.post(reqUrl, params,{'Token':$localstorage.getObject('userData').token}).promise;
+				    }, function(err) {
+				    });
+				}
 			}
 		},
 		

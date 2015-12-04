@@ -16,18 +16,18 @@ angular.module('app.controllers').controller(
 		});
 
 		$scope.openDetail = function(detail) {
+			
 			$ionicPopup.alert({
 				title: detail.transection_date,
 				template: '<div class="item">
-	            <b>Sale Quanity :</b> '+detail.sale_quantity+'
-	          </div><div class="item">
-	            <b>Total Sell Amount :</b> '+detail.total_sell_amount+'
-	          </div><div class="item">
-	            <b>Balance Quantity :</b><br/>'+detail.balance_quantity+'
-	          </div><div class="item">
-	            <b>Remarks:</b><br/>'+ detail.remark +'
+	            <b>Balance Quanity :</b> '+detail.balance_quantity+'
 	          </div>'
 			});
+		}
+
+		$scope.formatDate = function(date) {
+			formatted = moment(new Date(date)).format("DD/MMM/YYYY");
+			return formatted;
 		}
 
 }]);

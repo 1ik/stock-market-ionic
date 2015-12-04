@@ -11,6 +11,11 @@ angular.module('app.services')
 		getBNNews: function() {
 			var reqURL = constants.rootURL + 'api_news/getBNNews';
 			return httpUtils.get(reqURL,{},{}).promise;
+		},
+
+		getProthomAloNews: function() {
+			var reqURL = constants.rootURL + 'api_crons/fetchProthomAlo';
+			return httpUtils.get(reqURL,{},{}).promise;
 		}
 	};
 }])

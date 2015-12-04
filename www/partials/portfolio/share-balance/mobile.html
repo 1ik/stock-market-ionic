@@ -34,7 +34,7 @@
 	            <b>Market Value :</b> {{marketVal(shareBalance.ycp, shareBalance.balance)}}
 	          </div>
 	          <div class="item">
-	            <b>Gain / Loss :</b> {{shareBalance.loss_gain}}
+	            <b>Gain / Loss :</b> <span ng-class="{'green' : shareBalance.loss_gain >= 0, 'red': shareBalance.loss_gain < 0 }"> {{shareBalance.loss_gain}}</span>
 	          </div>
 	          <div class="item" ng-click="openShare(shareBalance);">
 	          	MORE
