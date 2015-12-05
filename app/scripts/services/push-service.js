@@ -12,7 +12,6 @@ angular.module('app.services')
 
 		saveNotification: function (notification) {
 			var notices = $window.localStorage['pushNotifications'] || '[]';
-
 			notices = JSON.parse(notices);
 			notices.unshift(notification);
 

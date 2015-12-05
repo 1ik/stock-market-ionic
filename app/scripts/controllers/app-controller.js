@@ -38,8 +38,11 @@ angular.module('app.controllers')
 					break;				
 				
 				case 'message':
-					pushService.saveNotification(notification);
+					if(ionic.Platform.isAndroid()) {
+						notification = notification.payload;
+					}
 					
+					pushService.saveNotification(notification);					
 					$ionicPopup.alert({
 						title: notification.title,
 						template: notification.message
