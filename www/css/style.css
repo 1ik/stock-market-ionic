@@ -33,4 +33,18 @@ div.table-stripped:nth-child(even) {
 	color:white;
 }
 
+/* navigation icons */
+.menu-icon {
+	
+}
 
+a.item-content img {
+	width:20px;
+	height:20px;
+	position:relative; 
+	top:4px;
+}
+
+a.item-content span {
+	padding-left: 10px;
+}
