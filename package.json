@@ -27,7 +27,8 @@
       "id": "cordova-plugin-whitelist"
     },
     "cordova-plugin-screen-orientation",
-    "cordova-plugin-whitelist"
+    "cordova-plugin-whitelist",
+    "cordova-plugin-splashscreen"
   ],
   "cordovaPlatforms": [
     "ios",

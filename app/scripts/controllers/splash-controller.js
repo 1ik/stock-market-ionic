@@ -7,11 +7,15 @@ angular.module('app.controllers')
 		email: 'anik@kvsocial.com',
 		password: 'anik'
 	};
+
+	$scope.submitting = false;
 	
 	$scope.submitForm = function(email, password, signingUp) {
 
 		if(signingUp) {
+			$scope.submitting = true;
 			authService.registerUser($scope.form).then(function(data){			
+				$scope.submitting = false;
 				$ionicPopup.alert({
 					title: 'Registration Successful',
 					template: 'You have registered successfully. Please log in to continue.'
@@ -19,7 +23,7 @@ angular.module('app.controllers')
 					$scope.signingUp = false;
 				});
 			}).catch(function(data){
-				
+				$scope.submitting = false;
 				$ionicPopup.alert({
 					title: 'Registration Failed',
 					template: 'The email address was incorrect or it already exists.'
@@ -31,9 +35,11 @@ angular.module('app.controllers')
 			return false;
 		}
 
-		authService.authenticateUser(email,password).then(function(data) {
-			pushService.register();			
+		$scope.submitting = true;
 		
+		authService.authenticateUser(email,password).then(function(data) {
+			pushService.register();
+			$scope.submitting = false;
 			$localstorage.setObject('userData', { 
 				token: data.token, 
 				user: data.user,
@@ -42,6 +48,7 @@ angular.module('app.controllers')
 
 			$state.go("app.dashboard")		
 		}).catch(function(data){
+			$scope.submitting = false;
 			$ionicPopup.alert({
 				title: 'Login Failed',
 				template: 'The email and password is not accepted.'

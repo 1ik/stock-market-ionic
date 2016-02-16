@@ -1,4 +1,19 @@
 <ion-view view-title="View Orders">
+  
+  <ion-nav-bar class="bar bar-header bar-dark">
+    <ion-nav-back-button>
+    </ion-nav-back-button>
+    <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+    </button>
+    </ion-nav-buttons>
+
+    <ion-nav-buttons side="right">
+      <a class="button button-kscl-orange" ng-click="goToOrderManage()">
+        Buy/Sell
+      </a>
+    </ion-nav-buttons>
+  </ion-nav-bar>
 
   <ion-content>
     <div class="card">
@@ -6,7 +21,7 @@
         View Orders <span style="float:right" ng-show="loading">Loading</span>
       </div>
       <div class="row">
-      	<button class="button button-block button-positive" ng-click="showFilters = !showFilters"> {{showFilters ? "HIDE" : "SHOW"}} FILTER</button>
+      	<button class="button button-block button-kscl-yellow" ng-click="showFilters = !showFilters"> {{showFilters ? "HIDE" : "SHOW"}} FILTER</button>
       </div>
       <div class="row" style="padding-left:30px;" ng-show="showFilters">
       		<div class="col">
@@ -62,7 +77,4 @@
 	</div>
     </div>
 </ion-content>
-<ion-footer-bar style="margin-bottom : 10px;">
-  <button ng-click="goToOrderManage()" class="button button-block button-positive"> BUY / SELL</button>
-</ion-footer-bar>
 </ion-view>

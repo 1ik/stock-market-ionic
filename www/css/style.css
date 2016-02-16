@@ -48,3 +48,34 @@ a.item-content img {
 a.item-content span {
 	padding-left: 10px;
 }
+
+
+.button.button-kscl-orange {
+    border-color: #F97157;
+    background-color: #F97157;
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1);
+    font-weight: 800;
+}
+
+.button.button-kscl-yellow {
+    border-color: #F4CC66;
+    background-color: #F4CC66;
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1);
+    font-weight: 800;
+    color:black;
+}
+
+.button.button-kscl-black {
+    border-color: #1D1D1D;
+    background-color: #1D1D1D;
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1);
+    font-weight: 800;
+    color:#F1CA64;
+}
+
+
+.bar.bar-kscl-gray {
+    border-bottom: 3px solid #EEEDED;
+    background-color: #F4F3F3;
+    color: #303030;
+}

@@ -28,8 +28,8 @@
   </ion-content>
   <ion-footer-bar style="margin-bottom : 40px;" >
     <div class="row" style="margin-bottom : 40px;">
-      <div class="col"><button ng-class="{'button-outline' : showProthomAlo}" ng-click="showProthomAlo = false" class="button button-block button-positive"> DSE NEWS </button></div>
-      <div class="col"><button ng-class="{'button-outline' : !showProthomAlo}" ng-click="showProthomAlo = true" class="button button-block button-positive"> Prothomalo NEWS </button></div>
+      <div class="col"><button ng-class="{'button-outline' : showProthomAlo, 'button-kscl-yellow': !showProthomAlo}" ng-click="showProthomAlo = false" class="button button-block"> DSE NEWS </button></div>
+      <div class="col"><button ng-class="{'button-outline' : !showProthomAlo, 'button-kscl-yellow' : showProthomAlo}" ng-click="showProthomAlo = true" class="button button-block"> Prothomalo NEWS </button></div>
     </div>
   </ion-footer-bar>
 </ion-view>
